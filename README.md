@@ -1,9 +1,6 @@
 # vue-codemirror
 Codemirror components for Vue.js
 
-<input v-model="code">
-<pre>{{ code }}</pre>
-
 # Build Setup
 
 ``` bash
@@ -26,16 +23,15 @@ Vue.use(CodeMirror)
 <codemirror :code.sync="code" :options="editorOption"></codemirror>
 editorOption = {
   tabSize: 2,
-  mode: 'application/json', // htmlmixed || javascript || css ... (default: javascript)
-  theme: 'base16-dark' // (default: default)
-  lineNumbers: true, // (default: javascript)
-  styleActiveLine: true
+  mode: 'application/json',
+  theme: 'base16-dark',
+  lineNumbers: true, 
   line: true,
   ...
 }
+```
+
 More [codemirror options](http://codemirror.net/doc/manual.html#config)
 
 # example
-see dir [example](https://github.com/surmon-china/vue-codemirror/blob/master/example)
-
-```
+see dir [example](https://github.com/surmon-china/vue-codemirror/tree/master/example)
