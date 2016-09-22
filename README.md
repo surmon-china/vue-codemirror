@@ -4,9 +4,9 @@ Codemirror components for Vue.js
 
 # Screenshots
 
-![image](https://github.com/surmon-china/vue-codemirror/blob/master/screenshots/example.jpg)
+![image](https://raw.githubusercontent.com/surmon-china/vue-codemirror/master/screenshots/example.png)
 
-![image](https://github.com/surmon-china/vue-codemirror/blob/master/screenshots/code.jpg)
+![image](https://raw.githubusercontent.com/surmon-china/vue-codemirror/master/screenshots/code.png)
 
 
 # Build Setup
