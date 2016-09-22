@@ -27,13 +27,17 @@ Vue.use(CodeMirror)
 # component config
 <codemirror :code.sync="code" :options="editorOption"></codemirror>
 
-editorOption = {
-  tabSize: 2,
-  mode: 'application/json',
-  theme: 'base16-dark',
-  lineNumbers: true, 
-  line: true,
-  ...
+data () {
+  return {
+    editorOption: {
+      tabSize: 2,
+      mode: 'application/json',
+      theme: 'base16-dark',
+      lineNumbers: true, 
+      line: true,
+      ...
+    }
+  }
 }
 
 ```
