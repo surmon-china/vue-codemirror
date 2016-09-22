@@ -60,4 +60,4 @@ data () {
 
 
 # Author Blog
-[Surmon](https://surmon.me)
+[Surmon](http://surmon.me)
