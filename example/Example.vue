@@ -10,7 +10,7 @@
     <p>Codemirror Example2：</p>
     <div>
       <input v-model="code">
-      <codemirror :code.sync="css" :options="{ mode: 'css', tabSize: 4 }"></codemirror>
+      <codemirror :code.sync="css" :options="{ mode: 'css', tabSize: 2 }"></codemirror>
       <pre>{{ code }}</pre>
     </div>
   </div>
@@ -26,6 +26,7 @@
         code: '<div></div>',
         css: '.class { display: block }',
         editorOption: {
+          tabSize: 4,
           styleActiveLine: true,
           line: true,
           mode: 'htmlmixed',

@@ -51,13 +51,13 @@ data () {
   }
 }
 
-
-# [More example](https://github.com/surmon-china/vue-codemirror/blob/master/example/Example.vue)
-
 ```
 
-# [More Codemirror Config](http://codemirror.net/doc/manual.html#config)
+## [More example](https://github.com/surmon-china/vue-codemirror/tree/master/example)
 
 
-# example
-see dir [example](https://github.com/surmon-china/vue-codemirror/tree/master/example)
+## [More Codemirror Config](http://codemirror.net/doc/manual.html#config)
+
+
+# Author Blog
+[Surmon](https://surmon.me)
