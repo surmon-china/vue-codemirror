@@ -24,7 +24,7 @@
     data () {
       return {
         code: '<div></div>',
-        css: 'div { display: block }'
+        css: '.class { display: block }',
         editorOption: {
           styleActiveLine: true,
           line: true,

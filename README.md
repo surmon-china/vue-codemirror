@@ -24,14 +24,15 @@ Vue.use(CodeMirror)
 <codemirror :code.sync="code"></codemirror>
 
 
-# component config
+# component config example 1
 <codemirror :code.sync="code" :options="editorOption"></codemirror>
 
 data () {
   return {
+    code: 'const a = 10',
     editorOption: {
-      tabSize: 2,
-      mode: 'application/json',
+      tabSize: 4,
+      mode: 'javascript',
       theme: 'base16-dark',
       lineNumbers: true, 
       line: true,
@@ -40,9 +41,22 @@ data () {
   }
 }
 
+
+# component config example 2
+<codemirror :code.sync="css" :options="{ tabSize: 2, mode: 'css' }"></codemirror>
+
+data () {
+  return {
+    css: '.class { display: block }'
+  }
+}
+
+
+# [More example](https://github.com/surmon-china/vue-codemirror/blob/master/example/Example.vue)
+
 ```
 
-More [codemirror options](http://codemirror.net/doc/manual.html#config)
+# [More Codemirror Config](http://codemirror.net/doc/manual.html#config)
 
 
 # example
