@@ -5,8 +5,8 @@
  */
 
 'use strict'
-import CodeMirror from 'codemirror/lib/codemirror.js'
-import 'codemirror/lib/codemirror.css'
+const CodeMirror = require('codemirror/lib/codemirror.js')
+require('codemirror/lib/codemirror.css')
 
 const CmComponentBuild = Vue => {
   const CmComponent = Vue.extend({
