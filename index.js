@@ -20,7 +20,7 @@ const CmComponentBuild = Vue => {
       code: String,
       options: {
         type: Object,
-        default: () => {
+        default () {
           return {
             styleActiveLine: true,
             lineNumbers: true,
@@ -31,7 +31,6 @@ const CmComponentBuild = Vue => {
       },
     },
     created () {
-      // console.log('created', this, this.$el, this.options)
       this.options    = this.options || {}
       const language  = this.options.mode || 'javascript'
       const theme     = this.options.theme
@@ -39,17 +38,15 @@ const CmComponentBuild = Vue => {
       if (!!theme && theme != 'default') require('codemirror/theme/' + theme + '.css')
     },
     ready () {
-      // console.log(this, this.code)
       this.editor = CodeMirror.fromTextArea(this.$el, this.options)
       this.editor.setValue(this.code || this.content)
       this.editor.on('change', cm => {
         this.content = cm.getValue()
         this.code = cm.getValue()
-        // console.log(this)
       })
     },
     watch: {
-      'code': function(newVal, oldVal) {
+      'code': (newVal, oldVal) => {
         // console.log('update', newVal)
         // this.editor.setValue(newVal)
         // this.content = newVal
@@ -63,6 +60,6 @@ const codemirror = {
   install (Vue) {
     CmComponentBuild(Vue)
   }
-};
+}
 
-module.exports = codemirror;
+module.exports = codemirror
