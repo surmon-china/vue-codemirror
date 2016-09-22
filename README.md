@@ -2,6 +2,13 @@
 Codemirror components for Vue.js
 
 
+# Screenshots
+
+![image](https://github.com/surmon-china/vue-codemirror/blob/master/screenshots/example.jpg)
+
+![image](https://github.com/surmon-china/vue-codemirror/blob/master/screenshots/code.jpg)
+
+
 # Build Setup
 
 ``` bash
