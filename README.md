@@ -16,11 +16,22 @@ Codemirror components for Vue.js
 npm install vue-codemirror
 
 
-# app use
+# Vue use
+
+## import with ES6
 import Vue from 'vue'
 ...
 import CodeMirror from 'vue-codemirror'
-Vue.use(CodeMirror)
+
+
+## require with Webpack
+var Vue = require('vue')
+...
+var CodeMirror = require('vue-codemirror')
+
+## use
+Vue.use(CodeMirror)        // use vue-codemirror es5 (default && recommend)
+Vue.use(CodeMirror.es6)    // use vue-codemirror es6 (need babel support)
 
 
 # use in components
