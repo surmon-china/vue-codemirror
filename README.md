@@ -30,8 +30,7 @@ var Vue = require('vue')
 var CodeMirror = require('vue-codemirror')
 
 ## use
-Vue.use(CodeMirror)        // use vue-codemirror es5 (default && recommend)
-Vue.use(CodeMirror.es6)    // use vue-codemirror es6 (need babel support)
+Vue.use(CodeMirror)
 
 
 # use in components
