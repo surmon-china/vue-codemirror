@@ -38,11 +38,12 @@ var CmComponentBuild = function(Vue) {
       if (!!theme && theme != 'default') require('codemirror/theme/' + theme + '.css')
     },
     ready: function() {
+      var _this = this
       this.editor = CodeMirror.fromTextArea(this.$el, this.options)
       this.editor.setValue(this.code || this.content)
       this.editor.on('change', function(cm) {
-        this.content = cm.getValue()
-        this.code = cm.getValue()
+        _this.content = cm.getValue()
+        _this.code = cm.getValue()
       })
     },
     watch: {
