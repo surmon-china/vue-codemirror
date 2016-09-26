@@ -6,7 +6,7 @@
 [![NPM](https://nodei.co/npm/vue-codemirror.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/vue-codemirror/)
 
 
-# vue-codemirror
+# Vue-Codemirror
 Codemirror components for Vue.js
 
 

@@ -26,7 +26,7 @@ var CmComponentBuild = function(Vue) {
           return {
             styleActiveLine: true,
             lineNumbers: true,
-            mode: 'javascript',
+            mode: 'text/javascript',
             lineWrapping: true
           }
         }
@@ -60,7 +60,6 @@ var CmComponentBuild = function(Vue) {
       }
 
       // console.log(language)
-
       // require editor language and theme config
       require('codemirror/mode/' + language + '/' + language + '.js')
 
