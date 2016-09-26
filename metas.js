@@ -155,13 +155,11 @@ var CodeMirror = {
   ]
 }
 
-/*
 // Ensure all modes have a mime property for backwards compatibility
 for (var i = 0; i < CodeMirror.modeInfo.length; i++) {
   var info = CodeMirror.modeInfo[i];
   if (info.mimes) info.mime = info.mimes[0];
 }
-*/
 
 CodeMirror.findModeByMIME = function(mime) {
   mime = mime.toLowerCase()
