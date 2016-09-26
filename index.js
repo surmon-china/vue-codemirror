@@ -6,7 +6,9 @@
 
 'use strict'
 var CodeMirror = require('codemirror/lib/codemirror.js')
+var CodeMirrorMetas = require('./metas.js')
 require('codemirror/lib/codemirror.css')
+// console.log(CodeMirrorMetas)
 
 var CmComponentBuild = function(Vue) {
   var CmComponent = Vue.extend({
@@ -32,9 +34,37 @@ var CmComponentBuild = function(Vue) {
     },
     created: function() {
       this.options    = this.options || {}
-      var language  = this.options.mode || 'javascript'
+      var language  = this.options.mode || 'text/javascript'
       var theme     = this.options.theme
+
+      // string config or object config
+      var isString = (typeof language == 'string')
+      // console.log(language, typeof language, isString)
+
+      // string config
+      if (isString) {
+        try {
+         language = CodeMirrorMetas.findModeByMIME(language).mode
+        } catch (e) {
+         throw new Error('CodeMirror language mode: ' + language + ' Configuration error (CodeMirror语言模式配置错误，或者不支持此语言)') 
+        }
+      }
+
+      // object config
+      if (!isString) {
+        try {
+         language = CodeMirrorMetas.findModeByName(language.name).mode
+        } catch (e) {
+         throw new Error('CodeMirror language mode: ' + language.name + ' Configuration error (CodeMirror语言模式配置错误，或者不支持此语言)') 
+        }
+      }
+
+      // console.log(language)
+
+      // require editor language and theme config
       require('codemirror/mode/' + language + '/' + language + '.js')
+
+      if (!!theme && theme == 'solarized light') theme = 'solarized'
       if (!!theme && theme != 'default') require('codemirror/theme/' + theme + '.css')
     },
     ready: function() {

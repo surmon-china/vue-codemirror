@@ -10,14 +10,23 @@
 Codemirror components for Vue.js
 
 
-# Screenshots
+# Example
 
-![image](https://raw.githubusercontent.com/surmon-china/vue-codemirror/master/screenshots/example.png)
-
-![image](https://raw.githubusercontent.com/surmon-china/vue-codemirror/master/screenshots/code.png)
+[Demos](https://surmon-china.github.io/vue-codemirror)
 
 
-# Build Setup
+# More Config
+
+[Code example](https://github.com/surmon-china/vue-codemirror/tree/master/example)
+
+[More codemirror configs](http://codemirror.net/doc/manual.html#config)
+
+[More codemirror themes](http://codemirror.net/demo/theme.html)
+
+[More codemirror language modes](http://codemirror.net/mode/)
+
+
+# Use Setup
 
 ``` bash
 # install vue-codemirror
@@ -57,7 +66,7 @@ data () {
     code: 'const a = 10',
     editorOption: {
       tabSize: 4,
-      mode: 'javascript',
+      mode: 'text/javascript',
       theme: 'base16-dark',
       lineNumbers: true, 
       line: true,
@@ -77,11 +86,6 @@ data () {
 }
 
 ```
-
-[More example](https://github.com/surmon-china/vue-codemirror/tree/master/example)
-
-
-[More Codemirror Config](http://codemirror.net/doc/manual.html#config)
 
 
 # Author Blog

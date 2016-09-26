@@ -21,12 +21,11 @@
           tabSize: 4,
           styleActiveLine: true,
           line: true,
-          mode: 'htmlmixed',
+          mode: 'text/html',
           lineWrapping: true,
           theme: 'base16-dark'
         }
       }
     }
   }
-
 </script>
