@@ -6,7 +6,7 @@
     <pre>{{ code }}</pre>
     <hr>
     <h3>Codemirror Example2：</h3>
-    <codemirror :code.sync="css" :options="{ mode: 'css', tabSize: 2 }"></codemirror>
+    <codemirror :code.sync="css" :options="{ mode: 'text/css', tabSize: 2 }"></codemirror>
     <pre>{{ css }}</pre>
   </div>
 </template>
