@@ -56,7 +56,7 @@ data () {
     editorOption: {
       tabSize: 4,
       mode: 'text/javascript',
-      /* or use obiect mode
+      /* or use object mode
       mode: {
         name: 'javascript',
         json: true
