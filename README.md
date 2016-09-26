@@ -65,7 +65,7 @@ data () {
 }
 
 
-editorOption mode types:
+# editorOption mode types:
 
 // string mode
 mode: 'text/javascript'
