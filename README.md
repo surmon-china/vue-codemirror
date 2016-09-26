@@ -15,17 +15,6 @@ Codemirror components for Vue.js
 [Demos](https://surmon-china.github.io/vue-codemirror)
 
 
-# More Config
-
-[Code example](https://github.com/surmon-china/vue-codemirror/tree/master/example)
-
-[More codemirror configs](http://codemirror.net/doc/manual.html#config)
-
-[More codemirror themes](http://codemirror.net/demo/theme.html)
-
-[More codemirror language modes](http://codemirror.net/mode/)
-
-
 # Use Setup
 
 ``` bash
@@ -67,6 +56,12 @@ data () {
     editorOption: {
       tabSize: 4,
       mode: 'text/javascript',
+      /* or use obiect mode
+      mode: {
+        name: 'javascript',
+        json: true
+      },
+      */
       theme: 'base16-dark',
       lineNumbers: true, 
       line: true,
@@ -86,6 +81,18 @@ data () {
 }
 
 ```
+
+
+# More Config
+
+[Code example](https://github.com/surmon-china/vue-codemirror/tree/master/example)
+
+[More codemirror configs](http://codemirror.net/doc/manual.html#config)
+
+[More codemirror themes](http://codemirror.net/demo/theme.html)
+
+[More codemirror language modes](http://codemirror.net/mode/)
+
 
 
 # Author Blog
