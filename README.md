@@ -55,8 +55,10 @@ data () {
     code: 'const a = 10',
     editorOption: {
       tabSize: 4,
+      // use string mode
       mode: 'text/javascript',
-      /* or use object mode
+      // or use object mode
+      /*
       mode: {
         name: 'javascript',
         json: true
