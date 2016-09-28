@@ -1,7 +1,7 @@
-[![GitHub issues](https://img.shields.io/github/issues/surmon-china/vue-codemirror.svg)](https://github.com/surmon-china/vue-codemirror/issues)
-[![GitHub forks](https://img.shields.io/github/forks/surmon-china/vue-codemirror.svg)](https://github.com/surmon-china/vue-codemirror/network)
-[![GitHub stars](https://img.shields.io/github/stars/surmon-china/vue-codemirror.svg)](https://github.com/surmon-china/vue-codemirror/stargazers)
-[![Twitter](https://img.shields.io/twitter/url/https/github.com/surmon-china/vue-codemirror.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D)
+[![GitHub issues](https://img.shields.io/github/issues/surmon-china/vue-codemirror.svg?style=flat-square)](https://github.com/surmon-china/vue-codemirror/issues)
+[![GitHub forks](https://img.shields.io/github/forks/surmon-china/vue-codemirror.svg?style=flat-square)](https://github.com/surmon-china/vue-codemirror/network)
+[![GitHub stars](https://img.shields.io/github/stars/surmon-china/vue-codemirror.svg?style=flat-square)](https://github.com/surmon-china/vue-codemirror/stargazers)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/surmon-china/vue-codemirror.svg?style=flat-square)](https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D)
 
 [![NPM](https://nodei.co/npm/vue-codemirror.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/vue-codemirror/)
 
