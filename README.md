@@ -19,11 +19,12 @@ Codemirror components for Vue.js
 
 ``` bash
 # install vue-codemirror
-npm install vue-codemirror
+npm install vue-codemirror --save
+```
 
+### Vue use
 
-# Vue use
-
+``` javascript
 ## import with ES6
 import Vue from 'vue'
 ...
@@ -35,11 +36,15 @@ var Vue = require('vue')
 ...
 var CodeMirror = require('vue-codemirror')
 
+
 ## use
 Vue.use(CodeMirror)
+```
 
 
-# use in components
+### Use in components
+
+``` html
 <codemirror></codemirror>
 
 
@@ -49,7 +54,11 @@ Vue.use(CodeMirror)
 
 # component config example 1
 <codemirror :code.sync="code" :options="editorOption"></codemirror>
+```
 
+
+``` javascript
+# editorOption example:
 data () {
   return {
     code: 'const a = 10',
@@ -66,7 +75,6 @@ data () {
 
 
 # editorOption mode types:
-
 // string mode
 mode: 'text/javascript'
 
@@ -75,17 +83,19 @@ mode: {
   name: 'javascript',
   json: true
 }
+```
 
-
+``` html
 # component config example 2
 <codemirror :code.sync="css" :options="{ tabSize: 2, mode: 'css' }"></codemirror>
+```
 
+``` javascript
 data () {
   return {
     css: '.class { display: block }'
   }
 }
-
 ```
 
 
