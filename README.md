@@ -31,13 +31,13 @@ import Vue from 'vue'
 import CodeMirror from 'vue-codemirror'
 
 
-// require with Webpack
+// require with Webpack/Node.js
 var Vue = require('vue')
 // ...
 var CodeMirror = require('vue-codemirror')
 
 
-## use
+// use
 Vue.use(CodeMirror)
 ```
 
