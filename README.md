@@ -25,15 +25,15 @@ npm install vue-codemirror --save
 ### Vue use
 
 ``` javascript
-## import with ES6
+// import with ES6
 import Vue from 'vue'
-...
+// ...
 import CodeMirror from 'vue-codemirror'
 
 
-## require with Webpack
+// require with Webpack
 var Vue = require('vue')
-...
+// ...
 var CodeMirror = require('vue-codemirror')
 
 
@@ -48,33 +48,36 @@ Vue.use(CodeMirror)
 <codemirror></codemirror>
 
 
-# component data bind
+<!-- component data bind -->
 <codemirror :code.sync="code"></codemirror>
 
 
-# component config example 1
+<!-- component config example 1 -->
 <codemirror :code.sync="code" :options="editorOption"></codemirror>
 ```
 
 
 ``` javascript
-# editorOption example:
-data () {
-  return {
-    code: 'const a = 10',
-    editorOption: {
-      tabSize: 4,
-      mode: 'text/javascript',
-      theme: 'base16-dark',
-      lineNumbers: true, 
-      line: true,
-      ...
+// editorOption example:
+export default {
+  data () {
+    return {
+      code: 'const a = 10',
+      editorOption: {
+        tabSize: 4,
+        mode: 'text/javascript',
+        theme: 'base16-dark',
+        lineNumbers: true, 
+        line: true,
+        ...
+      }
     }
   }
 }
 
 
-# editorOption mode types:
+// editorOption mode types:
+
 // string mode
 mode: 'text/javascript'
 
@@ -86,7 +89,7 @@ mode: {
 ```
 
 ``` html
-# component config example 2
+<!-- component config example 2 -->
 <codemirror :code.sync="css" :options="{ tabSize: 2, mode: 'css' }"></codemirror>
 ```
 
