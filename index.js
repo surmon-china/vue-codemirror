@@ -1,15 +1,14 @@
 /**
  * Vue-CodeMirror
  * @author Surmon.me
- * @date 2016-9-22
  */
 
 var CmComponent = require('./codemirror.vue')
-
-var codemirror = {
+var Codemirror = {
+  codemirror: CmComponent,
   install: function(Vue) {
     Vue.component('codemirror', CmComponent)
   }
 }
 
-module.exports = codemirror
+module.exports = Codemirror

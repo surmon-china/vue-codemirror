@@ -1,13 +1,9 @@
 <template>
   <div class="Example">
-    <h1>It's Example page with Vue.js1.X</h1>
-    <h3>Codemirror Example1：</h3>
-    <codemirror :code.sync="code" :options="editorOption"></codemirror>
+    <h1>It's Example page with Vue.js2.X</h1>
+    <h3>Codemirror Example:</h3>
+    <codemirror :code="code" :options="editorOption" @changed="codeChange"></codemirror>
     <pre>{{ code }}</pre>
-    <hr>
-    <h3>Codemirror Example2：</h3>
-    <codemirror :code.sync="css" :options="{ mode: 'text/css', tabSize: 2 }"></codemirror>
-    <pre>{{ css }}</pre>
   </div>
 </template>
 
@@ -25,6 +21,12 @@
           lineWrapping: true,
           theme: 'base16-dark'
         }
+      }
+    },
+    methods: {
+      codeChange(newCode) {
+        console.log(newCode)
+        this.code = newCode
       }
     }
   }

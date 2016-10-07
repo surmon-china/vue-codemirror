@@ -6,7 +6,7 @@
   var CodeMirror = require('codemirror/lib/codemirror.js')
   var CodeMirrorMetas = require('./metas.js')
   require('codemirror/lib/codemirror.css')
-
+  // var 
   export default {
     data: function() {
       return {
@@ -70,11 +70,24 @@
         _this.code = cm.getValue()
       })
     },
+    mounted: function() {
+      var _this = this
+      this.editor = CodeMirror.fromTextArea(this.$el, this.options)
+      this.editor.setValue(this.code || this.content)
+      this.editor.on('change', function(cm) {
+        _this.content = cm.getValue()
+        if (!!_this.$emit) {
+          _this.$emit('changed', _this.content)
+        }
+      })
+    },
     watch: {
       'code': function(newVal, oldVal) {
-        // console.log('update', newVal)
-        // this.editor.setValue(newVal)
-        // this.content = newVal
+        const editor_value = this.editor.getValue()
+        if (newVal !== editor_value) {
+          this.editor.setValue(newVal)
+          this.content = newVal
+        }
       }
     }
   }

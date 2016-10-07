@@ -7,18 +7,21 @@
 
 
 # Vue-Codemirror
-Codemirror components for Vue.js
+Codemirror component for Vue.js(1.x ~ 2.x)，本组件基于 [Codemirror](http://codemirror.net/)构建，支持Vue全版本使用，支持100+多种语言、分支语言、语法，支持多种代码高亮theme，并可以自行配置，可使用Vue-Codemirror快速轻易构建出多种丰富全面的web code editor，并以此基础多次开发WebIDE，欢迎加入前端技术交流群：288325802
+
 
 
 # Example
 
-[Demos](https://surmon-china.github.io/vue-codemirror)
+[Demo Page](https://surmon-china.github.io/vue-codemirror)
 
 
 # Use Setup
 
+
+### install vue-codemirror
+
 ``` bash
-# install vue-codemirror
 npm install vue-codemirror --save
 ```
 
@@ -39,6 +42,22 @@ var CodeMirror = require('vue-codemirror')
 
 // use
 Vue.use(CodeMirror)
+
+
+// --------------------------------------
+
+
+// or use with component(ES6)
+import Vue from 'vue'
+// ...
+import { codemirror } from 'vue-codemirror'
+
+// use
+export default {
+  components: {
+    codemirror
+  }
+}
 ```
 
 
@@ -48,12 +67,16 @@ Vue.use(CodeMirror)
 <codemirror></codemirror>
 
 
-<!-- component data bind -->
+<!-- component data bind(Vue.js1.X) -->
 <codemirror :code.sync="code"></codemirror>
 
 
-<!-- component config example 1 -->
+<!-- component config example 1(Vue.js1.X) -->
 <codemirror :code.sync="code" :options="editorOption"></codemirror>
+
+
+<!-- in vue.js2.X  .once and .sync are deprecated, parent component needs to explicitly emit an event instead of relying on implicit binding  -->
+<codemirror :code="code" :options="editorOption" @changed="codeChange"></codemirror>
 ```
 
 
@@ -72,9 +95,15 @@ export default {
         ...
       }
     }
+  },
+  // if you use in vue2.X，parent component needs to explicitly emit an event instead of relying on implicit binding
+  methods: {
+    codeChange(newCode) {
+      console.log(newCode)
+      this.code = newCode
+    }
   }
 }
-
 
 // editorOption mode types:
 
@@ -89,7 +118,7 @@ mode: {
 ```
 
 ``` html
-<!-- component config example 2 -->
+<!-- component config example 2(Vue.js1.X) -->
 <codemirror :code.sync="css" :options="{ tabSize: 2, mode: 'css' }"></codemirror>
 ```
 
@@ -106,11 +135,11 @@ data () {
 
 [Code example](https://github.com/surmon-china/vue-codemirror/tree/master/example)
 
-[More codemirror configs](http://codemirror.net/doc/manual.html#config)
+[Codemirror config APIs](http://codemirror.net/doc/manual.html#config)
 
-[More codemirror themes](http://codemirror.net/demo/theme.html)
+[Codemirror themes](http://codemirror.net/demo/theme.html)
 
-[More codemirror language modes](http://codemirror.net/mode/)
+[Codemirror language modes](http://codemirror.net/mode/)
 
 
 
