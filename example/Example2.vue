@@ -8,7 +8,11 @@
 </template>
 
 <script>
+  import { codemirror } from 'vue-codemirror'
   export default {
+    components: {
+      codemirror
+    },
     data () {
       return {
         code: '<div></div>',
