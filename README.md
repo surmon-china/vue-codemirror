@@ -19,7 +19,7 @@ Codemirror component for Vue.js(1.x ~ 2.x)，本组件基于 [Codemirror](http:/
 # Use Setup
 
 
-### install vue-codemirror
+### Install vue-codemirror
 
 ``` bash
 npm install vue-codemirror --save
