@@ -4,10 +4,12 @@
     <h3>Codemirror Example1：</h3>
     <codemirror :code.sync="code" :options="editorOption"></codemirror>
     <pre>{{ code }}</pre>
+    <textarea v-model="code"></textarea>
     <hr>
     <h3>Codemirror Example2：</h3>
     <codemirror :code.sync="css" :options="{ mode: 'text/css', tabSize: 2 }"></codemirror>
     <pre>{{ css }}</pre>
+    <textarea v-model="css"></textarea>
   </div>
 </template>
 

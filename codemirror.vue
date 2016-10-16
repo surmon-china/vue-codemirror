@@ -6,7 +6,7 @@
   var CodeMirror = require('codemirror/lib/codemirror.js')
   var CodeMirrorMetas = require('./metas.js')
   require('codemirror/lib/codemirror.css')
-  // var 
+  // var
   export default {
     data: function() {
       return {
@@ -15,6 +15,7 @@
     },
     props: {
       code: String,
+      value: String,
       options: {
         type: Object,
         default: function() {
@@ -41,7 +42,7 @@
         try {
          language = CodeMirrorMetas.findModeByMIME(language).mode
         } catch (e) {
-         throw new Error('CodeMirror language mode: ' + language + ' Configuration error (CodeMirror语言模式配置错误，或者不支持此语言)') 
+         throw new Error('CodeMirror language mode: ' + language + ' Configuration error (CodeMirror语言模式配置错误，或者不支持此语言)')
         }
       }
 
@@ -50,7 +51,7 @@
         try {
          language = CodeMirrorMetas.findModeByName(language.name).mode
         } catch (e) {
-         throw new Error('CodeMirror language mode: ' + language.name + ' Configuration error (CodeMirror语言模式配置错误，或者不支持此语言)') 
+         throw new Error('CodeMirror language mode: ' + language.name + ' Configuration error (CodeMirror语言模式配置错误，或者不支持此语言)')
         }
       }
 
@@ -64,25 +65,34 @@
     ready: function() {
       var _this = this
       this.editor = CodeMirror.fromTextArea(this.$el, this.options)
-      this.editor.setValue(this.code || this.content)
+      this.editor.setValue(this.code || this.value || this.content)
       this.editor.on('change', function(cm) {
         _this.content = cm.getValue()
+        // _this.value = cm.getValue()
         _this.code = cm.getValue()
       })
     },
     mounted: function() {
       var _this = this
       this.editor = CodeMirror.fromTextArea(this.$el, this.options)
-      this.editor.setValue(this.code || this.content)
+      this.editor.setValue(this.code || this.value || this.content)
       this.editor.on('change', function(cm) {
         _this.content = cm.getValue()
         if (!!_this.$emit) {
           _this.$emit('changed', _this.content)
+          _this.$emit('input', _this.content)
         }
       })
     },
     watch: {
       'code': function(newVal, oldVal) {
+        const editor_value = this.editor.getValue()
+        if (newVal !== editor_value) {
+          this.editor.setValue(newVal)
+          this.content = newVal
+        }
+      },
+      'value': function(newVal, oldVal) {
         const editor_value = this.editor.getValue()
         if (newVal !== editor_value) {
           this.editor.setValue(newVal)

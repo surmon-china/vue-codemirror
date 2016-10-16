@@ -6,8 +6,6 @@
 
 // Libs
 import Vue from 'vue'
-import Router from 'vue-router'
-import Resource from 'vue-resource'
 
 // App
 import App from './App.vue'
@@ -19,8 +17,6 @@ import Example from './Example.vue'
 import CodeMirror from 'vue-codemirror'
 
 // use
-Vue.use(Router)
-Vue.use(Resource)
 Vue.use(CodeMirror)
 
 // router

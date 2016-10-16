@@ -67,21 +67,24 @@ export default {
 <codemirror></codemirror>
 
 
-<!-- component data bind(Vue.js1.X) -->
-<codemirror :code.sync="code"></codemirror>
-
-
-<!-- component config example 1(Vue.js1.X) -->
+<!-- component data bind and config in Vue.js1.X -->
+<codemirror :code="code" :options="editorOption"></codemirror>
+<!-- Bidirectional data binding in Vue.js1.X -->
 <codemirror :code.sync="code" :options="editorOption"></codemirror>
 
 
-<!-- in vue.js2.X  .once and .sync are deprecated, parent component needs to explicitly emit an event instead of relying on implicit binding  -->
+<!-- component data bind and config in Vue.js2.X -->
+<codemirror :code="code" :options="editorOption"></codemirror>
+<!-- Bidirectional data binding in Vue.js2.X -->
+<codemirror v-model="code" :options="editorOption"></codemirror>
+<!-- or -->
+<!-- If you need to manually control the data synchronization, you can monitor the code change event like this -->
 <codemirror :code="code" :options="editorOption" @changed="codeChange"></codemirror>
 ```
 
 
 ``` javascript
-// editorOption example:
+// editor option example:
 export default {
   data () {
     return {
@@ -90,13 +93,13 @@ export default {
         tabSize: 4,
         mode: 'text/javascript',
         theme: 'base16-dark',
-        lineNumbers: true, 
+        lineNumbers: true,
         line: true,
         ...
       }
     }
   },
-  // if you use in vue2.X，parent component needs to explicitly emit an event instead of relying on implicit binding
+  // If you need to manually control the data synchronization, parent component needs to explicitly emit an event instead of relying on implicit binding
   methods: {
     codeChange(newCode) {
       console.log(newCode)
@@ -118,8 +121,8 @@ mode: {
 ```
 
 ``` html
-<!-- component config example 2(Vue.js1.X) -->
-<codemirror :code.sync="css" :options="{ tabSize: 2, mode: 'css' }"></codemirror>
+<!-- component config example 2 (Vue.js1.X) -->
+<codemirror :code.sync="css" :options="{ tabSize: 2, mode: 'text/css' }"></codemirror>
 ```
 
 ``` javascript
@@ -139,7 +142,7 @@ data () {
 
 [Codemirror themes](http://codemirror.net/demo/theme.html)
 
-[Codemirror language modes](http://codemirror.net/mode/)
+[Codemirror language modes](http://codemirror.net/mode/) (MIME types defined)
 
 
 

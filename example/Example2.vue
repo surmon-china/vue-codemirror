@@ -4,6 +4,12 @@
     <h3>Codemirror Example:</h3>
     <codemirror :code="code" :options="editorOption" @changed="codeChange"></codemirror>
     <pre>{{ code }}</pre>
+    <textarea v-model="code"></textarea>
+    <hr>
+    <h3>Codemirror Example2：</h3>
+    <codemirror v-model="code2" :options="editorOption"></codemirror>
+    <pre>{{ code2 }}</pre>
+    <textarea v-model="code2"></textarea>
   </div>
 </template>
 
@@ -15,7 +21,8 @@
     },
     data () {
       return {
-        code: '<div></div>',
+        code: '<div>1</div>',
+        code2: '<div>2</div>',
         css: '.class { display: block }',
         editorOption: {
           tabSize: 4,
