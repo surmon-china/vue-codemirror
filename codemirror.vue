@@ -88,15 +88,19 @@
       'code': function(newVal, oldVal) {
         const editor_value = this.editor.getValue()
         if (newVal !== editor_value) {
+          let scrollInfo = this.editor.getScrollInfo()
           this.editor.setValue(newVal)
           this.content = newVal
+          this.editor.scrollTo(scrollInfo.left, scrollInfo.top)
         }
       },
       'value': function(newVal, oldVal) {
         const editor_value = this.editor.getValue()
         if (newVal !== editor_value) {
+          let scrollInfo = this.editor.getScrollInfo()
           this.editor.setValue(newVal)
           this.content = newVal
+          this.editor.scrollTo(scrollInfo.left, scrollInfo.top)
         }
       }
     }
