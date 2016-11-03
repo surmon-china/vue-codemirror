@@ -7,12 +7,6 @@
   var CodeMirrorMetas = require('./metas.js')
   require('codemirror/lib/codemirror.css')
   // var
-  function makeMarker() {
-    var marker = document.createElement("div");
-    marker.style.color = "#822";
-    marker.innerHTML = "●";
-    return marker;
-  }
   export default {
     data: function() {
       return {
@@ -29,8 +23,7 @@
             styleActiveLine: true,
             lineNumbers: true,
             mode: 'text/javascript',
-            lineWrapping: true,
-            gutters: ["CodeMirror-linenumbers", "breakpoints"]
+            lineWrapping: true
           }
         }
       },
@@ -89,11 +82,6 @@
           _this.$emit('changed', _this.content)
           _this.$emit('input', _this.content)
         }
-      })
-      this.editor.on("gutterClick", function(cm, n) {
-        var info = cm.lineInfo(n);
-        cm.setGutterMarker(n, "breakpoints", info.gutterMarkers ? null : makeMarker())
-        console.log(cm.lineInfo(n))
       })
     },
     watch: {
