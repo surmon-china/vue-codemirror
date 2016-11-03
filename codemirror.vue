@@ -93,6 +93,7 @@
       this.editor.on("gutterClick", function(cm, n) {
         var info = cm.lineInfo(n);
         cm.setGutterMarker(n, "breakpoints", info.gutterMarkers ? null : makeMarker())
+        console.log(cm.lineInfo(n))
       })
     },
     watch: {
