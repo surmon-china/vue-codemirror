@@ -89,7 +89,6 @@
     },
     watch: {
       'code': function(newVal, oldVal) {
-        var _this = this
         const editor_value = this.editor.getValue()
         if (newVal !== editor_value) {
           let scrollInfo = this.editor.getScrollInfo()
