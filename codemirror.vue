@@ -85,7 +85,7 @@
           _this.$emit('input', _this.content)
         }
       })
-      this.gutterMarkers()
+      this.unseenLineMarkers()
     },
     watch: {
       'code': function(newVal, oldVal) {
@@ -96,7 +96,7 @@
           this.content = newVal
           this.editor.scrollTo(scrollInfo.left, scrollInfo.top)
         }
-        this.gutterMarkers()
+        this.unseenLineMarkers()
       },
       'value': function(newVal, oldVal) {
         const editor_value = this.editor.getValue()
@@ -106,15 +106,18 @@
           this.content = newVal
           this.editor.scrollTo(scrollInfo.left, scrollInfo.top)
         }
+        this.unseenLineMarkers()
       }
     },
     methods: {
-      gutterMarkers: function () {
+      unseenLineMarkers: function () {
         var _this = this
-        _this.unseenLines.forEach(line => {
-          var info = _this.editor.lineInfo(line)
-          _this.editor.setGutterMarker(line, "breakpoints", info.gutterMarkers ? null : _this.marker())
-        })
+        if (_this.unseenLines !== undefined && _this.marker !== undefined) {
+          _this.unseenLines.forEach(line => {
+            var info = _this.editor.lineInfo(line)
+            _this.editor.setGutterMarker(line, "breakpoints", info.gutterMarkers ? null : _this.marker())
+          })
+        }
       }
     }
   }
