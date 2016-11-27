@@ -16,6 +16,8 @@
     props: {
       code: String,
       value: String,
+      unseenLines: Array,
+      marker: Function,
       options: {
         type: Object,
         default: function() {
@@ -83,6 +85,7 @@
           _this.$emit('input', _this.content)
         }
       })
+      this.unseenLineMarkers()
     },
     watch: {
       'code': function(newVal, oldVal) {
@@ -93,6 +96,7 @@
           this.content = newVal
           this.editor.scrollTo(scrollInfo.left, scrollInfo.top)
         }
+        this.unseenLineMarkers()
       },
       'value': function(newVal, oldVal) {
         const editor_value = this.editor.getValue()
@@ -101,6 +105,18 @@
           this.editor.setValue(newVal)
           this.content = newVal
           this.editor.scrollTo(scrollInfo.left, scrollInfo.top)
+        }
+        this.unseenLineMarkers()
+      }
+    },
+    methods: {
+      unseenLineMarkers: function () {
+        var _this = this
+        if (_this.unseenLines !== undefined && _this.marker !== undefined) {
+          _this.unseenLines.forEach(line => {
+            var info = _this.editor.lineInfo(line)
+            _this.editor.setGutterMarker(line, "breakpoints", info.gutterMarkers ? null : _this.marker())
+          })
         }
       }
     }
@@ -111,5 +127,6 @@
   .CodeMirror,
   .CodeMirror pre {
     font-family: Menlo, Monaco, Consolas, "Courier New", monospace!important;
+    padding: 0 20px !important; /* Horizontal padding of content */
   }
 </style>
