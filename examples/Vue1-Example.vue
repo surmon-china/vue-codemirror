@@ -17,7 +17,7 @@
   export default {
     data () {
       return {
-        code: '<div></div>',
+        code: '<div>I am a div</div>',
         css: '.class { display: block }',
         editorOption: {
           tabSize: 4,

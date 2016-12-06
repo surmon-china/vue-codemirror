@@ -7,7 +7,7 @@
     <textarea v-model="code"></textarea>
     <hr>
     <h3>Codemirror Example2：</h3>
-    <codemirror v-model="code2" :options="editorOption"></codemirror>
+    <codemirror v-model="code2" :options="editorOption" ref="codeEditor"></codemirror>
     <pre>{{ code2 }}</pre>
     <textarea v-model="code2"></textarea>
   </div>
@@ -23,7 +23,6 @@
       return {
         code: '<div>1</div>',
         code2: '<div>2</div>',
-        css: '.class { display: block }',
         editorOption: {
           tabSize: 4,
           styleActiveLine: true,
@@ -39,6 +38,14 @@
         console.log(newCode)
         this.code = newCode
       }
+    },
+    computed: {
+      editor() {
+        return this.$refs.codeEditor.editor
+      }
+    },
+    mounted() {
+      console.log('this is my editor object', this.editor)
     }
   }
 </script>
