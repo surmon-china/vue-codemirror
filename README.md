@@ -9,6 +9,9 @@
 # Vue-Codemirror
 Codemirror component for Vue.js(1.x ~ 2.x)，组件基于 [Codemirror](http://codemirror.net/)构建，支持Vue目前全部版本，支持100+多种语言、分支语言、语法，支持多种代码高亮theme，并可以自行配置；可使用Vue-Codemirror快速轻易构建出多种丰富全面的web code editor，并以此基础多次开发WebIDE。
 
+> ### V2.1.6
+> 修复自定义mode的功能
+
 > ### V2.1.5
 > 增加代码补全提示、选中高亮、整行高亮、（sublime、emacs、vim）三种键位模式、代码块折叠、vue编码的支持...
 
@@ -38,16 +41,33 @@ npm install vue-codemirror --save
 ``` javascript
 // import in ES6
 import Vue from 'vue'
-import CodeMirror from 'vue-codemirror'
+import VueCodeMirror from 'vue-codemirror'
 
 
 // require in Webpack/Node.js
 var Vue = require('vue')
-var CodeMirror = require('vue-codemirror')
+var VueCodeMirror = require('vue-codemirror')
 
 
 // use
-Vue.use(CodeMirror)
+Vue.use(VueCodeMirror)
+
+
+// if you need to custom new mode
+VueCodeMirror.CodeMirror.defineMode('mymode', () => {
+  return {
+    token(stream, state) {
+      if (stream.match("aaa")) {
+        return "style1"
+      } else if (stream.match("bbb")) {
+        return "style2"
+      } else {
+        stream.next()
+        return null
+      }
+    }
+  }
+})
 
 
 // --------------------------------------
@@ -55,7 +75,23 @@ Vue.use(CodeMirror)
 
 // or use with component(ES6)
 import Vue from 'vue'
-import { codemirror } from 'vue-codemirror'
+import { codemirror, CodeMirror } from 'vue-codemirror'
+
+// if you need to custom new mode
+CodeMirror.defineMode('mymode', () => {
+  return {
+    token(stream, state) {
+      if (stream.match("aaa")) {
+        return "style1"
+      } else if (stream.match("bbb")) {
+        return "style2"
+      } else {
+        stream.next()
+        return null
+      }
+    }
+  }
+})
 
 // use in component
 export default {

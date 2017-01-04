@@ -3,7 +3,7 @@
 </template>
 
 <script>
-  var CodeMirror = require('codemirror/lib/codemirror.js')
+  window.CodeMirror = require('codemirror/lib/codemirror.js')
   var CodeMirrorMetas = require('./metas.js')
   require('codemirror/lib/codemirror.css')
   require('codemirror/addon/display/fullscreen.css')
@@ -41,19 +41,17 @@
 
       // string config
       if (typeof language == 'string') {
-        try {
-         language = CodeMirrorMetas.findModeByMIME(language).mode
-        } catch (e) {
-         throw new Error('CodeMirror language mode: ' + language + ' configuration error (CodeMirror语言模式配置错误，或者不支持此语言) See http://codemirror.net/mode/ for more details.')
-        }
-      }
 
-      // object config
-      if (typeof language == 'object') {
-        try {
-         language = CodeMirrorMetas.findModeByName(language.name).mode
-        } catch (e) {
-         throw new Error('CodeMirror language mode: ' + language.name + ' configuration error (CodeMirror语言模式配置错误，或者不支持此语言) See http://codemirror.net/mode/ for more details.')
+        let lang = CodeMirrorMetas.findModeByMIME(language)
+        language = !lang ? lang : lang.mode
+
+      } else if (typeof language == 'object') {
+
+        let lang = CodeMirrorMetas.findModeByName(language.name)
+        if (lang) {
+          language = lang.mode
+        } else {
+         return console.error('CodeMirror language mode: ' + language.name + ' configuration error (CodeMirror语言模式配置错误，或者不支持此语言) See http://codemirror.net/mode/ for more details.')
         }
       }
 
@@ -114,6 +112,7 @@
       }
 
       // require language mode config
+      language = language || 'javascript'
       require('codemirror/mode/' + language + '/' + language + '.js')
 
       // require theme config

@@ -3,7 +3,7 @@
  * @author Surmon.me
  */
 
-var CodeMirror = require('codemirror/lib/codemirror.js')
+window.CodeMirror = require('codemirror/lib/codemirror.js')
 var CmComponent = require('./codemirror.vue')
 var Codemirror = {
   CodeMirror: CodeMirror,
