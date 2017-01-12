@@ -3,7 +3,7 @@
 </template>
 
 <script>
-  window.CodeMirror = require('codemirror/lib/codemirror.js')
+  var CodeMirror = require('codemirror/lib/codemirror.js')
   var CodeMirrorMetas = require('./metas.js')
   require('codemirror/lib/codemirror.css')
   require('codemirror/addon/display/fullscreen.css')
@@ -113,7 +113,7 @@
 
       // require language mode config
       language = language || 'javascript'
-      require('codemirror/mode/' + language + '/' + language + '.js')
+      if (language !== 'null') require('codemirror/mode/' + language + '/' + language + '.js')
 
       // require theme config
       if (!!theme && theme == 'solarized light') theme = 'solarized'

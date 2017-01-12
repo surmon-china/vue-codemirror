@@ -10,6 +10,7 @@ import example07 from './07-text-x-go.vue'
 import example08 from './08-text-x-lua.vue'
 import example09 from './09-text-x-mysql.vue'
 import example10 from './10-text-custom-mode.vue'
+import example11 from './11-text-plain-mode.vue'
 
 module.exports = {
   exampleVue,
@@ -23,5 +24,6 @@ module.exports = {
   example07,
   example08,
   example09,
-  example10
+  example10,
+  example11
 }
