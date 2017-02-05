@@ -141,6 +141,14 @@
         }
       })
       this.unseenLineMarkers()
+      // prevents funky dynamic rendering
+      window.setTimeout(function() {
+        _this.editor.refresh()
+      }, 0)
+    },
+    beforeDestroy: function() {
+      // garbage cleanup
+      this.editor.doc.cm.getWrapperElement().remove()
     },
     watch: {
       'code': function(newVal, oldVal) {
