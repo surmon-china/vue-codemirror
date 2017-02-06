@@ -9,6 +9,9 @@
 # Vue-Codemirror
 Codemirror component for Vue.js(1.x ~ 2.x)，组件基于 [Codemirror](http://codemirror.net/)构建，支持Vue目前全部版本，支持100+多种语言、分支语言、语法，支持多种代码高亮theme，并可以自行配置；可使用Vue-Codemirror快速轻易构建出多种丰富全面的web code editor，并以此基础多次开发WebIDE。
 
+> ### v2.1.8
+> ...
+
 > ### v2.1.7
 > 修复mode:text/plain的支持
 
