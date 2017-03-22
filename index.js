@@ -3,9 +3,9 @@
  * @author Surmon.me
  */
 
-var CodeMirror = require('codemirror/lib/codemirror.js')
+window.CodeMirror = require('codemirror/lib/codemirror.js')
 var CmComponent = require('./codemirror.vue')
-if (typeof global.window != 'undefined') window.CodeMirror = CodeMirror
+
 var Codemirror = {
   CodeMirror: CodeMirror,
   codemirror: CmComponent,

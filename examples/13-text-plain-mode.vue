@@ -8,7 +8,7 @@
       </div>
       <md-button class="md-icon-button"
                  target="_blank"
-                 href="https://github.com/surmon-china/vue-codemirror/tree/master/examples/01-text-css.vue">
+                 href="https://github.com/surmon-china/vue-codemirror/tree/master/examples/13-text-x-mysql.vue">
         <md-icon>code</md-icon>
       </md-button>
     </md-card-actions>
@@ -24,51 +24,23 @@
 <script>
   export default {
     data() {
-const code =
-`/* Some example CSS */
-
-@import url("something.css");
-
-body {
-  margin: 0;
-  padding: 3em 6em;
-  font-family: tahoma, arial, sans-serif;
-  color: #000;
-}
-
-#navigation a {
-  font-weight: bold;
-  text-decoration: none !important;
-}
-
-h1 {
-  font-size: 2.5em;
-}
-
-h2 {
-  font-size: 1.7em;
-}
-
-h1:before, h2:before {
-  content: "::";
-}
-
-code {
-  font-family: courier, monospace;
-  font-size: 80%;
-  color: #418A8A;
-}`
       return {
-        code,
+        code: `The method of text plan based on XML, which is propounded by this dissertation, just march towards such direction showing as above.`,
         editorOption: {
           tabSize: 4,
           styleActiveLine: true,
           lineNumbers: true,
+          lineWrapping: true,
           line: true,
-          mode: 'text/css',
-          theme: 'paraiso-light'
+          mode: 'text/plain',
+          theme: 'solarized light'
         }
       }
+    },
+    mounted() {
+      setTimeout(() => {
+        this.code += 'haha~'
+      }, 2000)
     }
   }
 </script>

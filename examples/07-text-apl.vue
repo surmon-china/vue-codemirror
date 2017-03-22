@@ -8,7 +8,7 @@
       </div>
       <md-button class="md-icon-button"
                  target="_blank"
-                 href="https://github.com/surmon-china/vue-codemirror/tree/master/examples/05-text-apl.vue">
+                 href="https://github.com/surmon-china/vue-codemirror/tree/master/examples/07-text-apl.vue">
         <md-icon>code</md-icon>
       </md-button>
     </md-card-actions>
@@ -22,6 +22,10 @@
 </template>
 
 <script>
+
+  // require active-line.js
+  require('codemirror/addon/selection/active-line.js')
+
   export default {
     data() {
 const code =

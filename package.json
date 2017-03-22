@@ -1,7 +1,7 @@
 {
   "name": "vue-codemirror",
-  "version": "2.1.8",
-  "description": "Codemirror component for Vue.js(1.x ~ 2.x)",
+  "version": "3.0.0",
+  "description": "Codemirror component for Vue2",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

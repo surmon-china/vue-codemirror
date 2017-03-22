@@ -8,7 +8,7 @@
       </div>
       <md-button class="md-icon-button"
                  target="_blank"
-                 href="https://github.com/surmon-china/vue-codemirror/tree/master/examples/04-python.vue">
+                 href="https://github.com/surmon-china/vue-codemirror/tree/master/examples/06-python.vue">
         <md-icon>code</md-icon>
       </md-button>
     </md-card-actions>
@@ -22,6 +22,22 @@
 </template>
 
 <script>
+
+  // require active-line.js
+  require('codemirror/addon/selection/active-line.js')
+
+  // closebrackets
+  require('codemirror/addon/edit/closebrackets.js')
+
+  // keyMap
+  require('codemirror/mode/clike/clike.js')
+  require('codemirror/addon/edit/matchbrackets.js')
+  require('codemirror/addon/comment/comment.js')
+  require('codemirror/addon/dialog/dialog.js')
+  require('codemirror/addon/dialog/dialog.css')
+  require('codemirror/addon/search/searchcursor.js')
+  require('codemirror/addon/search/search.js')
+  require('codemirror/keymap/emacs.js')
   export default {
     data() {
 const code =

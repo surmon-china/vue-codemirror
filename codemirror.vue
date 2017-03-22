@@ -3,143 +3,137 @@
 </template>
 
 <script>
-  var CodeMirror = require('codemirror/lib/codemirror.js')
-  var CodeMirrorMetas = require('./metas.js')
+  window.CodeMirror = require('codemirror/lib/codemirror.js')
   require('codemirror/lib/codemirror.css')
-  require('codemirror/addon/display/fullscreen.css')
-  require('codemirror/addon/display/fullscreen.js')
+  require('codemirror/mode/meta')
+
   module.exports = {
     data: function() {
       return {
-        content: ''
+        content: '',
+        cmoptions: {
+          lineNumbers: true,
+          lineWrapping: false,
+          mode: 'text/javascript'
+        }
       }
     },
     props: {
-      hint: Boolean,
       code: String,
       value: String,
       unseenLines: Array,
       marker: Function,
       options: {
         type: Object,
-        default: function() {
-          return {
-            styleActiveLine: true,
-            lineNumbers: true,
-            mode: 'text/javascript',
-            lineWrapping: true
-          }
-        }
+        required: true
       },
     },
     created: function() {
-      this.options  = this.options || {}
-      var language  = this.options.mode || 'text/javascript'
-      var theme     = this.options.theme
-      var hint      = this.hint || false
-      var hints     = ['css', 'html', 'javascript', 'sql', 'xml']
+      this.cmoptions = Object.assign(this.cmoptions, this.options)
 
-      // string config
+      var theme = this.cmoptions.theme
+      var language = this.cmoptions.mode
+
+      // theme config
+      if (theme && theme == 'solarized light') {
+        theme = 'solarized'
+      }
+
+      // language string config
       if (typeof language == 'string') {
-
-        let lang = CodeMirrorMetas.findModeByMIME(language)
+        var lang = CodeMirror.findModeByMIME(language)
         language = !lang ? lang : lang.mode
 
+      // language object config
       } else if (typeof language == 'object') {
 
-        let lang = CodeMirrorMetas.findModeByName(language.name)
-        if (lang) {
-          language = lang.mode
-        } else {
-         return console.error('CodeMirror language mode: ' + language.name + ' configuration error (CodeMirror语言模式配置错误，或者不支持此语言) See http://codemirror.net/mode/ for more details.')
+        if (language.name) {
+          var lang = CodeMirror.findModeByName(language.name)
+          if (lang) {
+            language = lang.mode
+            this.cmoptions.mode = language
+          } else {
+            language = null
+          }
+        } else if (language.ext) {
+          var lang = CodeMirror.findModeByExtension(language.ext)
+          if (lang) {
+            language = lang.mode
+            this.cmoptions.mode = language
+          } else {
+            language = null
+          }
+        } else if (language.mime) {
+          var lang = CodeMirror.findModeByMIME(language.mime)
+          if (lang) {
+            language = lang.mode
+            this.cmoptions.mode = language
+          } else {
+            language = null
+          }
+        } else if (language.filename) {
+          var lang = CodeMirror.findModeByFileName(language.filename)
+          if (lang) {
+            language = lang.mode
+            this.cmoptions.mode = language
+          } else {
+            language = null
+          }
         }
       }
 
-      // require hint config
-      if (hint) {
-        require('codemirror/addon/hint/show-hint.js')
-        require('codemirror/addon/hint/show-hint.css')
-        var isAnyword = hints.indexOf(language) == -1
-        require('codemirror/addon/hint/' + (isAnyword ? 'anyword' : language) + '-hint.js')
+      if (!language || language == 'null') {
+        console.warn('CodeMirror language mode: ' + language + ' configuration error (CodeMirror语言模式配置错误，或者不支持此语言) See http://codemirror.net/mode/ for more details.')
+        return false
       }
 
-      // require active-line.js
-      if (this.options.styleActiveLine) require('codemirror/addon/selection/active-line.js')
+      // console.log(typeof language, language, theme)
 
-      // require closebrackets.js
-      if (this.options.autoCloseBrackets) require('codemirror/addon/edit/closebrackets.js')
+      // require language
+      require('codemirror/mode/' + language + '/' + language + '.js')
 
-      // require closetag.js
-      if (this.options.autoCloseTags) require('codemirror/addon/edit/closetag.js')
-
-      // require styleSelectedText.js
-      if (this.options.styleSelectedText) {
-        require('codemirror/addon/selection/mark-selection.js')
-        require('codemirror/addon/search/searchcursor.js')
-      }
-
-      // highlightSelectionMatches
-      if (this.options.highlightSelectionMatches) {
-        require('codemirror/addon/scroll/annotatescrollbar.js')
-        require('codemirror/addon/search/matchesonscrollbar.js')
-        require('codemirror/addon/search/searchcursor.js')
-        require('codemirror/addon/search/match-highlighter.js')
-      }
-
-      // require emacs
-      if (!!this.options.keyMap && ['emacs', 'sublime', 'vim'].indexOf(this.options.keyMap) > -1) {
-        require('codemirror/mode/clike/clike.js')
-        require('codemirror/addon/edit/matchbrackets.js')
-        require('codemirror/addon/comment/comment.js')
-        require('codemirror/addon/dialog/dialog.js')
-        require('codemirror/addon/dialog/dialog.css')
-        require('codemirror/addon/search/searchcursor.js')
-        require('codemirror/addon/search/search.js')
-        // console.log(this.options.keyMap)
-        require('codemirror/keymap/'+ this.options.keyMap +'.js')
-      }
-
-      // require fold js
-      if (this.options.foldGutter) {
-        require('codemirror/addon/fold/foldgutter.css')
-        require('codemirror/addon/fold/brace-fold.js')
-        require('codemirror/addon/fold/comment-fold.js')
-        require('codemirror/addon/fold/foldcode.js')
-        require('codemirror/addon/fold/foldgutter.js')
-        require('codemirror/addon/fold/indent-fold.js')
-        require('codemirror/addon/fold/markdown-fold.js')
-        require('codemirror/addon/fold/xml-fold.js')
-      }
-
-      // require language mode config
-      language = language || 'javascript'
-      if (language !== 'null') require('codemirror/mode/' + language + '/' + language + '.js')
-
-      // require theme config
-      if (!!theme && theme == 'solarized light') theme = 'solarized'
-      if (!!theme && theme != 'default') require('codemirror/theme/' + theme + '.css')
-    },
-    ready: function() {
-      var _this = this
-      this.editor = CodeMirror.fromTextArea(this.$el, this.options)
-      this.editor.setValue(this.code || this.value || this.content)
-      this.editor.on('change', function(cm) {
-        _this.content = cm.getValue()
-        // _this.value = cm.getValue()
-        _this.code = cm.getValue()
-      })
+      // require theme
+      if (!theme) return false
+      require('codemirror/theme/' + theme + '.css')
     },
     mounted: function() {
       var _this = this
-      this.editor = CodeMirror.fromTextArea(this.$el, this.options)
+      this.editor = CodeMirror.fromTextArea(this.$el, this.cmoptions)
       this.editor.setValue(this.code || this.value || this.content)
       this.editor.on('change', function(cm) {
         _this.content = cm.getValue()
         if (!!_this.$emit) {
-          _this.$emit('changed', _this.content)
+          _this.$emit('change', _this.content)
           _this.$emit('input', _this.content)
         }
       })
+      var events = [
+        'changes',
+        'beforeChange',
+        'cursorActivity',
+        'keyHandled',
+        'inputRead',
+        'electricInput',
+        'beforeSelectionChange',
+        'viewportChange',
+        'swapDoc',
+        'gutterClick',
+        'gutterContextMenu',
+        'focus',
+        'blur',
+        'refresh',
+        'optionChange',
+        'scrollCursorIntoView',
+        'update'
+      ]
+      for (var i = events.length - 1; i >= 0; i--) {
+        (function(event) {
+          _this.editor.on(event, function(a, b, c) {
+            _this.$emit(event, a, b, c)
+          })
+        })(events[i])
+      }
+      this.$emit('ready', this.editor)
       this.unseenLineMarkers()
       // prevents funky dynamic rendering
       window.setTimeout(function() {
@@ -151,20 +145,29 @@
       this.editor.doc.cm.getWrapperElement().remove()
     },
     watch: {
-      'code': function(newVal, oldVal) {
+      options: {
+        deep: true,
+        handler(options, oldOptions) {
+          var key
+          for (key in options) {
+            this.editor.setOption(key, options[key])
+          }
+        }
+      },
+      code: function(newVal, oldVal) {
         const editor_value = this.editor.getValue()
         if (newVal !== editor_value) {
-          let scrollInfo = this.editor.getScrollInfo()
+          var scrollInfo = this.editor.getScrollInfo()
           this.editor.setValue(newVal)
           this.content = newVal
           this.editor.scrollTo(scrollInfo.left, scrollInfo.top)
         }
         this.unseenLineMarkers()
       },
-      'value': function(newVal, oldVal) {
+      value: function(newVal, oldVal) {
         const editor_value = this.editor.getValue()
         if (newVal !== editor_value) {
-          let scrollInfo = this.editor.getScrollInfo()
+          var scrollInfo = this.editor.getScrollInfo()
           this.editor.setValue(newVal)
           this.content = newVal
           this.editor.scrollTo(scrollInfo.left, scrollInfo.top)
@@ -185,10 +188,3 @@
     }
   }
 </script>
-
-<style>
-  .CodeMirror-code {
-    line-height: 1.6em;
-    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-  }
-</style>

@@ -8,7 +8,7 @@
       </div>
       <md-button class="md-icon-button"
                  target="_blank"
-                 href="https://github.com/surmon-china/vue-codemirror/tree/master/examples/08-text-x-lua.vue">
+                 href="https://github.com/surmon-china/vue-codemirror/tree/master/examples/10-text-x-lua.vue">
         <md-icon>code</md-icon>
       </md-button>
     </md-card-actions>
