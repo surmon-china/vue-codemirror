@@ -85,12 +85,8 @@ VueCodeMirror.CodeMirror.defineMode('mymode', () => {
 })
 
 // If you need to implement more features, such as the Lint mode code tip, you need to introduce a package that you will be relying on before the Vue program is instantiated, such as:
-// require active-line.js
 require('codemirror/addon/selection/active-line.js')
-
-// styleSelectedText
 require('codemirror/addon/selection/mark-selection.js')
-
 // require more resource...
 
 
@@ -173,13 +169,13 @@ export default {
   },
   mounted() {
     console.log('this is current editor object', this.editor)
-    // this.editor to do something...
+    // you can use this.editor to do something...
   }
 }
 </script>
 ```
 
-### editor options mode types:
+### Editor options mode types:
 编辑器的模式（mode属性）分为 字符串、对象两种方式，可以在下面的相关链接中找到语言列表
 
 ``` javascript
@@ -205,7 +201,7 @@ mode: {
 
 # More options
 
-- [Example Code](https://github.com/surmon-china/vue-codemirror/tree/master/example)
+- [Example Code](https://github.com/surmon-china/vue-codemirror/tree/master/examples)
 - [Codemirror config APIs](http://codemirror.net/doc/manual.html#config)
 - [Codemirror themes](http://codemirror.net/demo/theme.html)
 - [Codemirror language modes](http://codemirror.net/mode/) (MIME types defined)
