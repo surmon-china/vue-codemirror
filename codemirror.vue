@@ -8,7 +8,7 @@
   require('codemirror/lib/codemirror.css')
   require('codemirror/addon/display/fullscreen.css')
   require('codemirror/addon/display/fullscreen.js')
-  export default {
+  module.exports = {
     data: function() {
       return {
         content: ''
