@@ -109,17 +109,19 @@ export default {
 ### Use in component
 
 ``` vue
-<!-- Bidirectional data binding（双向数据绑定） -->
-<codemirror v-model="code" :options="editorOptions"></codemirror>
+<template>
+  <!-- Bidirectional data binding（双向数据绑定） -->
+  <codemirror v-model="code" :options="editorOptions"></codemirror>
 
-<!-- or to manually control the datasynchronization（或者手动控制数据流，需要像这样手动监听changed事件） -->
-<codemirror ref="myEditor"
-            :code="code" 
-            :options="editorOptions"
-            @ready="onEditorReady"
-            @focus="onEditorFocus"
-            @change="onEditorCodeChange">
-</codemirror>
+  <!-- or to manually control the datasynchronization（或者手动控制数据流，需要像这样手动监听changed事件） -->
+  <codemirror ref="myEditor"
+              :code="code" 
+              :options="editorOptions"
+              @ready="onEditorReady"
+              @focus="onEditorFocus"
+              @change="onEditorCodeChange">
+  </codemirror>
+</template>
 
 <script>
 // Similarly, you can also introduce the resource pack you want to use within the component
