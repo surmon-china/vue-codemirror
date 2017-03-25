@@ -7,15 +7,10 @@
   require('codemirror/lib/codemirror.css')
   require('codemirror/mode/meta')
 
-  module.exports = {
+  export default {
     data: function() {
       return {
-        content: '',
-        cmoptions: {
-          lineNumbers: true,
-          lineWrapping: false,
-          mode: 'text/javascript'
-        }
+        content: ''
       }
     },
     props: {
@@ -29,10 +24,19 @@
       },
     },
     created: function() {
-      this.cmoptions = Object.assign(this.cmoptions, this.options)
 
-      var theme = this.cmoptions.theme
-      var language = this.cmoptions.mode
+      if (this.options.lineNumbers === undefined) {
+        this.options.lineNumbers = true
+      }
+      if (this.options.lineWrapping === undefined) {
+        this.options.lineWrapping = false
+      }
+      if (this.options.mode === undefined) {
+        this.options.mode = 'text/javascript'
+      }
+
+      var theme = this.options.theme
+      var language = this.options.mode
 
       // theme config
       if (theme && theme == 'solarized light') {
@@ -51,7 +55,7 @@
           var lang = CodeMirror.findModeByName(language.name)
           if (lang) {
             language = lang.mode
-            this.cmoptions.mode = language
+            this.options.mode = language
           } else {
             language = null
           }
@@ -59,7 +63,7 @@
           var lang = CodeMirror.findModeByExtension(language.ext)
           if (lang) {
             language = lang.mode
-            this.cmoptions.mode = language
+            this.options.mode = language
           } else {
             language = null
           }
@@ -67,7 +71,7 @@
           var lang = CodeMirror.findModeByMIME(language.mime)
           if (lang) {
             language = lang.mode
-            this.cmoptions.mode = language
+            this.options.mode = language
           } else {
             language = null
           }
@@ -75,7 +79,7 @@
           var lang = CodeMirror.findModeByFileName(language.filename)
           if (lang) {
             language = lang.mode
-            this.cmoptions.mode = language
+            this.options.mode = language
           } else {
             language = null
           }
@@ -98,7 +102,7 @@
     },
     mounted: function() {
       var _this = this
-      this.editor = CodeMirror.fromTextArea(this.$el, this.cmoptions)
+      this.editor = CodeMirror.fromTextArea(this.$el, this.options)
       this.editor.setValue(this.code || this.value || this.content)
       this.editor.on('change', function(cm) {
         _this.content = cm.getValue()
