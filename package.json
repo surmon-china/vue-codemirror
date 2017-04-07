@@ -1,6 +1,6 @@
 {
   "name": "vue-codemirror",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "Codemirror component for Vue2",
   "main": "index.js",
   "scripts": {
@@ -27,6 +27,6 @@
   },
   "homepage": "https://github.com/surmon-china/vue-codemirror#readme",
   "dependencies": {
-    "codemirror": "^5.19.0"
+    "codemirror": "^5.25.0"
   }
 }
