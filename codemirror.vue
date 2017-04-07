@@ -18,6 +18,12 @@
       value: String,
       unseenLines: Array,
       marker: Function,
+      debugger: {
+        type: Boolean,
+        default: function() {
+          return true
+        }
+      },
       options: {
         type: Object,
         required: true
@@ -37,6 +43,7 @@
 
       var theme = this.options.theme
       var language = this.options.mode
+      var _debugger = this.debugger
 
       // theme config
       if (theme && theme == 'solarized light') {
@@ -55,7 +62,7 @@
           var lang = CodeMirror.findModeByName(language.name)
           if (lang) {
             language = lang.mode
-            this.options.mode = language
+            // this.options.mode = language
           } else {
             language = null
           }
@@ -63,7 +70,7 @@
           var lang = CodeMirror.findModeByExtension(language.ext)
           if (lang) {
             language = lang.mode
-            this.options.mode = language
+            // this.options.mode = language
           } else {
             language = null
           }
@@ -71,7 +78,7 @@
           var lang = CodeMirror.findModeByMIME(language.mime)
           if (lang) {
             language = lang.mode
-            this.options.mode = language
+            // this.options.mode = language
           } else {
             language = null
           }
@@ -79,26 +86,29 @@
           var lang = CodeMirror.findModeByFileName(language.filename)
           if (lang) {
             language = lang.mode
-            this.options.mode = language
+            // this.options.mode = language
           } else {
             language = null
           }
         }
       }
 
-      if (!language || language == 'null') {
+      if ((!language || language == 'null') && _debugger) {
         console.warn('CodeMirror language mode: ' + language + ' configuration error (CodeMirror语言模式配置错误，或者不支持此语言) See http://codemirror.net/mode/ for more details.')
-        return false
+        // return false
       }
 
       // console.log(typeof language, language, theme)
 
       // require language
-      require('codemirror/mode/' + language + '/' + language + '.js')
+      if (language) {
+        require('codemirror/mode/' + language + '/' + language + '.js')
+      }
 
       // require theme
-      if (!theme) return false
-      require('codemirror/theme/' + theme + '.css')
+      if (theme) {
+        require('codemirror/theme/' + theme + '.css')
+      }
     },
     mounted: function() {
       var _this = this
