@@ -3,7 +3,7 @@
 </template>
 
 <script>
-  window.CodeMirror = require('codemirror/lib/codemirror.js')
+  window.CodeMirror = require('codemirror')
   require('codemirror/lib/codemirror.css')
   require('codemirror/mode/meta')
 
@@ -101,7 +101,7 @@
       // console.log(typeof language, language, theme)
 
       // require language
-      if (language) {
+      if (language && language !== 'null') {
         require('codemirror/mode/' + language + '/' + language + '.js')
       }
 
@@ -149,12 +149,14 @@
       }
       this.$emit('ready', this.editor)
       this.unseenLineMarkers()
+
       // prevents funky dynamic rendering
       window.setTimeout(function() {
         _this.editor.refresh()
       }, 0)
     },
     beforeDestroy: function() {
+      
       // garbage cleanup
       this.editor.doc.cm.getWrapperElement().remove()
     },
