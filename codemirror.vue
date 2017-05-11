@@ -192,6 +192,9 @@
       }
     },
     methods: {
+      refresh: function() {
+        this.editor.refresh();
+      },
       unseenLineMarkers: function () {
         var _this = this
         if (_this.unseenLines !== undefined && _this.marker !== undefined) {
