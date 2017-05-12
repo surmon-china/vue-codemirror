@@ -193,7 +193,7 @@
     },
     methods: {
       refresh: function() {
-        this.editor.refresh();
+        this.editor.refresh()
       },
       unseenLineMarkers: function () {
         var _this = this
