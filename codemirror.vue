@@ -44,11 +44,14 @@
       var theme = this.options.theme
       var language = this.options.mode
       var _debugger = this.debugger
+      var isCustomMode = !!CodeMirror.modes[language]
 
       // theme config
       if (theme && theme == 'solarized light') {
         theme = 'solarized'
       }
+
+      // console.log(language, CodeMirror.modes.simplemode)
 
       // language string config
       if (typeof language == 'string') {
@@ -92,8 +95,10 @@
           }
         }
       }
+      
+      // console.log('language', language, isCustomMode)
 
-      if ((!language || language == 'null') && _debugger) {
+      if ((!language || language == 'null') && _debugger && !isCustomMode) {
         console.warn('CodeMirror language mode: ' + language + ' configuration error (CodeMirror语言模式配置错误，或者不支持此语言) See http://codemirror.net/mode/ for more details.')
         // return false
       }
