@@ -1,6 +1,6 @@
 <template>
   <md-card>
-    <md-card-actions v-md-ink-ripple>
+    <md-card-actions>
       <div class="md-subhead">
         <span>mode: {{ editorOption.mode.ext }}</span>
         <span>&nbsp;&nbsp;&nbsp;</span>
