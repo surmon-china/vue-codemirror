@@ -12,7 +12,7 @@ import example11 from './11-text-x-mysql.vue'
 import example12 from './12-text-custom-mode.vue'
 import example13 from './13-text-plain-mode.vue'
 
-module.exports = {
+export default {
   exampleVue,
   example02,
   example03,

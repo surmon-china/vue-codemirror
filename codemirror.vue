@@ -18,6 +18,12 @@
       value: String,
       unseenLines: Array,
       marker: Function,
+      loadtheme: {
+        type: Boolean,
+        default: function() {
+          return true
+        }
+      },
       debugger: {
         type: Boolean,
         default: function() {
@@ -44,6 +50,7 @@
       var theme = this.options.theme
       var language = this.options.mode
       var _debugger = this.debugger
+      var _loadtheme = this.loadtheme
       var isCustomMode = !!CodeMirror.modes[language]
 
       // theme config
@@ -111,7 +118,7 @@
       }
 
       // require theme
-      if (theme) {
+      if (theme && _loadtheme) {
         require('codemirror/theme/' + theme + '.css')
       }
     },
