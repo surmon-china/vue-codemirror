@@ -110,7 +110,7 @@
         // return false
       }
 
-      // console.log(typeof language, language, theme)
+      // console.log(language, theme)
 
       // require language
       if (language && language !== 'null') {
@@ -170,7 +170,10 @@
     beforeDestroy: function() {
       
       // garbage cleanup
-      this.editor.doc.cm.getWrapperElement().remove()
+      const element = this.editor.doc.cm.getWrapperElement()
+      if (element && element.remove) {
+        element.remove()
+      }
     },
     watch: {
       options: {

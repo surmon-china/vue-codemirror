@@ -1,10 +1,11 @@
 {
   "name": "vue-codemirror",
-  "version": "3.1.2",
-  "description": "Codemirror component for Vue2",
+  "version": "3.1.4",
+  "description": "Codemirror component for Vue",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cross-env NODE_ENV=production browserify -t vueify -e index.js -x vue -s VueCodemirror -o dist/vue-codemirror.js -d && uglifyjs dist/vue-codemirror.js --source-map -o dist/vue-codemirror.min.js"
   },
   "repository": {
     "type": "git",
@@ -28,5 +29,14 @@
   "homepage": "https://github.com/surmon-china/vue-codemirror#readme",
   "dependencies": {
     "codemirror": "^5.28.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "browserify": "^14.4.0",
+    "cross-env": "^5.0.0",
+    "uglify-js": "^3.0.15",
+    "vueify": "^8.7.0"
   }
 }

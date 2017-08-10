@@ -8,7 +8,7 @@
 
 
 # Vue-Codemirror
-Codemirror component for Vue2.
+Codemirror component for Vue.
 
 Build by [Codemirror](http://codemirror.net/).
 
@@ -137,6 +137,8 @@ export default {
         theme: 'base16-dark',
         lineNumbers: true,
         line: true,
+
+        // 高级配置（需要引入对应的插件包）,codemirror advanced options(You need to manually introduce the corresponding codemirror function script code)
         // sublime、emacs、vim三种键位模式，支持你的不同操作习惯
         keyMap: "sublime",
         // 按键映射，比如Ctrl键映射autocomplete，autocomplete是hint代码提示事件
@@ -147,7 +149,7 @@ export default {
         // 选中文本自动高亮，及高亮方式
         styleSelectedText: true,
         highlightSelectionMatches: { showToken: /\w/, annotateScrollbar: true },
-        // more codemirror config...
+        // more codemirror options...
         // 如果有hint方面的配置，也应该出现在这里
       }
     }
@@ -179,6 +181,7 @@ export default {
 
 ### Editor options mode types:
 编辑器的模式（mode属性）分为 字符串、对象两种方式，可以在下面的相关链接中找到语言列表
+mode: 'string' || object
 
 ``` javascript
 // string mode（MIME types/字符串方式）

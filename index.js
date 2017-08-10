@@ -4,7 +4,7 @@
  */
 
 window.CodeMirror = require('codemirror/lib/codemirror.js')
-var CmComponent = require('./codemirror.vue')
+var CmComponent = require('./src/codemirror.vue')
 CmComponent = CmComponent.default || CmComponent
 
 var Codemirror = {
