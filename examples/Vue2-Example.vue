@@ -2,7 +2,7 @@
   <div class="Example">
     <h1>It's Example page with Vue.js2.X</h1>
     <h3>Codemirror Example:</h3>
-    <codemirror :code="code" :options="editorOption" @changed="codeChange"></codemirror>
+    <codemirror :code="code" :options="editorOption" @change="codeChange"></codemirror>
     <pre>{{ code }}</pre>
     <textarea v-model="code"></textarea>
     <hr>
