@@ -16,6 +16,7 @@
     props: {
       code: String,
       value: String,
+      events: Array,
       unseenLines: Array,
       marker: Function,
       loadtheme: {
@@ -134,6 +135,7 @@
         }
       })
       var events = [
+        'scroll',
         'changes',
         'beforeChange',
         'cursorActivity',
@@ -151,13 +153,18 @@
         'optionChange',
         'scrollCursorIntoView',
         'update'
-      ]
-      for (var i = events.length - 1; i >= 0; i--) {
-        (function(event) {
-          _this.editor.on(event, function(a, b, c) {
-            _this.$emit(event, a, b, c)
-          })
-        })(events[i])
+      ];
+      if (this.events && this.events.length) {
+        events = events.concat(this.events)
+      }
+      for (var i = 0; i < events.length; i++) {
+        if (events.indexOf(events[i]) == i) {
+          (function(event) {
+            _this.editor.on(event, function(a, b, c) {
+              _this.$emit(event, a, b, c)
+            })
+          })(events[i])
+        }
       }
       this.$emit('ready', this.editor)
       this.unseenLineMarkers()
@@ -170,7 +177,7 @@
     beforeDestroy: function() {
       
       // garbage cleanup
-      const element = this.editor.doc.cm.getWrapperElement()
+      var element = this.editor.doc.cm.getWrapperElement()
       if (element && element.remove) {
         element.remove()
       }
@@ -186,7 +193,7 @@
         }
       },
       code: function(newVal, oldVal) {
-        const editor_value = this.editor.getValue()
+        var editor_value = this.editor.getValue()
         if (newVal !== editor_value) {
           var scrollInfo = this.editor.getScrollInfo()
           this.editor.setValue(newVal)
@@ -196,7 +203,7 @@
         this.unseenLineMarkers()
       },
       value: function(newVal, oldVal) {
-        const editor_value = this.editor.getValue()
+        var editor_value = this.editor.getValue()
         if (newVal !== editor_value) {
           var scrollInfo = this.editor.getScrollInfo()
           this.editor.setValue(newVal)
