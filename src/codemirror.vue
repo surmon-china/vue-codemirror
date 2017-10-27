@@ -4,7 +4,6 @@
 
 <script>
   window.CodeMirror = require('codemirror')
-  require('codemirror/lib/codemirror.css')
   require('codemirror/mode/meta')
   export default {
     name: 'codemirror',
@@ -229,3 +228,6 @@
     }
   }
 </script>
+<style>
+@import 'codemirror/lib/codemirror.css';
+</style>
