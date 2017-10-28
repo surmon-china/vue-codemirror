@@ -1,6 +1,6 @@
 {
   "name": "vue-codemirror",
-  "version": "3.1.7",
+  "version": "3.1.8",
   "description": "Codemirror component for Vue",
   "main": "index.js",
   "scripts": {
