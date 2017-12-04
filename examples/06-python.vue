@@ -23,21 +23,27 @@
 
 <script>
 
+  // language
+  import 'codemirror/mode/python/python.js'
+
+  // theme css
+  import 'codemirror/theme/base16-light.css'
+  
   // require active-line.js
-  require('codemirror/addon/selection/active-line.js')
+  import'codemirror/addon/selection/active-line.js'
 
   // closebrackets
-  require('codemirror/addon/edit/closebrackets.js')
+  import'codemirror/addon/edit/closebrackets.js'
 
   // keyMap
-  require('codemirror/mode/clike/clike.js')
-  require('codemirror/addon/edit/matchbrackets.js')
-  require('codemirror/addon/comment/comment.js')
-  require('codemirror/addon/dialog/dialog.js')
-  require('codemirror/addon/dialog/dialog.css')
-  require('codemirror/addon/search/searchcursor.js')
-  require('codemirror/addon/search/search.js')
-  require('codemirror/keymap/emacs.js')
+  import'codemirror/mode/clike/clike.js'
+  import'codemirror/addon/edit/matchbrackets.js'
+  import'codemirror/addon/comment/comment.js'
+  import'codemirror/addon/dialog/dialog.js'
+  import'codemirror/addon/dialog/dialog.css'
+  import'codemirror/addon/search/searchcursor.js'
+  import'codemirror/addon/search/search.js'
+  import'codemirror/keymap/emacs.js'
   export default {
     data() {
 const code =

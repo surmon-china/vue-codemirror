@@ -22,6 +22,13 @@
 </template>
 
 <script>
+
+  // language
+  import 'codemirror/mode/swift/swift.js'
+
+  // theme css
+  import 'codemirror/theme/rubyblue.css'
+  
   export default {
     data() {
 const code =

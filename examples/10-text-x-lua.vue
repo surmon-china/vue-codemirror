@@ -22,6 +22,13 @@
 </template>
 
 <script>
+
+  // language
+  import 'codemirror/mode/lua/lua.js'
+
+  // theme css
+  import 'codemirror/theme/hopscotch.css'
+
   export default {
     data() {
 const code =

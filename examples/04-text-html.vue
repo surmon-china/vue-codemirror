@@ -23,11 +23,17 @@
 
 <script>
 
+  // language
+  import 'codemirror/mode/xml/xml.js'
+
+  // theme css
+  import 'codemirror/theme/ambiance.css'
+
   // require active-line.js
-  require('codemirror/addon/selection/active-line.js')
+  import'codemirror/addon/selection/active-line.js'
 
   // autoCloseTags
-  require('codemirror/addon/edit/closetag.js')
+  import'codemirror/addon/edit/closetag.js'
   
   export default {
     data() {

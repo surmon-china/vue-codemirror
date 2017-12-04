@@ -22,6 +22,13 @@
 </template>
 
 <script>
+
+  // language
+  import 'codemirror/mode/sql/sql.js'
+
+  // theme css
+  import 'codemirror/theme/solarized.css'
+
   export default {
     data() {
 const code =

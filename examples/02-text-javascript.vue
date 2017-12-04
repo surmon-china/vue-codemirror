@@ -23,44 +23,50 @@
 
 <script>
 
+  // language
+  import 'codemirror/mode/javascript/javascript.js'
+
+  // theme css
+  import 'codemirror/theme/monokai.css'
+
   // require active-line.js
-  require('codemirror/addon/selection/active-line.js')
+  import'codemirror/addon/selection/active-line.js'
 
   // styleSelectedText
-  require('codemirror/addon/selection/mark-selection.js')
-  require('codemirror/addon/search/searchcursor.js')
+  import'codemirror/addon/selection/mark-selection.js'
+  import'codemirror/addon/search/searchcursor.js'
 
   // hint
-  require('codemirror/addon/hint/show-hint.js')
-  require('codemirror/addon/hint/show-hint.css')
-  require('codemirror/addon/hint/javascript-hint.js')
-  require('codemirror/addon/selection/active-line.js')
+  import'codemirror/addon/hint/show-hint.js'
+  import'codemirror/addon/hint/show-hint.css'
+  import'codemirror/addon/hint/javascript-hint.js'
+  import'codemirror/addon/selection/active-line.js'
 
   // highlightSelectionMatches
-  require('codemirror/addon/scroll/annotatescrollbar.js')
-  require('codemirror/addon/search/matchesonscrollbar.js')
-  require('codemirror/addon/search/searchcursor.js')
-  require('codemirror/addon/search/match-highlighter.js')
+  import'codemirror/addon/scroll/annotatescrollbar.js'
+  import'codemirror/addon/search/matchesonscrollbar.js'
+  import'codemirror/addon/search/searchcursor.js'
+  import'codemirror/addon/search/match-highlighter.js'
 
   // keyMap
-  require('codemirror/mode/clike/clike.js')
-  require('codemirror/addon/edit/matchbrackets.js')
-  require('codemirror/addon/comment/comment.js')
-  require('codemirror/addon/dialog/dialog.js')
-  require('codemirror/addon/dialog/dialog.css')
-  require('codemirror/addon/search/searchcursor.js')
-  require('codemirror/addon/search/search.js')
-  require('codemirror/keymap/sublime.js')
+  import'codemirror/mode/clike/clike.js'
+  import'codemirror/addon/edit/matchbrackets.js'
+  import'codemirror/addon/comment/comment.js'
+  import'codemirror/addon/dialog/dialog.js'
+  import'codemirror/addon/dialog/dialog.css'
+  import'codemirror/addon/search/searchcursor.js'
+  import'codemirror/addon/search/search.js'
+  import'codemirror/keymap/sublime.js'
 
   // foldGutter
-  require('codemirror/addon/fold/foldgutter.css')
-  require('codemirror/addon/fold/brace-fold.js')
-  require('codemirror/addon/fold/comment-fold.js')
-  require('codemirror/addon/fold/foldcode.js')
-  require('codemirror/addon/fold/foldgutter.js')
-  require('codemirror/addon/fold/indent-fold.js')
-  require('codemirror/addon/fold/markdown-fold.js')
-  require('codemirror/addon/fold/xml-fold.js')
+  import'codemirror/addon/fold/foldgutter.css'
+  import'codemirror/addon/fold/brace-fold.js'
+  import'codemirror/addon/fold/comment-fold.js'
+  import'codemirror/addon/fold/foldcode.js'
+  import'codemirror/addon/fold/foldgutter.js'
+  import'codemirror/addon/fold/indent-fold.js'
+  import'codemirror/addon/fold/markdown-fold.js'
+  import'codemirror/addon/fold/xml-fold.js'
   
   export default {
     data() {
@@ -79,11 +85,7 @@ export default {
         styleActiveLine: true,
         lineNumbers: true,
         line: true,
-        // mode: 'text/javascript',
-        mode: {
-          name: "javascript",
-          json: true
-        },
+        mode: 'text/javascript',
         lineWrapping: true,
         theme: 'default'
       }
@@ -94,10 +96,10 @@ export default {
         editorOption: {
           tabSize: 4,
           styleActiveLine: false,
-          lineNumbers: false,
+          lineNumbers: true,
+          styleSelectedText: false,
           line: true,
           foldGutter: true,
-          styleSelectedText: true,
           gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
           highlightSelectionMatches: { showToken: /\w/, annotateScrollbar: true },
           mode: 'text/javascript',
@@ -117,9 +119,9 @@ export default {
     },
     mounted() {
       setTimeout(() => {
-        this.editorOption.lineNumbers = true
+        this.styleSelectedText =  true,
         this.editorOption.styleActiveLine = true
-      }, 3000)
+      }, 1800)
     }
   }
 </script>

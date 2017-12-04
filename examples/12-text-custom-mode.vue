@@ -22,11 +22,14 @@
 </template>
 
 <script>
-  import { CodeMirror } from 'vue-codemirror'
+
+  // theme css
+  import 'codemirror/theme/solarized.css'
+  import CodeMirror from 'codemirror'
   CodeMirror.defineMode('mymode', () => {
     return {
       token(stream, state) {
-        if (stream.match("aaa")) {
+        if (stream.match("const")) {
           return "keyword"
         } else if (stream.match("111")) {
           return "number"
@@ -37,10 +40,11 @@
       }
     }
   })
+
   export default {
     data() {
       return {
-        code: `aaa bbb ccc 111 eee fff ggg`,
+        code: `const bbb = 222;\nconst ccc = 111;\neee fff ggg`,
         editorOption: {
           tabSize: 4,
           styleActiveLine: true,

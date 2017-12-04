@@ -1,4 +1,4 @@
-import exampleVue from './01-default-vue.vue'
+import example01 from './01-text-x-vue.vue'
 import example02 from './02-text-javascript.vue'
 import example03 from './03-text-css.vue'
 import example04 from './04-text-html.vue'
@@ -10,10 +10,10 @@ import example09 from './09-text-x-go.vue'
 import example10 from './10-text-x-lua.vue'
 import example11 from './11-text-x-mysql.vue'
 import example12 from './12-text-custom-mode.vue'
-import example13 from './13-text-plain-mode.vue'
+import example13 from './13-text-x-markdown.vue'
 
 export default {
-  exampleVue,
+  example01,
   example02,
   example03,
   example04,

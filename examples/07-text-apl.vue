@@ -23,8 +23,14 @@
 
 <script>
 
+  // language
+  import 'codemirror/mode/apl/apl.js'
+
+  // theme css
+  import 'codemirror/theme/paraiso-dark.css'
+
   // require active-line.js
-  require('codemirror/addon/selection/active-line.js')
+  import 'codemirror/addon/selection/active-line.js'
 
   export default {
     data() {

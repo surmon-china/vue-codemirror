@@ -22,6 +22,13 @@
 </template>
 
 <script>
+
+  // language
+  import 'codemirror/mode/go/go.js'
+
+  // theme css
+  import 'codemirror/theme/mbo.css'
+
   export default {
     data() {
 const code =
