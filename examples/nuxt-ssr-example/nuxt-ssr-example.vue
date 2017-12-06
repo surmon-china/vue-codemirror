@@ -1,51 +1,95 @@
 <template>
   <section class="container">
-    <div class="quill-editor" 
-         :content="content"
-         @change="onEditorChange($event)"
-         @blur="onEditorBlur($event)"
-         @focus="onEditorFocus($event)"
-         @ready="onEditorReady($event)"
-         v-quill:myQuillEditor="editorOption">
-    </div>
+    <no-ssr placeholder="Codemirror Loading...">
+      <codemirror v-model="code" 
+                  :options="cmOption"
+                  @cursorActivity="onCmCursorActivity"
+                  @ready="onCmReady"
+                  @focus="onCmFocus"
+                  @blur="onCmBlur">
+      </codemirror>
+    </no-ssr>
   </section>
 </template>
 
 <script>
   export default {
-    data () {
+    data() {
+      const code =
+`<template>
+  <h1>Hello World!</h1>
+  <codemirror v-model="code" :options="cmOption"></codemirror>
+</template>
+
+<script>
+  // import 'some-codemirror-resource'
+  export default {
+    data() {
       return {
-        content: '<p>I am Example</p>',
-        editorOption: {
-          // some quill options
-          modules: {
-            toolbar: [
-              ['bold', 'italic', 'underline', 'strike'],
-              ['blockquote', 'code-block']
-            ]
+        code: 'const A = 10',
+        cmOption: {
+          tabSize: 4,
+          styleActiveLine: true,
+          lineNumbers: true,
+          line: true,
+          foldGutter: true,
+          styleSelectedText: true,
+          mode: 'text/javascript',
+          keyMap: "sublime",
+          matchBrackets: true,
+          showCursorWhenSelecting: true,
+          theme: "monokai",
+          extraKeys: { "Ctrl": "autocomplete" },
+          hintOptions:{
+            completeSingle: false
+          }
+        }
+      }
+    }
+  }
+<\/script>
+
+<style lang="scss">
+  @import './sass/mixins';
+  @import './sass/variables';
+  main {
+    position: relative;
+  }
+</style>`
+      return {
+        code,
+        cmOption: {
+          tabSize: 4,
+          foldGutter: true,
+          styleActiveLine: true,
+          lineNumbers: true,
+          line: true,
+          keyMap: "sublime",
+          mode: 'text/x-vue',
+          theme: 'base16-dark',
+          extraKeys: {
+            'F11'(cm) {
+              cm.setOption("fullScreen", !cm.getOption("fullScreen"))
+            },
+            'Esc'(cm) {
+              if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false)
+            }
           }
         }
       }
     },
-    mounted() {
-      console.log('app init, my quill insrance object is:', this.myQuillEditor)
-      setTimeout(() => {
-        this.content = 'i am changed'
-      }, 3000)
-    },
     methods: {
-      onEditorBlur(editor) {
-        console.log('editor blur!', editor)
+      onCmCursorActivity(codemirror) {
+        console.log('onCmCursorActivity', codemirror)
       },
-      onEditorFocus(editor) {
-        console.log('editor focus!', editor)
+      onCmReady(codemirror) {
+        console.log('onCmReady', codemirror)
       },
-      onEditorReady(editor) {
-        console.log('editor ready!', editor)
+      onCmFocus(codemirror) {
+        console.log('onCmFocus', codemirror)
       },
-      onEditorChange({ editor, html, text }) {
-        console.log('editor change!', editor, html, text)
-        this.content = html
+      onCmBlur(codemirror) {
+        console.log('onCmBlur', codemirror)
       }
     }
   }
@@ -56,11 +100,6 @@
     width: 60%;
     margin: 0 auto;
     padding: 50px 0;
-
-    .quill-editor {
-      min-height: 200px;
-      max-height: 400px;
-      overflow-y: auto;
-    }
+    text-align: left;
   }
 </style>

@@ -1,6 +1,9 @@
+[![GitHub stars](https://img.shields.io/github/stars/surmon-china/vue-codemirror.svg?style=flat-square)](https://github.com/surmon-china/vue-codemirror/stargazers)
+[![Travis](https://img.shields.io/travis/rust-lang/rust.svg?style=flat-square)](https://github.com/surmon-china/vue-codemirror)
 [![GitHub issues](https://img.shields.io/github/issues/surmon-china/vue-codemirror.svg?style=flat-square)](https://github.com/surmon-china/vue-codemirror/issues)
 [![GitHub forks](https://img.shields.io/github/forks/surmon-china/vue-codemirror.svg?style=flat-square)](https://github.com/surmon-china/vue-codemirror/network)
-[![GitHub stars](https://img.shields.io/github/stars/surmon-china/vue-codemirror.svg?style=flat-square)](https://github.com/surmon-china/vue-codemirror/stargazers)
+[![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg?style=flat-square)](https://github.com/surmon-china/vue-codemirror)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/surmon-china/vue-codemirror)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/surmon-china/vue-codemirror.svg?style=flat-square)](https://twitter.com/intent/tweet?url=https://github.com/surmon-china/vue-codemirror)
 
 [![NPM](https://nodei.co/npm/vue-codemirror.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/vue-codemirror/)
@@ -18,7 +21,7 @@
 
 [CDN Example](https://jsfiddle.net/tng9r8j3/)
 
-[Nuxt.js/SSR example code](https://github.com/surmon-china/vue-quill-editor/blob/master/examples/nuxt-ssr-example)
+[Nuxt.js/SSR example code](https://github.com/surmon-china/vue-codemirror/blob/master/examples/nuxt-ssr-example)
 
 # Events
 
@@ -46,37 +49,85 @@ component event list:
 - ready
 - input
 
-# Use Setup
 
+# Install
 
-### Install vue-codemirror
+#### CDN
+
+``` html
+<link rel="stylesheet" href="path/to/codemirror/lib/codemirror.css">
+<script type="text/javascript" src="path/to/codemirror.js"></script>
+<script type="text/javascript" src="path/to/vue.min.js"></script>
+<script type="text/javascript" src="path/to/dist/vue-codemirror.js"></script>
+<script type="text/javascript" src="path/to/codemirror/some-resources.js"></script>
+<script type="text/javascript">
+  Vue.use(window.VueCodeMirror)
+</script>
+```
+
+#### NPM
 
 ``` bash
 npm install vue-codemirror --save
 ```
 
-### Vue use
+### Mount
+
+#### mount with global
 
 ``` javascript
-// import
+// require lib
 import Vue from 'vue'
 import VueCodeMirror from 'vue-codemirror'
 
+// require styles
+import 'codemirror/lib/codemirror.css'
 
-// or require
-var Vue = require('vue')
-var VueCodeMirror = require('vue-codemirror')
+// require more codemirror resource...
 
+Vue.use(VueCodeMirror, /* { 
+  options: { theme: 'base16-dark', ... }, // default global options
+  events: ['scroll', ...] // default global events
+} */)
+```
 
-// global use
-Vue.use(VueCodeMirror)
+#### mount with component
 
+```javascript
+// require component
+import { codemirror } from 'vue-codemirror'
 
-// if you need to custom new mode
-VueCodeMirror.CodeMirror.defineMode('mymode', () => {
+// require styles
+import 'codemirror/lib/codemirror.css'
+
+// require more codemirror resource...
+
+// component
+export default {
+  components: {
+    codemirror
+  }
+}
+```
+
+#### mount with ssr
+
+```javascript
+// If used in nuxt.js/ssr, you should keep it only in browser build environment
+if (process.browser) {
+  const VueCodeMirror = require('vue-codemirror')
+  Vue.use(VueCodeMirror)
+}
+```
+
+#### defined codemirror mode
+
+```javascript
+import CodeMirror from 'codemirror'
+CodeMirror.defineMode('mymode', () => {
   return {
     token(stream, state) {
-      if (stream.match("aaa")) {
+      if (stream.match("const")) {
         return "style1"
       } else if (stream.match("bbb")) {
         return "style2"
@@ -87,134 +138,168 @@ VueCodeMirror.CodeMirror.defineMode('mymode', () => {
     }
   }
 })
-
-// If you need to implement more features, such as the Lint mode code tip, you need to introduce a package that you will be relying on before the Vue program is instantiated, such as:
-require('codemirror/addon/selection/active-line.js')
-require('codemirror/addon/selection/mark-selection.js')
-// require more resource...
-
-
-// or use with component
-import { codemirror, CodeMirror } from 'vue-codemirror'
-
-// custom new mode
-CodeMirror.defineMode('mymode', () => {
-  // your mode code...
-})
-
-export default {
-  components: {
-    codemirror
-  }
-}
 ```
 
+### Component
 
-### Use in component
-
-``` vue
+```vue
 <template>
   <!-- Bidirectional data binding（双向数据绑定） -->
-  <codemirror v-model="code" :options="editorOptions"></codemirror>
+  <codemirror v-model="code" :options="cmOptions"></codemirror>
 
   <!-- or to manually control the datasynchronization（或者手动控制数据流，需要像这样手动监听changed事件） -->
-  <codemirror ref="myEditor"
+  <codemirror ref="myCm"
               :code="code" 
-              :options="editorOptions"
-              @ready="onEditorReady"
-              @focus="onEditorFocus"
-              @change="onEditorCodeChange">
+              :options="cmOptions"
+              @ready="onCmReady"
+              @focus="onCmFocus"
+              @input="onCmCodeChange">
   </codemirror>
+
+  <!-- if Nust.js/SSR（如果在 Nuxt.js 环境下，需要外面包裹一层 no-ssr） -->
+  <no-ssr placeholder="Codemirror Loading...">
+    <codemirror ref="myCm"
+                :code="code" 
+                :options="cmOptions"
+                @ready="onCmReady"
+                @focus="onCmFocus"
+                @input="onCmCodeChange">
+    </codemirror>
+  </no-ssr>
 </template>
 
 <script>
-// Similarly, you can also introduce the resource pack you want to use within the component
-// require('codemirror/some-resource')
+// you can also introduce the resource pack you want to use within the component
+// language
+import 'codemirror/mode/javascript/javascript.js'
+// theme css
+import 'codemirror/theme/base16-dark.css'
+// import 'codemirror/some-resource...'
 export default {
   data () {
     return {
       code: 'const a = 10',
-      editorOptions: {
+      cmOptions: {
         // codemirror options
         tabSize: 4,
         mode: 'text/javascript',
         theme: 'base16-dark',
         lineNumbers: true,
         line: true,
-
-        // 高级配置（需要引入对应的插件包）,codemirror advanced options(You need to manually introduce the corresponding codemirror function script code)
-        // sublime、emacs、vim三种键位模式，支持你的不同操作习惯
-        keyMap: "sublime",
-        // 按键映射，比如Ctrl键映射autocomplete，autocomplete是hint代码提示事件
-        extraKeys: { "Ctrl": "autocomplete" },
-        // 代码折叠
-        foldGutter: true,
-        gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-        // 选中文本自动高亮，及高亮方式
-        styleSelectedText: true,
-        highlightSelectionMatches: { showToken: /\w/, annotateScrollbar: true },
         // more codemirror options...
-        // 如果有hint方面的配置，也应该出现在这里
+        // 更多 codemirror 的高级配置...
       }
     }
   },
   methods: {
-    onEditorReady(editor) {
-      console.log('the editor is readied!', editor)
+    onCmReady(cm) {
+      console.log('the editor is readied!', cm)
     },
-    onEditorFocus(editor) {
-      console.log('the editor is focus!', editor)
+    onCmFocus(cm) {
+      console.log('the editor is focus!', cm)
     },
-    onEditorCodeChange(newCode) {
+    onCmCodeChange(newCode) {
       console.log('this is new code', newCode)
       this.code = newCode
     }
   },
   computed: {
-    editor() {
-      return this.$refs.myEditor.editor
+    codemirror() {
+      return this.$refs.myCm.codemirror
     }
   },
   mounted() {
-    console.log('this is current editor object', this.editor)
-    // you can use this.editor to do something...
+    console.log('this is current codemirror object', this.codemirror)
+    // you can use this.codemirror to do something...
   }
 }
 </script>
 ```
 
-### Editor options mode types:
+
+### Codemirror Merge
+
+
+```vue
+<template>
+  <codemirror :merge="true" :options="cmOption" @scroll="onCmScroll"></codemirror>
+</template>
+
+<script>
+  // merge js
+  import 'codemirror/addon/merge/merge.js'
+  // merge css
+  import 'codemirror/addon/merge/merge.css'
+  // google DiffMatchPatch
+  import DiffMatchPatch from 'diff-match-patch'
+  // DiffMatchPatch config with global
+  window.diff_match_patch = DiffMatchPatch
+  window.DIFF_DELETE = -1
+  window.DIFF_INSERT = 1
+  window.DIFF_EQUAL = 0
+  export default {
+    data() {
+      return {
+        cmOption: {
+          value: '<p>hello</p>',
+          origLeft: null,
+          orig: '<p>hello world</p>',
+          connect: 'align',
+          mode: 'text/html',
+          lineNumbers: true,
+          collapseIdentical: false,
+          highlightDifferences: true
+        }
+      }
+    },
+    methods: {
+      onCmScroll() {
+        console.log('onCmScroll')
+      }
+    }
+  }
+</script>
+```
+
+
+### Codemirror language mode types:
 编辑器的模式（mode属性）分为 字符串、对象两种方式，可以在下面的相关链接中找到语言列表
-mode: 'string' || object
+
+`mode: 'string' || object`
 
 ``` javascript
-// string mode（MIME types/字符串方式）
+// string mode（MIME types）
 mode: 'text/javascript'
 
-// or object mode（对象方式）
+// name
 mode: {
-  // name
   name: 'javascript',
-  json: true,
+  json: true
+}
 
-  // or ext
-  ext: 'js',
+// ext
+mode: {
+  ext: 'js'
+}
 
-  // or mime
-  mime: 'text/javascript',
+// mime
+mode: {
+  mime: 'text/javascript'
+}
 
-  // or filename
+// filename
+mode: {
   filename: 'index.js'
 }
 ```
 
 # CodeMirror
 
-- [CodeMirror config APIs](http://codemirror.net/doc/manual.html#config)
-- [CodeMirror themes](http://codemirror.net/demo/theme.html)
 - [CodeMirror language modes](http://codemirror.net/mode/) (MIME types defined)
-- [CodeMirror events](https://codemirror.net/doc/manual.html#events)
 - [CodeMirror Autoresize](https://codemirror.net/demo/resize.html)
+- [CodeMirror themes](http://codemirror.net/demo/theme.html)
+- [CodeMirror events](https://codemirror.net/doc/manual.html#events)
+- [CodeMirror APIs](http://codemirror.net/doc/manual.html#config)
 
 
 # Author
