@@ -52,7 +52,9 @@
 
   export default {
     data() {
-      let html = document.documentElement.innerHTML.replace(/<style([\s\S]*?)<\/style>/ig, '')
+      let html = document.documentElement.innerHTML
+                 .replace(/<style([\s\S]*?)<\/style>/ig, '')
+                 .replace(/></ig, '>\n<')
       const orig1 = html.replace('surmon@foxmail.com', 'surmon.me@gmail.com')
       const orig2 = html.replace('surmon@foxmail.com', 'surmon.me@gmail.com')
                         .replace('content="320"', 'content="360"')
