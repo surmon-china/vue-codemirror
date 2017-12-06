@@ -25,9 +25,7 @@
 
 # Events
 
-Most of the native codemirror component built-in event, and converted to a emit Vue event mechanism, if you need more complex event, please on method to get the codemirror component instance object to monitor, the following is a list of the converted event:
-
-To make it easier to handle events, the component converts some codemirror built-in native events into a single vue component event, where you can listen for events from both the component itself and from codemirror. If you need to listen for more and more complex events, you can pass in the event names (array) you need for the global `Vue.use(, { events: [] })` and the component parameters `:events`, respectively, or by the on method of the codemirror instance. Here's a list of events:
+To make it easier to handle events, the component converts some codemirror built-in native events into a single vue component event, where you can listen for events from both the component itself and from codemirror. If you need to listen for more and more complex events, you can pass in the event names (array) you need for the global `Vue.use(, { events: [] })` and the component parameters `:events`, respectively, or by the `this.codemirror.on(evennt, hanger)` method of the codemirror instance. Here's a list of events:
 
 **codemirror events list:**
 - scroll
@@ -267,7 +265,7 @@ export default {
 
 
 ### Codemirror language mode types
-编辑器的模式（mode属性）分为 字符串、对象两种方式，可以在下面的相关链接中找到语言列表
+编辑器的模式（mode属性）分为 字符串、对象两种方式，Codemirror 官方文档有说明
 
 `mode: 'string' || object`
 
