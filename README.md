@@ -19,7 +19,7 @@
 
 [Demo Page](https://surmon-china.github.io/vue-codemirror)
 
-[CDN Example](https://jsfiddle.net/tng9r8j3/)
+[CDN Example](https://jsfiddle.net/u1f16q85/)
 
 [Nuxt.js/SSR example code](https://github.com/surmon-china/vue-codemirror/blob/master/examples/nuxt-ssr-example)
 
@@ -63,7 +63,7 @@ To make it easier to handle events, the component converts some codemirror built
 <script type="text/javascript" src="path/to/dist/vue-codemirror.js"></script>
 <script type="text/javascript" src="path/to/codemirror/some-resources.js"></script>
 <script type="text/javascript">
-  Vue.use(window.VueCodeMirror)
+  Vue.use(window.VueCodemirror)
 </script>
 ```
 
@@ -80,7 +80,7 @@ npm install vue-codemirror --save
 ``` javascript
 // require lib
 import Vue from 'vue'
-import VueCodeMirror from 'vue-codemirror'
+import VueCodemirror from 'vue-codemirror'
 
 // require styles
 import 'codemirror/lib/codemirror.css'
@@ -88,7 +88,7 @@ import 'codemirror/lib/codemirror.css'
 // require more codemirror resource...
 
 // you can set default global options and events when use
-Vue.use(VueCodeMirror, /* { 
+Vue.use(VueCodemirror, /* { 
   options: { theme: 'base16-dark', ... },
   events: ['scroll', ...]
 } */)
@@ -118,8 +118,8 @@ export default {
 ```javascript
 // If used in nuxt.js/ssr, you should keep it only in browser build environment
 if (process.browser) {
-  const VueCodeMirror = require('vue-codemirror')
-  Vue.use(VueCodeMirror)
+  const VueCodemirror = require('vue-codemirror')
+  Vue.use(VueCodemirror)
 }
 ```
 
