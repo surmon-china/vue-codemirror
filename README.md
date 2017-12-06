@@ -26,6 +26,10 @@
 # Events
 
 Most of the native codemirror component built-in event, and converted to a emit Vue event mechanism, if you need more complex event, please on method to get the codemirror component instance object to monitor, the following is a list of the converted event:
+
+To make it easier to handle events, the component converts some codemirror built-in native events into a single vue component event, where you can listen for events from both the component itself and from codemirror. If you need to listen for more and more complex events, you can pass in the event names (array) you need for the global `Vue.use(, { events: [] })` and the component parameters `:events`, respectively, or by the on method of the codemirror instance. Here's a list of events:
+
+**codemirror events list:**
 - scroll
 - changes
 - beforeChange
@@ -45,7 +49,7 @@ Most of the native codemirror component built-in event, and converted to a emit 
 - scrollCursorIntoView
 - update
 
-component event list:
+**component events list:**
 - ready
 - input
 
@@ -85,9 +89,10 @@ import 'codemirror/lib/codemirror.css'
 
 // require more codemirror resource...
 
+// you can set default global options and events when use
 Vue.use(VueCodeMirror, /* { 
-  options: { theme: 'base16-dark', ... }, // default global options
-  events: ['scroll', ...] // default global events
+  options: { theme: 'base16-dark', ... },
+  events: ['scroll', ...]
 } */)
 ```
 
@@ -144,7 +149,7 @@ CodeMirror.defineMode('mymode', () => {
 
 ```vue
 <template>
-  <!-- Bidirectional data binding（双向数据绑定） -->
+  <!-- bidirectional data binding（双向数据绑定） -->
   <codemirror v-model="code" :options="cmOptions"></codemirror>
 
   <!-- or to manually control the datasynchronization（或者手动控制数据流，需要像这样手动监听changed事件） -->
@@ -169,11 +174,11 @@ CodeMirror.defineMode('mymode', () => {
 </template>
 
 <script>
-// you can also introduce the resource pack you want to use within the component
-// language
+// language js
 import 'codemirror/mode/javascript/javascript.js'
 // theme css
 import 'codemirror/theme/base16-dark.css'
+// more codemirror resources
 // import 'codemirror/some-resource...'
 export default {
   data () {
@@ -186,8 +191,7 @@ export default {
         theme: 'base16-dark',
         lineNumbers: true,
         line: true,
-        // more codemirror options...
-        // 更多 codemirror 的高级配置...
+        // more codemirror options, 更多 codemirror 的高级配置...
       }
     }
   },
@@ -262,13 +266,13 @@ export default {
 ```
 
 
-### Codemirror language mode types:
+### Codemirror language mode types
 编辑器的模式（mode属性）分为 字符串、对象两种方式，可以在下面的相关链接中找到语言列表
 
 `mode: 'string' || object`
 
 ``` javascript
-// string mode（MIME types）
+// MIME types
 mode: 'text/javascript'
 
 // name
