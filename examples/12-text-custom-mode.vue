@@ -2,9 +2,9 @@
   <md-card>
     <md-card-actions>
       <div class="md-subhead">
-        <span>mode: {{ editorOption.mode }}</span>
+        <span>mode: {{ cmOption.mode }}</span>
         <span>&nbsp;&nbsp;&nbsp;</span>
-        <span>theme: {{ editorOption.theme }}</span>
+        <span>theme: {{ cmOption.theme }}</span>
       </div>
       <md-button class="md-icon-button"
                  target="_blank"
@@ -15,7 +15,7 @@
     <md-card-media>
       <div class="codemirror">
         <!-- codemirror -->
-        <codemirror v-model="code" :options="editorOption"></codemirror>
+        <codemirror v-model="code" :options="cmOption"></codemirror>
       </div>
     </md-card-media>
   </md-card>
@@ -45,7 +45,7 @@
     data() {
       return {
         code: `const bbb = 222;\nconst ccc = 111;\neee fff ggg`,
-        editorOption: {
+        cmOption: {
           tabSize: 4,
           styleActiveLine: true,
           lineNumbers: true,

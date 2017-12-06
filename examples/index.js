@@ -11,6 +11,7 @@ import example10 from './10-text-x-lua.vue'
 import example11 from './11-text-x-mysql.vue'
 import example12 from './12-text-custom-mode.vue'
 import example13 from './13-text-x-markdown.vue'
+import example14 from './14-merge-view.vue'
 
 export default {
   example01,
@@ -26,4 +27,5 @@ export default {
   example11,
   example12,
   example13,
+  example14
 }

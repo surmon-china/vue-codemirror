@@ -2,9 +2,9 @@
   <md-card>
     <md-card-actions>
       <div class="md-subhead">
-        <span>mode: {{ editorOption.mode }}</span>
+        <span>mode: {{ cmOption.mode }}</span>
         <span>&nbsp;&nbsp;&nbsp;</span>
-        <span>theme: {{ editorOption.theme }}</span>
+        <span>theme: {{ cmOption.theme }}</span>
       </div>
       <md-button class="md-icon-button"
                  target="_blank"
@@ -17,7 +17,7 @@
         <div class="codemirror">
           <!-- codemirror -->
           <codemirror v-model="code" 
-                      :options="editorOption"
+                      :options="cmOption"
                       @cursorActivity="onCmCursorActivity"
                       @ready="onCmReady"
                       @focus="onCmFocus"
@@ -76,7 +76,7 @@
       const code =
 `<template>
   <h1>Hello World!</h1>
-  <codemirror v-model="code" :options="editorOption"></codemirror>
+  <codemirror v-model="code" :options="cmOption"></codemirror>
 </template>
 
 <script>
@@ -85,7 +85,7 @@
     data() {
       return {
         code: 'const A = 10',
-        editorOption: {
+        cmOption: {
           tabSize: 4,
           styleActiveLine: true,
           lineNumbers: true,
@@ -116,7 +116,7 @@
 </style>`
       return {
         code,
-        editorOption: {
+        cmOption: {
           tabSize: 4,
           foldGutter: true,
           styleActiveLine: true,

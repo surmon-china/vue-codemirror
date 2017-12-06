@@ -27,7 +27,7 @@ module.exports = merge(baseConfig, {
       resolve('node_modules')
     ],
     alias: {
-      'codemirror': 'codemirror/lib/codemirror.js',
+      'codemirror$': 'codemirror/lib/codemirror.js',
     }
   }
 })

@@ -8,16 +8,19 @@
 
 
 # Vue-Codemirror
-Codemirror component for Vue.
+[Codemirror](http://codemirror.net/) component for Vue.
 
-Build by [Codemirror](http://codemirror.net/).
+基于 [Codemirror](http://codemirror.net/)，适用于 Vue 的 Web 代码编辑器。
 
 # Example
 
 [Demo Page](https://surmon-china.github.io/vue-codemirror)
 
-# Update
-The latest version of the update, I hope the component itself is a simple and lightweight editor, in addition to the codemirror core library itself, without an other package; of course, it is still can automatically identify the language and theme package, and optimized; if you need other functions, you need to import the corresponding some resources package(with codemirror) in entrance script file or component script.
+[CDN Example](https://jsfiddle.net/tng9r8j3/)
+
+[Nuxt.js/SSR example code](https://github.com/surmon-china/vue-quill-editor/blob/master/examples/nuxt-ssr-example)
+
+# Events
 
 Most of the native codemirror component built-in event, and converted to a emit Vue event mechanism, if you need more complex event, please on method to get the codemirror component instance object to monitor, the following is a list of the converted event:
 - scroll
@@ -41,7 +44,7 @@ Most of the native codemirror component built-in event, and converted to a emit 
 
 component event list:
 - ready
-- change
+- input
 
 # Use Setup
 
@@ -205,14 +208,14 @@ mode: {
 }
 ```
 
-# More options
+# CodeMirror
 
-- [Example Code](https://github.com/surmon-china/vue-codemirror/tree/master/examples)
-- [Codemirror config APIs](http://codemirror.net/doc/manual.html#config)
-- [Codemirror themes](http://codemirror.net/demo/theme.html)
-- [Codemirror language modes](http://codemirror.net/mode/) (MIME types defined)
-- [Codemirror events](https://codemirror.net/doc/manual.html#events)
+- [CodeMirror config APIs](http://codemirror.net/doc/manual.html#config)
+- [CodeMirror themes](http://codemirror.net/demo/theme.html)
+- [CodeMirror language modes](http://codemirror.net/mode/) (MIME types defined)
+- [CodeMirror events](https://codemirror.net/doc/manual.html#events)
+- [CodeMirror Autoresize](https://codemirror.net/demo/resize.html)
 
 
-# Author Blog
+# Author
 [Surmon](https://surmon.me)
