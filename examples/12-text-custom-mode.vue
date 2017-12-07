@@ -8,7 +8,7 @@
       </div>
       <md-button class="md-icon-button"
                  target="_blank"
-                 href="https://github.com/surmon-china/vue-codemirror/tree/master/examples/12-text-x-mysql.vue">
+                 href="https://github.com/surmon-china/vue-codemirror/tree/master/examples/12-text-custom-mode.vue">
         <md-icon>code</md-icon>
       </md-button>
     </md-card-actions>
