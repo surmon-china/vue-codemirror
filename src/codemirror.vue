@@ -56,7 +56,6 @@
       },
       options: {
         type: Object,
-        required: true,
         default: () => {}
       },
       events: {

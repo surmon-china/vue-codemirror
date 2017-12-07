@@ -3,14 +3,20 @@ import Codemirror from 'codemirror'
 import Vue from 'vue/dist/vue.js'
 import VueCodemirror, { codemirror, install } from '../../../src/index.js'
 
+// language
+import 'codemirror/mode/javascript/javascript.js'
+import 'codemirror/mode/xml/xml.js'
+
 window.Vue = Vue
 
-// console.log('--------VueCodemirror', VueCodemirror)
+console.log('--------VueCodemirror', VueCodemirror)
 
 describe('vue-codemirror', () => {
 
   Vue.use(VueCodemirror, {
-    options: {},
+    options: {
+      mode: 'text/javascript'
+    },
     events: []
   })
 
@@ -20,21 +26,23 @@ describe('vue-codemirror', () => {
     expect(typeof codemirror.methods.initialize).to.deep.equal('function')
   })
 
-  /*
 
   // 全局安装
   describe('Global install spa:component', () => {
     it(' - should can get the codemirror element', done => {
       const vm = new Vue({
-        template: `<div><codemirror v-model="content"></codemirror></div>`,
+        template: `<div><codemirror v-model="code" :options="cmOptions"></codemirror></div>`,
         data: {
-          content: '<p>test content</p>',
+          code: 'const a = 10',
+          cmOptions: {
+            mode: 'text/javascript'
+          }
         }
       }).$mount()
-      expect(vm.$children[0].value).to.deep.equal('<p>test content</p>')
+      expect(vm.$children[0].value).to.deep.equal('const a = 10')
       Vue.nextTick(() => {
         expect(vm.$children[0].codemirror instanceof Codemirror).to.equal(true)
-        expect(vm.$children[0].codemirror.getText()).to.deep.equal('test content\n')
+        expect(vm.$children[0].codemirror.getValue()).to.deep.equal('const a = 10')
         done()
       })
     })
@@ -44,23 +52,23 @@ describe('vue-codemirror', () => {
   describe('Get instance by attr ref and set global options', () => {
     it(' - should get the codemirror instance and global options', done => {
       const vm = new Vue({
-        template: `<div><codemirror ref="myTextEditor" v-model="content"></codemirror></div>`,
+        template: `<div><codemirror v-model="code" ref="cm"></codemirror></div>`,
         data: {
-          content: '<p>test content</p>'
+          code: 'const a = 10'
         },
         computed: {
-          editor() {
-            return this.$refs.myTextEditor
+          cm() {
+            return this.$refs.cm
           },
           codemirror() {
-            return this.editor.codemirror
+            return this.cm.codemirror
           }
         }
       }).$mount()
       Vue.nextTick(() => {
         expect(vm.codemirror instanceof Codemirror).to.equal(true)
-        expect(vm.codemirror.getText()).to.deep.equal('test content\n')
-        expect(Object.keys(vm.editor._options).length >= 5).to.equal(true)
+        expect(vm.codemirror.getValue()).to.deep.equal('const a = 10')
+        expect(vm.codemirror.options.mode).to.deep.equal('text/javascript')
         done()
       })
     })
@@ -70,27 +78,28 @@ describe('vue-codemirror', () => {
   describe('Set component options', () => {
     it(' - should codemirror.placeholder === component.options.placeholder', done => {
       const vm = new Vue({
-        template: `<div><codemirror ref="myTextEditor" :options="editorOption" v-model="content"></codemirror></div>`,
+        template: `<div><codemirror ref="cm" :options="cmOption" v-model="code"></codemirror></div>`,
         data: {
-          content: '<p>test content</p>',
-          editorOption: {
-            placeholder: 'component placeholder'
+          code: '<p>hello</p>',
+          cmOption: {
+            mode: 'text/html'
           }
         },
         computed: {
-          editor() {
-            return this.$refs.myTextEditor
+          cm() {
+            return this.$refs.cm
           },
           codemirror() {
-            return this.editor.codemirror
+            return this.cm.codemirror
           }
         }
       }).$mount()
       Vue.nextTick(() => {
+        // console.log('------', vm.codemirror)
         // 配置是否等同局部配置
-        const placeholder = vm.editor._options.placeholder
-        const isInclude = placeholder === 'component placeholder' || placeholder === undefined
-        expect(isInclude).to.equal(true)
+        expect(vm.codemirror instanceof Codemirror).to.equal(true)
+        expect(vm.codemirror.getValue()).to.deep.equal('<p>hello</p>')
+        expect(vm.codemirror.options.mode).to.deep.equal('text/html')
         done()
       })
     })
@@ -100,22 +109,27 @@ describe('vue-codemirror', () => {
   describe('Component data binding', () => {
     it(' - should change the codemirror content after change the component content data', done => {
       const vm = new Vue({
-        template: `<div><codemirror v-model="content" ref="myTextEditor"></codemirror></div>`,
+        template: `<div><codemirror ref="cm" :options="cmOption" v-model="code"></codemirror></div>`,
         data: {
-          content: '<p>test content</p>'
+          code: '<p>test content</p>',
+          cmOption: {
+            mode: 'text/html'
+          }
         },
         computed: {
+          cm() {
+            return this.$refs.cm
+          },
           codemirror() {
-            return this.$refs.myTextEditor.codemirror
+            return this.cm.codemirror
           }
         },
         mounted() {
-          this.content = '<span>test change</span>'
+          this.code = '<p>test change</p>'
         }
       }).$mount()
       Vue.nextTick(() => {
-        expect(vm.codemirror.getText()).to.deep.equal('test change\n')
-        expect(vm.codemirror.editor.delta.ops).to.deep.equal([{ insert: "test change\n" }])
+        expect(vm.codemirror.getValue()).to.deep.equal('<p>test change</p>')
         done()
       })
     })
@@ -127,67 +141,59 @@ describe('vue-codemirror', () => {
       const eventLogs = []
       const vm = new Vue({
         template: `<div>
-                      <codemirror ref="myTextEditor"
-                                    :value="content"
-                                    @blur="onEditorBlur"
-                                    @focus="onEditorFocus"
-                                    @ready="onEditorReady"
-                                    @change="onEditorChange"
-                                    @input="onEditorInput">
+                      <codemirror ref="cm"
+                                  :value="code"
+                                  :options="{ mode: 'text/javascript' }"
+                                  @blur="onCmBlur"
+                                  @focus="onCmFocus"
+                                  @ready="onCmReady"
+                                  @change="onCmChange"
+                                  @input="onCmInput">
                       </codemirror>
                   </div>
                   `,
         data: {
-          content: '<p>test content</p>'
+          code: '<p>test content</p>'
         },
         computed: {
-          editor() {
-            return this.$refs.myTextEditor
+          cm() {
+            return this.$refs.cm
           },
           codemirror() {
-            return this.editor.codemirror
+            return this.cm.codemirror
           }
         },
         methods: {
-          onEditorBlur(codemirror) {
-            console.log('onEditorBlur', codemirror)
-            eventLogs.push('onEditorBlur')
+          onCmBlur(codemirror) {
+            console.log('onCmBlur', codemirror)
+            eventLogs.push('onCmBlur')
           },
-          onEditorFocus(codemirror) {
-            console.log('onEditorFocus', codemirror)
-            eventLogs.push('onEditorFocus')
+          onCmFocus(codemirror) {
+            console.log('onCmFocus', codemirror)
+            eventLogs.push('onCmFocus')
           },
-          onEditorReady(codemirror) {
-            eventLogs.push('onEditorReady')
-            // mockEvennt(this.editor.$el.children[1])
-            // triggerEvent(this.editor.$el.children[0].children[0].children[0], 'MouseEvent')
+          onCmReady(codemirror) {
+            eventLogs.push('onCmReady')
           },
-          onEditorChange({ codemirror, text, html }) {
-            eventLogs.push('onEditorChange' + text)
-            // expect(codemirror instanceof Codemirror).to.deep.equal(true)
-            // expect(!!text).to.deep.equal(true)
-            // expect(!!html).to.deep.equal(true)
+          onCmChange({ codemirror, text, html }) {
+            eventLogs.push('onCmChange' + text)
           },
-          onEditorInput(html) {
-            eventLogs.push('onEditorInput' + html)
-            // expect(html).to.deep.equal('<p>test change</p>')
+          onCmInput(html) {
+            eventLogs.push('onCmInput' + html)
           }
         },
         mounted() {
           eventLogs.push('mounted')
-          this.content = '<span>test change</span>'
+          this.code = '<span>test change</span>'
         }
       }).$mount()
-
-      // console.log('----------', eventLogs)
-      expect(eventLogs[0]).to.deep.equal('onEditorReady')
+      // console.log('----------', vm)
+      expect(eventLogs[0]).to.deep.equal('onCmReady')
       expect(eventLogs[1]).to.deep.equal('mounted')
-      done()
-      // console.log('onEditorReady', this.editor.$el.children[1].children[0].dispatchEvent(event), event)
-      // expect(codemirror instanceof Codemirror).to.deep.equal(true)
-        // setTimeout(() => {
-          // this.content = '<p>test change</p>'
-        // }, 1000)
+      vm.$nextTick(() => {
+        expect(vm.codemirror.getValue()).to.deep.equal('<span>test change</span>')
+        done()
+      })
     })
   })
 
@@ -197,10 +203,10 @@ describe('vue-codemirror', () => {
       const eventLogs = []
       const vm = new Vue({
         template: `<div>
-                      <vue-codemirror ref="myTextEditor"
-                                        v-model="content"
-                                        :options="editorOption"
-                                        @ready="onEditorReady">
+                      <vue-codemirror ref="cm"
+                                      v-model="code"
+                                      :options="cmOption"
+                                      @ready="onCmReady">
                       </vue-codemirror>
                   </div>
                   `,
@@ -208,120 +214,32 @@ describe('vue-codemirror', () => {
           'VueCodemirror': codemirror
         },
         data: {
-          content: '<p>test content</p>',
-          editorOption: {
-            placeholder: 'component placeholder'
+          code: '<p>test content</p>',
+          cmOption: {
+            mode: 'text/html'
           }
         },
         computed: {
           codemirror() {
-            return this.$refs.myTextEditor.codemirror
+            return this.$refs.cm.codemirror
           }
         },
         methods: {
-          onEditorReady(codemirror) {
-            eventLogs.push('onEditorReady')
+          onCmReady(codemirror) {
+            eventLogs.push('onCmReady')
           }
         },
         mounted() {
-          this.content = '<span>test change</span>'
+          this.code = '<span>test change</span>'
         }
       }).$mount()
       Vue.nextTick(() => {
-        expect(eventLogs[0]).to.deep.equal('onEditorReady')
+        expect(eventLogs[0]).to.deep.equal('onCmReady')
         expect(vm.codemirror instanceof Codemirror).to.deep.equal(true)
-        expect(vm.codemirror.getText()).to.deep.equal('test change\n')
-        expect(vm.codemirror.editor.delta.ops).to.deep.equal([{ insert: "test change\n" }])
+        expect(vm.codemirror.getValue()).to.deep.equal('<span>test change</span>')
+        expect(vm.codemirror.options.mode).to.deep.equal('text/html')
         done()
       })
     })
   })
-
-  // 多个循环实例
-  describe('Multi edirot component instance', () => {
-    it(' - should update value after any change text', done => {
-      const eventLogs = []
-      const vm = new Vue({
-        template: `<div>
-                      <codemirror :key="key"
-                                    :value="content"
-                                    :ref="'editor' + key"
-                                    v-for="(content, key) in contents"
-                                    :options="buildOptions(key)"
-                                    @ready="onEditorReady(key)">
-                      </codemirror>
-                  </div>
-                  `,
-        data: {
-          contents: {
-            a: '<p>a-test content</p>',
-            b: '<p>b-test content</p>',
-            c: '<p>c-test content</p>'
-          }
-        },
-        methods: {
-          buildOptions(key) {
-            return {
-              placeholder: `${key}component placeholder`
-            }
-          },
-          onEditorReady(key) {
-            eventLogs.push(`${key}-onEditorReady`)
-          }
-        }
-      }).$mount()
-      expect(eventLogs[0]).to.deep.equal('a-onEditorReady')
-      expect(eventLogs[1]).to.deep.equal('b-onEditorReady')
-      expect(eventLogs[2]).to.deep.equal('c-onEditorReady')
-      expect(vm.$refs.editora[0].codemirror.getText()).to.deep.equal('a-test content\n')
-      expect(vm.$refs.editorb[0].codemirror.getText()).to.deep.equal('b-test content\n')
-      expect(vm.$refs.editorc[0].codemirror.getText()).to.deep.equal('c-test content\n')
-      vm.contents.b = '<p>b-test change</p>'
-      Vue.nextTick(() => {
-        expect(vm.$refs.editorb[0].codemirror.getText()).to.deep.equal('b-test change\n')
-        expect(vm.$refs.editorb[0].codemirror instanceof Codemirror).to.deep.equal(true)
-        done()
-      })
-    })
-  })
-
-  // SSR 全局安装测试
-  describe('Global install ssr:directive', () => {
-    it(' - should get codemirror instance and capture event', done => {
-      const eventLogs = []
-      const vm = new Vue({
-        template: `<div>
-                    <div class="codemirror" 
-                         ref="editor"
-                         @ready="onEditorReady"
-                         :value="content"
-                         v-codemirror:myCodemirrorEditor="editorOption">
-                    </div>
-                  </div>
-                  `,
-        data: {
-          content: '<p>test ssr content</p>',
-          editorOption: {}
-        },
-        methods: {
-          onEditorReady(codemirror) {
-            eventLogs.push('ssr/onEditorReady')
-            eventLogs.push(codemirror instanceof Codemirror)
-          }
-        },
-        mounted() {
-          eventLogs.push('ssr/mounted')
-        }
-      }).$mount()
-      expect(eventLogs[0]).to.deep.equal('ssr/onEditorReady')
-      expect(eventLogs[1]).to.deep.equal(true)
-      expect(eventLogs[2]).to.deep.equal('ssr/mounted')
-      vm.content = '<p>test ssr change</p>'
-      Vue.nextTick(() => {
-        expect(vm.myCodemirrorEditor.getText()).to.deep.equal('test ssr content\n')
-        done()
-      })
-    })
-  })
-  */
 })

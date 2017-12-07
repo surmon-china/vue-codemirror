@@ -1,7 +1,7 @@
 {
   "name": "vue-codemirror",
   "description": "CodeMirror component for Vue",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "license": "MIT",
   "private": false,
   "author": {
@@ -43,7 +43,8 @@
     "finish": "npm run lint && npm test && npm run build"
   },
   "dependencies": {
-    "codemirror": "^5.32.0"
+    "codemirror": "^5.32.0",
+    "diff-match-patch": "^1.0.0"
   },
   "expDependencies": {
     "node-sass": "^4.7.2",

@@ -1,6 +1,10 @@
 
 ## CHANGELOG
 
+### v4.0.1
+
+- the components `options` attr is not required
+
 ### v4.0.0
 
 - fix import es module bug
