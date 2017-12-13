@@ -105,7 +105,7 @@
           }
         })
         const events = [
-          // 'scroll',
+          'scroll',
           'changes',
           'beforeChange',
           'cursorActivity',

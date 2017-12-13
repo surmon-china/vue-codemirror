@@ -1,6 +1,10 @@
 
 ## CHANGELOG
 
+### v4.0.2
+
+- add `scroll` event
+
 ### v4.0.1
 
 - the components `options` attr is not required
