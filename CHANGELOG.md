@@ -1,6 +1,10 @@
 
 ## CHANGELOG
 
+### v4.0.3
+
+add props placeholder
+
 ### v4.0.2
 
 - add `scroll` event

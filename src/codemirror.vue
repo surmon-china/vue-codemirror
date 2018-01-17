@@ -1,7 +1,7 @@
 <template>
   <div class="vue-codemirror" :class="{ merge }">
     <div ref="mergeview" v-if="merge"></div>
-    <textarea ref="textarea" v-else></textarea>
+    <textarea ref="textarea" :placeholder="placeholder" v-else></textarea>
   </div>
 </template>
 
@@ -50,6 +50,10 @@
       value: String,
       marker: Function,
       unseenLines: Array,
+      placeholder: {
+        type: String,
+        default: ''
+      },
       merge: {
         type: Boolean,
         default: false

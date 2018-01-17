@@ -1,7 +1,7 @@
 {
   "name": "vue-codemirror",
   "description": "CodeMirror component for Vue",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "license": "MIT",
   "private": false,
   "author": {
