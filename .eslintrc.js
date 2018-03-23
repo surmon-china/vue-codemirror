@@ -293,7 +293,8 @@ module.exports = {
     "no-redeclare": [2, { "builtinGlobals": true }],
 
     // 不要在return语句中使用赋值语句
-    "no-return-assign": [2, "always"],
+    // "no-return-assign": [2, "always"],
+    "no-return-assign": [0],
 
     // 禁止代码中使用类似javascript:void(0)的javascript: urls.
     "no-script-url": 2,

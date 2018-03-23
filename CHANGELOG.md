@@ -1,6 +1,10 @@
 
 ## CHANGELOG
 
+### v4.0.4
+
+optimize events and refresh function.
+
 ### v4.0.3
 
 add props placeholder

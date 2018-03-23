@@ -60,19 +60,19 @@
       },
       options: {
         type: Object,
-        default: () => {}
+        default: () => ({})
       },
       events: {
         type: Array,
-        default: () => []
+        default: () => ([])
       },
       globalOptions: {
         type: Object,
-        default: () => {}
+        default: () => ({})
       },
       globalEvents: {
         type: Array,
-        default: () => []
+        default: () => ([])
       }
     },
     watch: {
@@ -108,7 +108,10 @@
             this.$emit('input', this.content)
           }
         })
-        const events = [
+
+        // 所有有效事件（驼峰命名）+ 去重
+        const tmpEvents = {}
+        const allEvents = [
           'scroll',
           'changes',
           'beforeChange',
@@ -127,26 +130,32 @@
           'optionChange',
           'scrollCursorIntoView',
           'update'
-        ].concat(this.events).concat(this.globalEvents)
-        const onEdEvents = {}
-        for (let i = 0; i < events.length; i++) {
-          if (typeof events[i] === 'string' && onEdEvents[events[i]] === undefined) {
-            (event => {
-              onEdEvents[event] = null
-              this.cminstance.on(event, (a, b, c) => {
-                this.$emit(event, a, b, c)
-              })
-            })(events[i])
-          }
-        }
+        ]
+        .concat(this.events)
+        .concat(this.globalEvents)
+        .filter(e => (!tmpEvents[e] && (tmpEvents[e] = true)))
+        .forEach(event => {
+          // 循环事件，并兼容 run-time 事件命名
+          this.cminstance.on(event, (...args) => {
+            // console.log('当有事件触发了', event, args)
+            this.$emit(event, ...args)
+            const lowerCaseEvent = event.replace(/([A-Z])/g, '-$1').toLowerCase()
+            if (lowerCaseEvent !== event) {
+              this.$emit(lowerCaseEvent, ...args)
+            }
+          })
+        })
+
         this.$emit('ready', this.codemirror)
         this.unseenLineMarkers()
 
         // prevents funky dynamic rendering
-        this.$nextTick(this.refresh)
+        this.refresh()
       },
       refresh() {
-        this.cminstance.refresh()
+        this.$nextTick(() => {
+          this.cminstance.refresh()
+        })
       },
       destroy() {
         // garbage cleanup
