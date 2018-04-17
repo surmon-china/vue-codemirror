@@ -1,6 +1,10 @@
 
 ## CHANGELOG
 
+### v4.0.5
+
+Enable switching from/to DiffView based on 'merge' prop status(merge pr 65).
+
 ### v4.0.4
 
 optimize events and refresh function.

@@ -85,7 +85,7 @@
         }
       },
       merge(newVal) {
-        this.$nextTick(this.switchMerge);
+        this.$nextTick(this.switchMerge)
       },
       code(newVal, oldVal) {
         this.handerCodeChange(newVal, oldVal)
@@ -185,16 +185,16 @@
       },
       switchMerge() {
         // Save current values
-        let history = this.cminstance.doc.history;
-        let cleanGeneration = this.cminstance.doc.cleanGeneration;
-        this.options.value = this.cminstance.getValue();
+        const history = this.cminstance.doc.history
+        const cleanGeneration = this.cminstance.doc.cleanGeneration
+        this.options.value = this.cminstance.getValue()
 
-        this.destroy();
-        this.initialize();
+        this.destroy()
+        this.initialize()
 
         // Restore values
-        this.cminstance.doc.history = history;
-        this.cminstance.doc.cleanGeneration = cleanGeneration;
+        this.cminstance.doc.history = history
+        this.cminstance.doc.cleanGeneration = cleanGeneration
       }
     },
     mounted() {
