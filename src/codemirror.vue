@@ -84,6 +84,9 @@
           }
         }
       },
+      merge(newVal) {
+        this.$nextTick(this.switchMerge);
+      },
       code(newVal, oldVal) {
         this.handerCodeChange(newVal, oldVal)
       },
@@ -179,6 +182,19 @@
             this.cminstance.setGutterMarker(line, 'breakpoints', info.gutterMarkers ? null : this.marker())
           })
         }
+      },
+      switchMerge() {
+        // Save current values
+        let history = this.cminstance.doc.history;
+        let cleanGeneration = this.cminstance.doc.cleanGeneration;
+        this.options.value = this.cminstance.getValue();
+
+        this.destroy();
+        this.initialize();
+
+        // Restore values
+        this.cminstance.doc.history = history;
+        this.cminstance.doc.cleanGeneration = cleanGeneration;
       }
     },
     mounted() {
