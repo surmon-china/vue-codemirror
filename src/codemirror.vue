@@ -92,7 +92,7 @@
       },
       value(newVal) {
         this.handerCodeChange(newVal)
-      }
+      },
     },
     methods: {
       initialize() {
