@@ -78,20 +78,20 @@
     watch: {
       options: {
         deep: true,
-        handler(options, oldOptions) {
+        handler(options) {
           for (const key in options) {
             this.cminstance.setOption(key, options[key])
           }
         }
       },
-      merge(newVal) {
+      merge() {
         this.$nextTick(this.switchMerge)
       },
-      code(newVal, oldVal) {
-        this.handerCodeChange(newVal, oldVal)
+      code(newVal) {
+        this.handerCodeChange(newVal)
       },
-      value(newVal, oldVal) {
-        this.handerCodeChange(newVal, oldVal)
+      value(newVal) {
+        this.handerCodeChange(newVal)
       }
     },
     methods: {
@@ -165,7 +165,7 @@
         const element = this.cminstance.doc.cm.getWrapperElement()
         element && element.remove && element.remove()
       },
-      handerCodeChange(newVal, oldVal) {
+      handerCodeChange(newVal) {
         const cm_value = this.cminstance.getValue()
         if (newVal !== cm_value) {
           const scrollInfo = this.cminstance.getScrollInfo()
