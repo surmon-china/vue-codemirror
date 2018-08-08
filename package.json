@@ -44,7 +44,7 @@
     "publish": "git push && git push --tags && npm publish"
   },
   "dependencies": {
-    "codemirror": "^5.32.0",
+    "codemirror": "^5.39.0",
     "diff-match-patch": "^1.0.0"
   },
   "expDependencies": {
