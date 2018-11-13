@@ -1,6 +1,10 @@
 
 ## CHANGELOG
 
+### v4.0.6
+
+- add textarea name prop with #82
+
 ### v4.0.5
 
 Enable switching from/to DiffView based on 'merge' prop status(merge pr 65).
