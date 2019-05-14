@@ -1,11 +1,11 @@
-
-import Codemirror from 'codemirror'
-import Vue from 'vue/dist/vue.js'
-import VueCodemirror, { codemirror, install } from '../../../src/index.js'
-
-// language
 import 'codemirror/mode/javascript/javascript.js'
 import 'codemirror/mode/xml/xml.js'
+
+import Codemirror from 'codemirror'
+
+import Vue from 'vue/dist/vue.js'
+
+import VueCodemirror, { CodeMirror, codemirror, install } from '../../../src/index.js'
 
 window.Vue = Vue
 
@@ -192,6 +192,45 @@ describe('vue-codemirror', () => {
       expect(eventLogs[1]).to.deep.equal('mounted')
       vm.$nextTick(() => {
         expect(vm.codemirror.getValue()).to.deep.equal('<span>test change</span>')
+        done()
+      })
+    })
+  })
+
+  describe('Emit custom event on codemirror object', () => {
+    it(' - should capture custom event', done => {
+      const eventLogs = []
+      const vm = new Vue({
+        template: `
+          <div>
+            <codemirror ref="cm"
+                        v-model="code"
+                        :events="events"
+                        @custom="onCustom">
+            </codemirror>
+          </div>
+        `,
+        data: {
+          code: '<p>test content</p>',
+          events: ['custom']
+        },
+        computed: {
+          cm() {
+            return this.$refs.cm
+          },
+          codemirror() {
+            return this.cm.codemirror
+          }
+        },
+        methods: {
+          onCustom(codemirror) {
+            eventLogs.push('onCustom')
+          }
+        }
+      }).$mount()
+      CodeMirror.signal(vm.codemirror, 'custom', vm.codemirror)
+      vm.$nextTick(() => {
+        expect(eventLogs[0]).to.deep.equal('onCustom')
         done()
       })
     })
