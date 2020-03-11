@@ -81,7 +81,7 @@ yarn add vue-codemirror
 import Vue from 'vue'
 import VueCodemirror from 'vue-codemirror'
 
-// import base styles
+// import base style
 import 'codemirror/lib/codemirror.css'
 
 // import more codemirror resource...
@@ -98,7 +98,7 @@ Vue.use(VueCodemirror, /* {
 ```javascript
 import { codemirror } from 'vue-codemirror'
 
-// import base styles
+// import base style
 import 'codemirror/lib/codemirror.css'
 
 // import more codemirror resource...
@@ -108,28 +108,6 @@ export default {
     codemirror
   }
 }
-```
-
-**defined codemirror mode**
-
-```javascript
-import CodeMirror from 'codemirror'
-CodeMirror.defineMode('mymode', () => {
-  return {
-    token(stream, state) {
-      if (stream.match("const")) {
-        return "style1"
-      } else if (stream.match("bbb")) {
-        return "style2"
-      } else {
-        stream.next()
-        return null
-      }
-    }
-  }
-})
-
-// Vue app...
 ```
 
 ### Component
@@ -166,7 +144,7 @@ CodeMirror.defineMode('mymode', () => {
 // import language js
 import 'codemirror/mode/javascript/javascript.js'
 
-// import theme css
+// import theme style
 import 'codemirror/theme/base16-dark.css'
 
 // import more 'codemirror/some-resource...'
@@ -181,7 +159,7 @@ export default {
         theme: 'base16-dark',
         lineNumbers: true,
         line: true,
-        // more codemirror options...
+        // more CodeMirror options...
       }
     }
   },
@@ -203,16 +181,14 @@ export default {
     }
   },
   mounted() {
-    console.log('the current codemirror instance object:', this.codemirror)
+    console.log('the current CodeMirror instance object:', this.codemirror)
     // you can use this.codemirror to do something...
   }
 }
 </script>
 ```
 
-
 ### Codemirror Merge
-
 
 ```vue
 <template>
@@ -259,7 +235,29 @@ export default {
 </script>
 ```
 
-### Codemirror language mode types
+### Defined Codemirror mode
+
+```javascript
+import CodeMirror from 'codemirror'
+CodeMirror.defineMode('mymode', () => {
+  return {
+    token(stream, state) {
+      if (stream.match("const")) {
+        return "style1"
+      } else if (stream.match("bbb")) {
+        return "style2"
+      } else {
+        stream.next()
+        return null
+      }
+    }
+  }
+})
+
+// Vue app...
+```
+
+### CodeMirror language mode types
 
 Codemirror language mode have [string | object](https://codemirror.net/doc/manual.html#option_mode) types.
 
