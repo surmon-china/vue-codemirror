@@ -141,15 +141,16 @@ describe('vue-codemirror', () => {
       const eventLogs = []
       const vm = new Vue({
         template: `<div>
-                      <codemirror ref="cm"
-                                  :value="code"
-                                  :options="{ mode: 'text/javascript' }"
-                                  @blur="onCmBlur"
-                                  @focus="onCmFocus"
-                                  @ready="onCmReady"
-                                  @change="onCmChange"
-                                  @input="onCmInput">
-                      </codemirror>
+                      <codemirror
+                        ref="cm"
+                        :value="code"
+                        :options="{ mode: 'text/javascript' }"
+                        @blur="onCmBlur"
+                        @focus="onCmFocus"
+                        @ready="onCmReady"
+                        @change="onCmChange"
+                        @input="onCmInput"
+                      />
                   </div>
                   `,
         data: {
@@ -203,11 +204,12 @@ describe('vue-codemirror', () => {
       const vm = new Vue({
         template: `
           <div>
-            <codemirror ref="cm"
-                        v-model="code"
-                        :events="events"
-                        @custom="onCustom">
-            </codemirror>
+            <codemirror
+              ref="cm"
+              v-model="code"
+              :events="events"
+              @custom="onCustom"
+            />
           </div>
         `,
         data: {
@@ -242,11 +244,12 @@ describe('vue-codemirror', () => {
       const eventLogs = []
       const vm = new Vue({
         template: `<div>
-                      <vue-codemirror ref="cm"
-                                      v-model="code"
-                                      :options="cmOption"
-                                      @ready="onCmReady">
-                      </vue-codemirror>
+                      <vue-codemirror
+                        ref="cm"
+                        v-model="code"
+                        :options="cmOption"
+                        @ready="onCmReady"
+                      />
                   </div>
                   `,
         components: {
