@@ -188,7 +188,7 @@ export default {
 </script>
 ```
 
-### Codemirror Merge
+### CodeMirror Merge
 
 ```vue
 <template>
@@ -235,7 +235,7 @@ export default {
 </script>
 ```
 
-### Defined Codemirror mode
+### Defined CodeMirror mode
 
 ```javascript
 import CodeMirror from 'codemirror'
