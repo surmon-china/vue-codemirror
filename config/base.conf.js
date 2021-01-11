@@ -5,8 +5,8 @@ const webpack = require('webpack')
 const resolve = dir => path.join(__dirname, '..', dir)
 
 const env = process.env.NODE_ENV === 'testing'
-  ? { NODE_ENV: '"testing"' }
-  : { NODE_ENV: '"production"' }
+  ? { NODE_ENV: '"testing"', EXCLUDE_GLOBAL_CODEMIRROR: process.env.EXCLUDE_GLOBAL_CODEMIRROR }
+  : { NODE_ENV: '"production"', EXCLUDE_GLOBAL_CODEMIRROR: process.env.EXCLUDE_GLOBAL_CODEMIRROR }
 
 module.exports = {
   module: {

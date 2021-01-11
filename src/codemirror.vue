@@ -7,8 +7,7 @@
 
 <script>
   // lib
-  import _CodeMirror from 'codemirror'
-  const CodeMirror = window.CodeMirror || _CodeMirror
+  import CodeMirror from './codemirror'
 
   // pollfill
   if (typeof Object.assign != 'function') {

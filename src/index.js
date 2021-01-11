@@ -5,10 +5,9 @@
 * Github: https://github.com/surmon-china/vue-codemirror
 */
 
-import _CodeMirror from 'codemirror'
+import CodeMirror from './codemirror'
 import codemirror from './codemirror.vue'
 
-const CodeMirror = window.CodeMirror || _CodeMirror
 const install = (Vue, config) => {
   if (config) {
     if (config.options) {
