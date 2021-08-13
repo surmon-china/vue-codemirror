@@ -1,5 +1,5 @@
 <template>
-  <div class="vue-codemirror" :class="{ merge }">
+  <div class="vue-codemirror" :class="{ merge }" translate="no">
     <div ref="mergeview" v-if="merge"></div>
     <textarea ref="textarea" :name="name" :placeholder="placeholder" v-else></textarea>
   </div>
