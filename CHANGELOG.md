@@ -1,5 +1,9 @@
-
 ## CHANGELOG
+
+### 5.0.0-beta.1
+
+- Upgrade to Vue@3
+- Upgrade to CodeMirror@v6
 
 ### v4.0.6
 
@@ -36,7 +40,7 @@ add props placeholder
 - update `editor` to `codemirror`
 
 #### project
+
 - add brower support
 - add test scripts
 - update babel and webpack configs
-
