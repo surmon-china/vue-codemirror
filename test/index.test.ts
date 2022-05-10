@@ -1,4 +1,3 @@
-import { TransitionGroup } from 'vue'
 import { test, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import VueCodemirror, { Codemirror, install } from '../src/index'
@@ -16,6 +15,6 @@ test('export type', async () => {
 
 test('mount component', async () => {
   const wrapper = mount(Codemirror, { props: { modelValue: 'Hello, world!' } })
-  const tgWrapper = wrapper.getComponent(TransitionGroup)
+  expect(wrapper.emitted()).toHaveProperty('ready')
   // TODO: test case
 })

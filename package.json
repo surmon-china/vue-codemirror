@@ -21,16 +21,14 @@
   "files": [
     "dist"
   ],
-  "sideEffects": false,
-  "type": "module",
-  "main": "dist/vue-codemirror.js",
-  "module": "dist/vue-codemirror.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/vue-codemirror.cjs.js",
+  "module": "./dist/vue-codemirror.esm.js",
+  "types": "./dist/vue-codemirror.esm.d.ts",
   "exports": {
     ".": {
-      "import": "./index.js",
-      "require": "./index.js",
-      "types": "./dist/vue.d.ts"
+      "require": "./dist/vue-codemirror.cjs.js",
+      "import": "./dist/vue-codemirror.esm.js",
+      "types": "./dist/vue-codemirror.esm.d.ts"
     },
     "./dist/*": "./dist/*",
     "./package.json": "./package.json"
@@ -41,7 +39,6 @@
     "test": "vitest run --coverage",
     "lint": "eslint --ext .js,.ts,.vue src test",
     "rebirth": "npm run lint && npm run test && npm run build",
-    "restyle": "cp \"./dist/vue-codemirror.esm.css\" \"./style.css\"",
     "release": ". ./scripts/release.sh"
   },
   "peerDependencies": {
@@ -49,10 +46,10 @@
   },
   "dependencies": {
     "@codemirror/basic-setup": "^0.20.0",
+    "@codemirror/commands": "0.20.0",
+    "@codemirror/language": "0.20.0",
     "@codemirror/state": "^0.20.0",
     "@codemirror/view": "^0.20.0",
-    "@codemirror/language": "0.20.0",
-    "@codemirror/commands": "0.20.0",
     "csstype": "^2.6.8"
   },
   "devDependencies": {

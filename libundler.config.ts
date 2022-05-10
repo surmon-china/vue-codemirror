@@ -5,11 +5,7 @@ export default defineConfig({
   outFileName: 'vue-codemirror',
   entry: './src/index.ts',
   outDir: './dist',
-  targets: ['esm', 'umd'],
-  external: ['vue'],
-  exports: 'named',
-  sourcemap: false,
-  globals: {
-    vue: 'Vue'
-  }
+  targets: ['esm', 'cjs'],
+  external: ['vue', 'csstype', /@codemirror\/.*/],
+  exports: 'named'
 })

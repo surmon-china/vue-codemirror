@@ -81,12 +81,14 @@ export default defineComponent({
     }
 
     const config = computed(() => {
-      const config: any = {}
-      for (let key in props) {
-        // @ts-ignore
-        config[key] = props[key] ?? defaultConfig[key]
-      }
-      return config as Required<Props>
+      return Object.keys(props).reduce(
+        (result, key) => ({
+          ...result,
+          // @ts-ignore
+          [key]: props[key] ?? defaultConfig[key]
+        }),
+        {} as Required<Props>
+      )
     })
 
     onMounted(() => {
