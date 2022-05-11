@@ -21,7 +21,7 @@
 - [CodeMirror6 Examples](https://codemirror.net/6/examples/)
 - [CodeMirror6 Example: Writing a Language Package](https://codemirror.net/6/examples/lang-package/)
 - [CodeMirror6 Example: Styling](https://codemirror.net/6/examples/styling/)
-- [CodeMirror discuss](https://discuss.codemirror.net/)
+- [CodeMirror Forum](https://discuss.codemirror.net/)
 
 ### CodeMirror packages
 
