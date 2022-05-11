@@ -26,7 +26,7 @@
 - [CodeMirror6 styling](https://codemirror.net/6/examples/styling/)
 - [CodeMirror discuss](https://discuss.codemirror.net/)
 
-### Previous version
+### Legacy version
 
 - [vue-codemirror@4.0.0 (Vue2 / CodeMirror5)](https://github.com/surmon-china/vue-codemirror/tree/v4.0.0)
 
@@ -40,6 +40,20 @@ yarn add vue-codemirror
 
 ```bash
 npm install vue-codemirror --save
+```
+
+#### Depending on your actual needs, you may need to install more CodeMirror packages
+
+```base
+// CodeMirror languages...
+yarn @codemirror/lang-html
+yarn @codemirror/lang-json
+yarn @codemirror/lang-javascript
+
+// CodeMirror themes...
+yarn @codemirror/theme-one-dark
+
+// more CodeMirror packages...
 ```
 
 #### local component
@@ -108,28 +122,39 @@ app.use(VueCodemirror, {
 
 ### Component Props
 
-| prop          | description                                              | type                               | default        |
-| :------------ | :------------------------------------------------------- | :--------------------------------- | :------------- |
-| autofocus     | -                                                        | `Boolean`                          | `false`        |
-| disabled      | -                                                        | `Boolean`                          | `false`        |
-| indentWithTab | Bind Tab key.                                            | `Boolean`                          | `true`         |
-| tabSize       | Indent of Tab key.                                       | `Number`                           | `2`            |
-| placeholder   | -                                                        | `String`                           | `''`           |
-| style         | The css style object that acts on the CodeMirror itself. | `Boolean`                          | `true`         |
-| extensions    | Passed to CodeMirror.                                    | `EditorStateConfig['extensions']>` | `[basicSetup]` |
-| root          | Passed to CodeMirror.                                    | `ShadowRoot \| Document`           | `undefined`    |
-| selection     | Passed to CodeMirror.                                    | `EditorStateConfig['selection']`   | `undefined`    |
+| prop          | description                                               | type                     | default |
+| :------------ | :-------------------------------------------------------- | :----------------------- | :------ |
+| autofocus     | Focus editor immediately after mounted.                   | `Boolean`                | `false` |
+| disabled      | Disable input behavior and disable change state.          | `Boolean`                | `false` |
+| indentWithTab | Bind keyboard Tab key event.                              | `Boolean`                | `true`  |
+| tabSize       | Specify the indent when the Tab key is pressed.           | `Number`                 | `2`     |
+| placeholder   | Display when empty.                                       | `String`                 | `''`    |
+| style         | The CSS style object that acts on the CodeMirror itself.  | `Object`                 | `{}`    |
+| extensions    | Passed to CodeMirror `EditorState.create({ extensions })` | `Extension`              | `[]`    |
+| selection     | Passed to CodeMirror `EditorState.create({ selection })`  | `EditorSelection`        | -       |
+| root          | Passed to CodeMirror `new EditorView({ root })`           | `ShadowRoot \| Document` | -       |
 
 ### Component Events
 
-| event               | description                    | params                                                                           |
-| :------------------ | :----------------------------- | :------------------------------------------------------------------------------- |
-| `update:modelValue` | When content(doc) change only. | `(value: string, viewUpdate: ViewUpdate)`                                        |
-| change              | ditto                          | ditto                                                                            |
-| update              | When CodeMirror state change.  | `(viewUpdate: ViewUpdate)`                                                       |
-| focus               | When CodeMirror focused.       | `(viewUpdate: ViewUpdate)`                                                       |
-| blur                | When CodeMirror blurred.       | `(viewUpdate: ViewUpdate)`                                                       |
-| ready               | When component mounted.        | `(payload: { view: EditorView; state: EditorState; container: HTMLDivElement })` |
+| event               | description                                             | params                                                                           |
+| :------------------ | :------------------------------------------------------ | :------------------------------------------------------------------------------- |
+| `update:modelValue` | **Only** when the CodeMirror content (doc) has changed. | `(value: string, viewUpdate: ViewUpdate)`                                        |
+| change              | ditto                                                   | ditto                                                                            |
+| update              | When any state of CodeMirror changes.                   | `(viewUpdate: ViewUpdate)`                                                       |
+| focus               | When CodeMirror focused.                                | `(viewUpdate: ViewUpdate)`                                                       |
+| blur                | When CodeMirror blurred.                                | `(viewUpdate: ViewUpdate)`                                                       |
+| ready               | When edirot component mounted.                          | `(payload: { view: EditorView; state: EditorState; container: HTMLDivElement })` |
+
+### Basic Setup
+
+The [basic-setup](https://codemirror.net/6/docs/ref/#basic-setup) extension is integrated by default in the vue-codemirror configuration, and is intended as a handy helper to quickly set up CodeMirror without having to install and import a lot of standalone packages. If you want to override the default behavior of the config, just pass the empty array when installing the component globally.
+
+```js
+app.use(VueCodemirror, {
+  // keep the global default extensions empty
+  extension: []
+})
+```
 
 ### Changelog
 
@@ -137,4 +162,4 @@ Detailed changes for each release are documented in the [release notes](/CHANGEL
 
 ### License
 
-[MIT](/LICENSE)
+Licensed under the [MIT](/LICENSE) License.
