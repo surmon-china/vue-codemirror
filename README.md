@@ -12,13 +12,9 @@
 
 [CodeMirror(6)](https://codemirror.net/6/docs/) component for Vue(3).
 
-### Example
-
-- [Examples (Vue3)](https://github.surmon.me/vue-codemirror)
-- [Examples (Vue2)](https://v1.github.surmon.me/vue-codemirror)
-
 ### Documentation
 
+- [Examples (Vue3)](https://github.surmon.me/vue-codemirror)
 - [CodeMirror6 guide](https://codemirror.net/6/docs/guide/)
 - [CodeMirror6 APIs](https://codemirror.net/6/docs/ref/)
 - [CodeMirror6 examples](https://codemirror.net/6/examples/)
@@ -29,6 +25,9 @@
 ### Legacy version
 
 - [vue-codemirror@4.0.0 (Vue2 / CodeMirror5)](https://github.com/surmon-china/vue-codemirror/tree/v4.0.0)
+- [Examples (Vue2)](https://v1.github.surmon.me/vue-codemirror)
+
+---
 
 ### How to use
 
@@ -44,16 +43,16 @@ npm install vue-codemirror --save
 
 #### Depending on your actual needs, you may need to install more CodeMirror packages
 
-```base
-// CodeMirror languages...
+```bash
+# CodeMirror languages...
 yarn @codemirror/lang-html
 yarn @codemirror/lang-json
 yarn @codemirror/lang-javascript
 
-// CodeMirror themes...
+# CodeMirror themes...
 yarn @codemirror/theme-one-dark
 
-// more CodeMirror packages...
+# more CodeMirror packages...
 ```
 
 #### local component
