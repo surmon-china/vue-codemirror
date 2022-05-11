@@ -12,15 +12,23 @@
 
 [CodeMirror(6)](https://codemirror.net/6/docs/) component for Vue(3).
 
+[**Example site**](https://github.surmon.me/vue-codemirror)
+
 ### Documentation
 
-- [Examples (Vue3)](https://github.surmon.me/vue-codemirror)
-- [CodeMirror6 guide](https://codemirror.net/6/docs/guide/)
+- [CodeMirror6 Guide](https://codemirror.net/6/docs/guide/)
 - [CodeMirror6 APIs](https://codemirror.net/6/docs/ref/)
-- [CodeMirror6 examples](https://codemirror.net/6/examples/)
-- [CodeMirror6 language](https://codemirror.net/6/examples/lang-package/)
-- [CodeMirror6 styling](https://codemirror.net/6/examples/styling/)
+- [CodeMirror6 Examples](https://codemirror.net/6/examples/)
+- [CodeMirror6 Example: Writing a Language Package](https://codemirror.net/6/examples/lang-package/)
+- [CodeMirror6 Example: Styling](https://codemirror.net/6/examples/styling/)
 - [CodeMirror discuss](https://discuss.codemirror.net/)
+
+### CodeMirror packages
+
+- [CodeMirror6 Languages](https://github.com/orgs/codemirror/repositories?q=lang-&type=all)
+- [CodeMirror6 Themes](https://github.com/orgs/codemirror/repositories?q=theme&type=all)
+
+---
 
 ### Legacy version
 
