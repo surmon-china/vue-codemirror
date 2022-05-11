@@ -37,7 +37,7 @@
 
 ---
 
-### How to use
+### Usage
 
 #### Install
 
