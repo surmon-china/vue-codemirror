@@ -24,8 +24,8 @@
 
 ### Legacy version
 
-- [vue-codemirror@4.0.0 (Vue2 / CodeMirror5)](https://github.com/surmon-china/vue-codemirror/tree/v4.0.0)
 - [Examples (Vue2)](https://v1.github.surmon.me/vue-codemirror)
+- [vue-codemirror@4.0.0 (Vue2 / CodeMirror5)](https://github.com/surmon-china/vue-codemirror/tree/v4.0.0)
 
 ---
 
