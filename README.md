@@ -12,9 +12,16 @@
 
 [CodeMirror(6)](https://codemirror.net/6/docs/) component for Vue(3).
 
-[**Example site**](https://github.surmon.me/vue-codemirror)
+[**Example Site**](https://github.surmon.me/vue-codemirror)
 
-### Documentation
+#### Legacy version
+
+- [Examples (Vue2)](https://v1.github.surmon.me/vue-codemirror)
+- [vue-codemirror@4.0.0 (Vue2 / CodeMirror5)](https://github.com/surmon-china/vue-codemirror/tree/v4.0.0)
+
+---
+
+#### Documentation
 
 - [CodeMirror6 Guide](https://codemirror.net/6/docs/guide/)
 - [CodeMirror6 APIs](https://codemirror.net/6/docs/ref/)
@@ -23,17 +30,10 @@
 - [CodeMirror6 Example: Styling](https://codemirror.net/6/examples/styling/)
 - [CodeMirror Forum](https://discuss.codemirror.net/)
 
-### CodeMirror packages
+#### CodeMirror packages
 
 - [CodeMirror6 Languages](https://github.com/orgs/codemirror/repositories?q=lang-&type=all)
 - [CodeMirror6 Themes](https://github.com/orgs/codemirror/repositories?q=theme&type=all)
-
----
-
-### Legacy version
-
-- [Examples (Vue2)](https://v1.github.surmon.me/vue-codemirror)
-- [vue-codemirror@4.0.0 (Vue2 / CodeMirror5)](https://github.com/surmon-china/vue-codemirror/tree/v4.0.0)
 
 ---
 
@@ -68,14 +68,13 @@ yarn @codemirror/theme-one-dark
 ```vue
 <template>
   <codemirror
-    class="codemirror"
+    v-model="code"
+    placeholder="Code gose here..."
+    :style="{ height: '400px' }"
     :autofocus="true"
-    placeholder="input..."
     :indent-with-tab="true"
     :tabSize="2"
-    :style="{ height: '400px' }"
     :extensions="extensions"
-    v-model="code"
     @ready="log('ready', $event)"
     @change="log('change', $event)"
     @focus="log('focus', $event)"
@@ -121,7 +120,7 @@ app.use(VueCodemirror, {
   disabled: false,
   indentWithTab: true,
   tabSize: 2,
-  placeholder: 'input...',
+  placeholder: 'Code gose here...',
   extensions: [basicSetup]
   // ...
 })
