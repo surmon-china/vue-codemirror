@@ -121,17 +121,18 @@ app.use(VueCodemirror, {
 
 ### Component Props
 
-| prop          | description                                               | type                     | default |
-| :------------ | :-------------------------------------------------------- | :----------------------- | :------ |
-| autofocus     | Focus editor immediately after mounted.                   | `Boolean`                | `false` |
-| disabled      | Disable input behavior and disable change state.          | `Boolean`                | `false` |
-| indentWithTab | Bind keyboard Tab key event.                              | `Boolean`                | `true`  |
-| tabSize       | Specify the indent when the Tab key is pressed.           | `Number`                 | `2`     |
-| placeholder   | Display when empty.                                       | `String`                 | `''`    |
-| style         | The CSS style object that acts on the CodeMirror itself.  | `Object`                 | `{}`    |
-| extensions    | Passed to CodeMirror `EditorState.create({ extensions })` | `Extension`              | `[]`    |
-| selection     | Passed to CodeMirror `EditorState.create({ selection })`  | `EditorSelection`        | -       |
-| root          | Passed to CodeMirror `new EditorView({ root })`           | `ShadowRoot \| Document` | -       |
+| prop          | description                                                              | type                     | default |
+| :------------ | :----------------------------------------------------------------------- | :----------------------- | :------ |
+| modelValue    | The input values accepted by the component also support two-way binding. | `String`                 | `''`    |
+| autofocus     | Focus editor immediately after mounted.                                  | `Boolean`                | `false` |
+| disabled      | Disable input behavior and disable change state.                         | `Boolean`                | `false` |
+| indentWithTab | Bind keyboard Tab key event.                                             | `Boolean`                | `true`  |
+| tabSize       | Specify the indent when the Tab key is pressed.                          | `Number`                 | `2`     |
+| placeholder   | Display when empty.                                                      | `String`                 | `''`    |
+| style         | The CSS style object that acts on the CodeMirror itself.                 | `Object`                 | `{}`    |
+| extensions    | Passed to CodeMirror `EditorState.create({ extensions })`                | `Extension`              | `[]`    |
+| selection     | Passed to CodeMirror `EditorState.create({ selection })`                 | `EditorSelection`        | -       |
+| root          | Passed to CodeMirror `new EditorView({ root })`                          | `ShadowRoot \| Document` | -       |
 
 ### Component Events
 
