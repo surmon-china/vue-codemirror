@@ -12,7 +12,7 @@
 
 [CodeMirror(6)](https://codemirror.net/6) component for Vue(3).
 
-**vue-codemirror** v5 has been released, a new version based on [CodeMirorr@6](https://codemirror.net/6) and only available for Vue3; since CodeMirorr@6 is developed with native ES Modules, the new version will no longer support direct browser references to UMD modules; in short, the new version is ⚠️ **completely NOT compatible** with that of previous version. If you wish to continue using Vue2 or a lower version of CodeMirorr, please follow the legacy versions below.
+**vue-codemirror** v5 has been released. This is a new version based on [CodeMirror@6](https://codemirror.net/6) and is available to Vue3 only. Since CodeMirror@6 is developed with native ES Modules, the new version will no longer support direct browser references to UMD modules. In short, the new version is ⚠️ **completely NOT compatible** with previous versions. If you wish to continue using Vue2 or a lower version of CodeMirror, please refer to the legacy versions below.
 
 This [**example site**](https://github.surmon.me/vue-codemirror) contains most of what you want.
 
