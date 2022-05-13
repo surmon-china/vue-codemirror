@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "ES6",
+    "moduleResolution": "node",
+    "strict": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "lib": ["esnext", "dom"],
+    "outDir": "dist",
+    "declaration": true,
+    "types": ["vitest"]
+  },
+  "include": ["src/**/*.ts", "dev/**/*"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
