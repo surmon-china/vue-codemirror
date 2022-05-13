@@ -10,7 +10,7 @@
 &nbsp;
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=for-the-badge)](/LICENSE)
 
-[CodeMirror(6)](https://codemirror.net/6/docs/) component for Vue(3).
+[CodeMirror(6)](https://codemirror.net/6) component for Vue(3).
 
 **vue-codemirror** v5 has been released, a new version based on [CodeMirorr@6](https://codemirror.net/6) and only available for Vue3; since CodeMirorr@6 is developed with native ES Modules, the new version will no longer support direct browser references to UMD modules; in short, the new version is ⚠️ **completely NOT compatible** with that of previous version. If you wish to continue using Vue2 or a lower version of CodeMirorr, please follow the legacy versions below.
 
