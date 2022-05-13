@@ -28,7 +28,6 @@ export const createState = ({ config, ...events }: EditorStateCreatorOptions): E
         if (viewUpdate.focusChanged) {
           viewUpdate.view.hasFocus ? events.onFocus(viewUpdate) : events.onBlur(viewUpdate)
         }
-        viewUpdate.view.hasFocus
       })
     ]
   })
