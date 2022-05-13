@@ -14,6 +14,8 @@
 
 [**Example Site**](https://github.surmon.me/vue-codemirror)
 
+**vue-codemirror** v5 has been released, a new version based on [CodeMirorr@6](https://codemirror.net/6) and only available for Vue3; since CodeMirorr@6 is developed with native ES Modules, the new version will no longer support direct browser references to UMD modules; in short, the new version is **completely NOT compatible** with that of previous version. If you wish to continue using Vue2 or a lower version of CodeMirorr, please follow the legacy versions below.
+
 #### Legacy version
 
 - [Examples (Vue2)](https://v1.github.surmon.me/vue-codemirror)
