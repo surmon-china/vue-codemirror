@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+### 5.0.1 (2022-05-14)
+
+- Use the correct version dependencies for the `@codemirror/*` package.
+
 ### 5.0.0-beta.1
 
 - Upgrade to Vue@3
