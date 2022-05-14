@@ -19,7 +19,7 @@ This [**example site**](https://github.surmon.me/vue-codemirror) contains most o
 #### Legacy version
 
 - [examples](https://v1.github.surmon.me/vue-codemirror) (Vue2)
-- [vue-codemirror@4.0.0](https://github.com/surmon-china/vue-codemirror/tree/v4.0.0) (Vue2 / CodeMirror5)
+- [vue-codemirror@4.x](https://github.com/surmon-china/vue-codemirror/tree/v4.0.6) (Vue2 / CodeMirror5)
 
 ---
 
