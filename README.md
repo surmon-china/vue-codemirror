@@ -55,12 +55,12 @@ npm install vue-codemirror --save
 
 ```bash
 # CodeMirror languages...
-yarn @codemirror/lang-html
-yarn @codemirror/lang-json
-yarn @codemirror/lang-javascript
+yarn add @codemirror/lang-html
+yarn add @codemirror/lang-json
+yarn add @codemirror/lang-javascript
 
 # CodeMirror themes...
-yarn @codemirror/theme-one-dark
+yarn add @codemirror/theme-one-dark
 
 # more CodeMirror packages...
 ```
