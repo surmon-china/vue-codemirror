@@ -71,7 +71,7 @@ yarn @codemirror/theme-one-dark
 <template>
   <codemirror
     v-model="code"
-    placeholder="Code gose here..."
+    placeholder="Code goes here..."
     :style="{ height: '400px' }"
     :autofocus="true"
     :indent-with-tab="true"
@@ -122,7 +122,7 @@ app.use(VueCodemirror, {
   disabled: false,
   indentWithTab: true,
   tabSize: 2,
-  placeholder: 'Code gose here...',
+  placeholder: 'Code goes here...',
   extensions: [basicSetup]
   // ...
 })
