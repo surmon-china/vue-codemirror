@@ -49,7 +49,7 @@ export const setDoc = (view: EditorView, newDoc: string) => {
 export const destroy = (view: EditorView) => view.destroy()
 export const focus = (view: EditorView) => view.focus() // TODO: focus on the last word
 
-// https://codemirror.net/6/examples/config/
+// https://codemirror.net/examples/config/
 // https://github.com/uiwjs/react-codemirror/blob/22cc81971a/src/useCodeMirror.ts#L144
 // https://gist.github.com/s-cork/e7104bace090702f6acbc3004228f2cb
 const rerunCompartment = () => {
@@ -66,7 +66,7 @@ const rerunCompartment = () => {
   return { compartment, run }
 }
 
-// https://codemirror.net/6/examples/reconfigure/
+// https://codemirror.net/examples/reconfigure/
 export const rerunExtension = () => rerunCompartment().run
 export const toggleExtension = (extension: Extension) => {
   const { compartment, run } = rerunCompartment()
@@ -82,9 +82,9 @@ export const extensions = {
   placeholder: (string: string) => placeholder(string),
   disable: () => [EditorView.editable.of(false), EditorState.readOnly.of(true)],
   enable: () => [EditorView.editable.of(true), EditorState.readOnly.of(false)],
-  // https://codemirror.net/6/examples/tab/
+  // https://codemirror.net/examples/tab/
   indentWithTab: () => keymap.of([indentWithTab]),
   tabSize: (tabSize: number) => [EditorState.tabSize.of(tabSize), indentUnit.of(' '.repeat(tabSize))],
-  // https://codemirror.net/6/examples/styling/
+  // https://codemirror.net/examples/styling/
   style: (style: CSS.Properties) => EditorView.theme({ '&': { ...style } })
 }

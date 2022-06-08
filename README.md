@@ -10,9 +10,9 @@
 &nbsp;
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=for-the-badge)](/LICENSE)
 
-[CodeMirror(6)](https://codemirror.net/6) component for Vue(3).
+[CodeMirror(6)](https://codemirror.net) component for Vue(3).
 
-**vue-codemirror** v5 has been released. This is a new version based on [CodeMirror@6](https://codemirror.net/6) and is available to Vue3 only. Since CodeMirror@6 is developed with native ES Modules, the new version will no longer support direct browser references to UMD modules. In short, the new version is ⚠️ **completely NOT compatible** with previous versions. If you wish to continue using Vue2 or a lower version of CodeMirror, please refer to the legacy versions below.
+**vue-codemirror** v5 has been released. This is a new version based on [CodeMirror@6](https://codemirror.net) and is available to Vue3 only. Since CodeMirror@6 is developed with native ES Modules, the new version will no longer support direct browser references to UMD modules. In short, the new version is ⚠️ **completely NOT compatible** with previous versions. If you wish to continue using Vue2 or a lower version of CodeMirror, please refer to the legacy versions below.
 
 This [**example site**](https://github.surmon.me/vue-codemirror) contains most of what you want.
 
@@ -25,11 +25,11 @@ This [**example site**](https://github.surmon.me/vue-codemirror) contains most o
 
 #### Documentation
 
-- [CodeMirror6 Guide](https://codemirror.net/6/docs/guide/)
-- [CodeMirror6 APIs](https://codemirror.net/6/docs/ref/)
-- [CodeMirror6 Examples](https://codemirror.net/6/examples/)
-- [CodeMirror6 Example: Writing a Language Package](https://codemirror.net/6/examples/lang-package/)
-- [CodeMirror6 Example: Styling](https://codemirror.net/6/examples/styling/)
+- [CodeMirror6 Guide](https://codemirror.net/docs/guide/)
+- [CodeMirror6 APIs](https://codemirror.net/docs/ref/)
+- [CodeMirror6 Examples](https://codemirror.net/examples/)
+- [CodeMirror6 Example: Writing a Language Package](https://codemirror.net/examples/lang-package/)
+- [CodeMirror6 Example: Styling](https://codemirror.net/examples/styling/)
 - [CodeMirror Forum](https://discuss.codemirror.net/)
 
 #### CodeMirror packages
@@ -156,7 +156,7 @@ app.use(VueCodemirror, {
 
 ### Basic Setup
 
-The [basic-setup](https://codemirror.net/6/docs/ref/#basic-setup) extension is integrated by default in the vue-codemirror configuration, and is intended as a handy helper to quickly set up CodeMirror without having to install and import a lot of standalone packages. If you want to override the default behavior of the config, just pass the empty array when installing the component globally.
+The [basic-setup](https://codemirror.net/docs/ref/#basic-setup) extension is integrated by default in the vue-codemirror configuration, and is intended as a handy helper to quickly set up CodeMirror without having to install and import a lot of standalone packages. If you want to override the default behavior of the config, just pass the empty array when installing the component globally.
 
 ```js
 app.use(VueCodemirror, {
