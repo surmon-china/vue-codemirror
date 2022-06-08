@@ -10,13 +10,13 @@
 
 
 ## vue-codemirror
-[CodeMirror](http://codemirror.net/) component for Vue.
+[CodeMirror(5)](http://codemirror.net/5/) component for Vue(2).
 
-基于 [CodeMirror](http://codemirror.net/)，适用于 Vue 的 Web 代码编辑器。
+基于 [CodeMirror(5)](http://codemirror.net/5/)，适用于 Vue(2) 的 Web 代码编辑器。
 
 ### Example
 
-- [Demo Page](https://surmon-china.github.io/vue-codemirror)
+- [Demo Page](https://v1.github.surmon.me/vue-codemirror)
 - [CDN Example](https://jsfiddle.net/surmon/cp01hvq2/)
 - [Nuxt.js/SSR example code](https://github.com/surmon-china/surmon-china.github.io/tree/source/projects/vue-codemirror/nuxt)
 
@@ -259,7 +259,7 @@ CodeMirror.defineMode('mymode', () => {
 
 ### CodeMirror language mode types
 
-Codemirror language mode have [string | object](https://codemirror.net/doc/manual.html#option_mode) types.
+Codemirror language mode have [string | object](https://codemirror.net/5/doc/manual.html#option_mode) types.
 
 ``` javascript
 // MIME types
@@ -289,8 +289,8 @@ mode: {
 
 ### CodeMirror
 
-- [CodeMirror language modes](http://codemirror.net/mode/) (MIME types defined)
-- [CodeMirror Autoresize](https://codemirror.net/demo/resize.html)
-- [CodeMirror themes](http://codemirror.net/demo/theme.html)
-- [CodeMirror events](https://codemirror.net/doc/manual.html#events)
-- [CodeMirror APIs](http://codemirror.net/doc/manual.html#config)
+- [CodeMirror language modes](http://codemirror.net/5/mode/) (MIME types defined)
+- [CodeMirror Autoresize](https://codemirror.net/5/demo/resize.html)
+- [CodeMirror themes](http://codemirror.net/5/demo/theme.html)
+- [CodeMirror events](https://codemirror.net/5/doc/manual.html#events)
+- [CodeMirror APIs](http://codemirror.net/5/doc/manual.html#config)
