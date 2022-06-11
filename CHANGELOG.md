@@ -1,16 +1,16 @@
 ## CHANGELOG
 
-### 5.1.0 (2022-06-12)
+### v5.1.0 (2022-06-12)
 
 - Upgrade codemirror dependencies to 6.x
 - The package no longer exports `@codemirror/view` `@codemirror/state` `@codemirror/basic-setup`.
 - Change the package [from `@codemirror/example-setup` to just `codemirror`](https://github.com/codemirror/basic-setup/blob/main/CHANGELOG.md#breaking-changes).
 
-### 5.0.1 (2022-05-14)
+### v5.0.1 (2022-05-14)
 
 - Use the correct version dependencies for the `@codemirror/*` package.
 
-### 5.0.0-beta.1
+### v5.0.0-beta.1
 
 - Upgrade to Vue@3
 - Upgrade to CodeMirror@v6
