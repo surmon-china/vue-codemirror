@@ -10,9 +10,9 @@ import {
   ExtractPropTypes
 } from 'vue'
 import * as CSS from 'csstype'
+import { basicSetup } from 'codemirror'
 import { EditorState, EditorStateConfig } from '@codemirror/state'
 import { EditorView, ViewUpdate } from '@codemirror/view'
-import { basicSetup } from '@codemirror/basic-setup'
 import { useGlobalConfig } from './config'
 import * as cm from './codemirror'
 

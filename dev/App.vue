@@ -7,8 +7,8 @@
   import { oneDark } from '@codemirror/theme-one-dark'
   import { Codemirror } from '../src'
 
-  const themes = { oneDark }
-  const languages = {
+  const themes: any = { oneDark }
+  const languages: any = {
     javascript: javascript(),
     html: html(),
     json: json(),
