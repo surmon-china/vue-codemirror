@@ -67,7 +67,7 @@
     "@codemirror/lang-xml": "^6.0.0",
     "@codemirror/legacy-modes": "^6.0.0",
     "@codemirror/theme-one-dark": "^6.0.0",
-    "@surmon-china/libundler": "^2.2.0",
+    "@surmon-china/libundler": "^2.3.0",
     "@typescript-eslint/eslint-plugin": "^5.9.1",
     "@typescript-eslint/parser": "^5.9.1",
     "@vitejs/plugin-vue": "^2.2.0",
