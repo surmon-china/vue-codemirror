@@ -6,6 +6,6 @@ export default defineConfig({
   entry: './src/index.ts',
   outDir: './dist',
   targets: ['esm', 'cjs'],
-  external: ['vue', 'csstype', /@codemirror\/.*/],
+  external: ['vue', 'csstype', 'codemirror', /@codemirror\/.*/],
   exports: 'named'
 })

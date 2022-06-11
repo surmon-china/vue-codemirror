@@ -2,7 +2,7 @@
 
 ### 5.1.0 (2022-06-12)
 
-- Update codemirror dependencies to 6.x
+- Upgrade codemirror dependencies to 6.x
 - The package no longer exports `@codemirror/view` `@codemirror/state` `@codemirror/basic-setup`.
 - Change the package [from `@codemirror/example-setup` to just `codemirror`](https://github.com/codemirror/basic-setup/blob/main/CHANGELOG.md#breaking-changes).
 
