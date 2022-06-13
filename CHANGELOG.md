@@ -1,5 +1,28 @@
 ## CHANGELOG
 
+### v6.0.0 (2022-06-13)
+
+**Breaking changes**
+
+1. The package no longer depends on the codemirror package and now requires you to install the codemirror dependency manually.
+
+e.g. `npm install codemirror vue-codemirror`
+
+2. The package no longer exports the original codemirror package. If you need import interface from codemirror, you now need to make codemirror explicitly dependent in your `package.json`.
+
+e.g.
+
+```json
+"dependencies": {
+  "@codemirror/state": "6.x"
+}
+```
+
+```ts
+import { EditorView } from 'codemirror'
+import { EditorState } from '@codemirror/state'
+```
+
 ### v5.1.0 (2022-06-12)
 
 - Upgrade codemirror dependencies to 6.x

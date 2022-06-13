@@ -12,7 +12,7 @@
 
 [CodeMirror(6)](https://codemirror.net) component for Vue(3).
 
-**vue-codemirror** v5 has been released. This is a new version based on [CodeMirror@6](https://codemirror.net) and is available to Vue3 only. Since CodeMirror@6 is developed with native ES Modules, the new version will no longer support direct browser references to UMD modules. In short, the new version is ⚠️ **completely NOT compatible** with previous versions. If you wish to continue using Vue2 or a lower version of CodeMirror, please refer to the legacy versions below.
+**vue-codemirror** v5/v6 has been released. This is a new version based on [CodeMirror@6](https://codemirror.net) and is available to Vue3 only. Since CodeMirror@6 is developed with native ES Modules, the new version will no longer support direct browser references to UMD modules. In short, the new version is ⚠️ **completely NOT compatible** with previous versions. If you wish to continue using Vue2 or a lower version of CodeMirror, please refer to the legacy versions below.
 
 This [**example site**](https://github.surmon.me/vue-codemirror) contains most of what you want.
 
@@ -44,11 +44,11 @@ This [**example site**](https://github.surmon.me/vue-codemirror) contains most o
 #### Install
 
 ```bash
-yarn add vue-codemirror
+yarn add codemirror vue-codemirror
 ```
 
 ```bash
-npm install vue-codemirror --save
+npm install codemirror vue-codemirror --save
 ```
 
 #### Depending on your actual needs, you may need to install more CodeMirror packages
@@ -65,6 +65,20 @@ yarn add @codemirror/theme-one-dark
 # more CodeMirror packages...
 ```
 
+#### If you need import API/interface from codemirror, you need to make codemirror explicitly dependent in your `package.json`
+
+e.g.
+
+```json
+"dependencies": {
+  "@codemirror/state": "6.x"
+}
+```
+
+```ts
+import { EditorState } from '@codemirror/state'
+```
+
 #### local component
 
 ```vue
@@ -75,7 +89,7 @@ yarn add @codemirror/theme-one-dark
     :style="{ height: '400px' }"
     :autofocus="true"
     :indent-with-tab="true"
-    :tabSize="2"
+    :tab-size="2"
     :extensions="extensions"
     @ready="log('ready', $event)"
     @change="log('change', $event)"
@@ -111,8 +125,8 @@ yarn add @codemirror/theme-one-dark
 
 ```javascript
 import { createApp } from 'vue'
+import { basicSetup } from 'codemirror'
 import VueCodemirror from 'vue-codemirror'
-import { basicSetup } from '@codemirror/basic-setup'
 
 const app = createApp()
 
@@ -156,7 +170,7 @@ app.use(VueCodemirror, {
 
 ### Basic Setup
 
-The [basic-setup](https://codemirror.net/docs/ref/#basic-setup) extension is integrated by default in the vue-codemirror configuration, and is intended as a handy helper to quickly set up CodeMirror without having to install and import a lot of standalone packages. If you want to override the default behavior of the config, just pass the empty array when installing the component globally.
+The [basic-setup](https://codemirror.net/docs/ref/#basic-setup) extension is integrated by default in the vue-codemirror configuration and is intended as a handy helper to quickly set up CodeMirror without having to install and import a lot of standalone packages. If you want to override the default behavior of the config, just pass the empty array when installing the component globally.
 
 ```js
 app.use(VueCodemirror, {

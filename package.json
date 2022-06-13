@@ -1,14 +1,14 @@
 {
   "name": "vue-codemirror",
-  "description": "CodeMirror component for Vue",
-  "version": "5.1.0",
+  "description": "CodeMirror code editor component for Vue",
+  "version": "6.0.0",
   "homepage": "https://github.com/surmon-china/vue-codemirror#readme",
   "license": "MIT",
   "keywords": [
     "vue-codemirror",
     "vue codemirror",
     "vue code editor",
-    "vue web ide"
+    "web IDE vue"
   ],
   "author": {
     "name": "Surmon",
@@ -42,10 +42,10 @@
     "release": ". ./scripts/release.sh"
   },
   "peerDependencies": {
-    "vue": "3.x"
+    "vue": "3.x",
+    "codemirror": "6.x"
   },
   "dependencies": {
-    "codemirror": "6.x",
     "@codemirror/commands": "6.x",
     "@codemirror/language": "6.x",
     "@codemirror/state": "6.x",
@@ -53,6 +53,7 @@
     "csstype": "^2.6.8"
   },
   "devDependencies": {
+    "codemirror": "6.x",
     "@codemirror/lang-cpp": "^6.0.0",
     "@codemirror/lang-html": "^6.0.0",
     "@codemirror/lang-java": "^6.0.0",
