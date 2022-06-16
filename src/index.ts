@@ -12,6 +12,6 @@ export const install: Plugin = (app, defaultConfig?: Props) => {
 }
 
 export default {
-  Codemirror: Component,
+  Codemirror,
   install
 }
