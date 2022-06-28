@@ -175,7 +175,7 @@ The [basic-setup](https://codemirror.net/docs/ref/#basic-setup) extension is int
 ```js
 app.use(VueCodemirror, {
   // keep the global default extensions empty
-  extension: []
+  extensions: []
 })
 ```
 
