@@ -79,7 +79,7 @@ e.g.
 import { EditorState } from '@codemirror/state'
 ```
 
-#### local component
+#### Local component
 
 ```vue
 <template>
@@ -121,7 +121,7 @@ import { EditorState } from '@codemirror/state'
 </script>
 ```
 
-#### global component
+#### Global component
 
 ```javascript
 import { createApp } from 'vue'
