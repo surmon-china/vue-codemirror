@@ -7,7 +7,9 @@ import {
   onBeforeUnmount,
   h,
   PropType,
-  ExtractPropTypes
+  ExtractPropTypes,
+  RendererNode,
+  getCurrentInstance
 } from 'vue'
 import * as CSS from 'csstype'
 import { basicSetup } from 'codemirror'
@@ -47,6 +49,28 @@ export const DEFAULT_CONFIG: Readonly<Partial<Props>> = Object.freeze({
   placeholder: '',
   extensions: [basicSetup]
 })
+
+function hasUnmounted(test: RendererNode | null | undefined, func: (...args: unknown[]) => unknown) {
+  if (test === null) return
+  if (typeof test === 'undefined') return
+  if (!document.body.contains(test as Node)) func()
+
+  const observer = new MutationObserver((mutations) => {
+    if (
+      mutations.some((mutation) =>
+        Array.from(mutation.removedNodes).some((node) => node.contains(test as Node))
+      )
+    ) {
+      observer.disconnect()
+      func()
+    }
+  })
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  })
+}
 
 export default defineComponent({
   name: 'VueCodemirror',
@@ -191,7 +215,10 @@ export default defineComponent({
 
     onBeforeUnmount(() => {
       // destroy codemirror
-      cm.destroy(component.view)
+      const app = getCurrentInstance()
+      hasUnmounted(app?.vnode.el, () => {
+        cm.destroy(component.view)
+      })
     })
 
     return () => {
