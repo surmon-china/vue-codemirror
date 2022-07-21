@@ -33,10 +33,8 @@ export const createEditorState = ({ onUpdate, onChange, onFocus, onBlur, ...conf
   })
 }
 
+export const createEditorView = (config: EditorViewConfig) => new EditorView({ ...config })
 export const destroyEditorView = (view: EditorView) => view.destroy()
-export const createEditorView = (config: EditorViewConfig) => {
-  return new EditorView({ ...config })
-}
 
 // https://codemirror.net/examples/config/
 // https://github.com/uiwjs/react-codemirror/blob/22cc81971a/src/useCodeMirror.ts#L144
@@ -61,10 +59,7 @@ export const createEditorExtensionToggler = (view: EditorView, extension: Extens
   }
 }
 
-export const createEditorTools = (view: EditorView) => {
-  // UE state
-  const focus = () => view.focus()
-
+export const getEditorTools = (view: EditorView) => {
   // doc state
   const getDoc = () => view.state.doc.toString()
   const setDoc = (newDoc: string) => {
@@ -78,6 +73,9 @@ export const createEditorTools = (view: EditorView) => {
       })
     }
   }
+
+  // UX operations
+  const focus = () => view.focus()
 
   // reconfigure extension
   const { run: reExtensions } = createEditorCompartment(view)

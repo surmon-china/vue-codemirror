@@ -1,7 +1,7 @@
 import { defineComponent, shallowRef, computed, watch, toRaw, onMounted, onBeforeUnmount, h } from 'vue'
 import { EditorState } from '@codemirror/state'
 import { EditorView } from '@codemirror/view'
-import { createEditorState, createEditorView, createEditorTools, destroyEditorView } from './codemirror'
+import { createEditorState, createEditorView, destroyEditorView, getEditorTools } from './codemirror'
 import { useGlobalConfig, DEFAULT_CONFIG } from './config'
 import { props, ConfigProps } from './props'
 import { events, EventKey } from './events'
@@ -57,7 +57,7 @@ export default defineComponent({
         root: config.value.root
       })
 
-      const editorTools = createEditorTools(view.value)
+      const editorTools = getEditorTools(view.value)
 
       // watch prop.modelValue
       watch(
