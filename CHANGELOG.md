@@ -1,5 +1,11 @@
 ## CHANGELOG
 
+### v6.0.1 (2022-07-22)
+
+- feat: add `autoDestroy` prop for [#156](https://github.com/surmon-china/vue-codemirror/pull/156).
+- feat: refactoring component.
+- chore: upgrade deps and upgrade vite to v3.
+
 ### v6.0.0 (2022-06-13)
 
 **Breaking changes**
@@ -74,6 +80,6 @@ add props placeholder
 
 #### project
 
-- add brower support
+- add browser support
 - add test scripts
 - update babel and webpack configs

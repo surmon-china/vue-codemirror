@@ -17,7 +17,7 @@
 
   const consoleLog = console.log
   const code = shallowRef(`console.log('Hello World')`)
-  const cm = shallowRef()
+  const view = shallowRef()
   const state = reactive({
     disabled: false,
     indentWithTab: true,
@@ -29,6 +29,10 @@
     theme: 'oneDark'
   })
 
+  const handleReady = (payload: any) => {
+    console.log('handleReady payload:', payload)
+  }
+
   const extensions = computed(() => {
     const result = []
     result.push(languages[state.language])
@@ -39,7 +43,7 @@
   })
 
   onMounted(() => {
-    console.log('cm', cm)
+    console.log('mounted view:', view)
   })
 </script>
 
@@ -108,7 +112,7 @@
         :style="{ backgroundColor: state.backgroundColor }"
         :extensions="extensions"
         v-model="code"
-        @ready="consoleLog('ready', $event)"
+        @ready="handleReady"
         @change="consoleLog('change', $event)"
         @focus="consoleLog('focus', $event)"
         @blur="consoleLog('blur', $event)"

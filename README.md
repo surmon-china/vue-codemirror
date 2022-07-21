@@ -153,6 +153,7 @@ app.use(VueCodemirror, {
 | tabSize       | Specify the indent when the Tab key is pressed.                          | `Number`                 | `2`     |
 | placeholder   | Display when empty.                                                      | `String`                 | `''`    |
 | style         | The CSS style object that acts on the CodeMirror itself.                 | `Object`                 | `{}`    |
+| autoDestroy   | Auto destroy the CodeMirror instance before the component unmount.       | `Boolean`                | `true`  |
 | extensions    | Passed to CodeMirror `EditorState.create({ extensions })`                | `Extension`              | `[]`    |
 | selection     | Passed to CodeMirror `EditorState.create({ selection })`                 | `EditorSelection`        | -       |
 | root          | Passed to CodeMirror `new EditorView({ root })`                          | `ShadowRoot \| Document` | -       |
