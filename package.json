@@ -50,7 +50,7 @@
     "@codemirror/language": "6.x",
     "@codemirror/state": "6.x",
     "@codemirror/view": "6.x",
-    "csstype": "^2.6.8"
+    "csstype": "^3.1.0"
   },
   "devDependencies": {
     "codemirror": "6.x",
@@ -69,20 +69,20 @@
     "@codemirror/legacy-modes": "^6.0.0",
     "@codemirror/theme-one-dark": "^6.0.0",
     "@surmon-china/libundler": "^2.3.0",
-    "@typescript-eslint/eslint-plugin": "^5.9.1",
-    "@typescript-eslint/parser": "^5.9.1",
-    "@vitejs/plugin-vue": "^2.2.0",
-    "@vue/test-utils": "^2.0.0-rc.21",
-    "c8": "^7.11.2",
-    "eslint": "^8.7.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.7",
+    "@typescript-eslint/parser": "^5.30.7",
+    "@vitejs/plugin-vue": "^3.0.0",
+    "@vue/test-utils": "^2.0.0",
+    "c8": "^7.12.0",
+    "eslint": "^8.20.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "jsdom": "^19.0.0",
-    "prettier": "^2.6.1",
-    "sass": "^1.49.9",
-    "typescript": "^4.5.4",
-    "vite": "^2.9.8",
-    "vitest": "^0.11.0",
+    "eslint-plugin-prettier": "^4.2.0",
+    "jsdom": "^20.0.0",
+    "prettier": "^2.7.0",
+    "sass": "^1.53.0",
+    "typescript": "^4.7.0",
+    "vite": "^3.0.0",
+    "vitest": "^0.18.1",
     "vue": "^3.2.31"
   }
 }
