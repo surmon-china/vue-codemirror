@@ -3,6 +3,7 @@
   "description": "CodeMirror code editor component for Vue",
   "version": "6.0.2",
   "homepage": "https://github.com/surmon-china/vue-codemirror#readme",
+  "author": "Surmon",
   "license": "MIT",
   "keywords": [
     "vue-codemirror",
@@ -10,10 +11,6 @@
     "vue code editor",
     "web IDE vue"
   ],
-  "author": {
-    "name": "Surmon",
-    "url": "https://github.com/surmon-china"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/surmon-china/vue-codemirror.git"
