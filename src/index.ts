@@ -10,6 +10,7 @@ export { DEFAULT_CONFIG } from './config'
 export const Codemirror = Component
 export const install: Plugin = (app, defaultConfig?: Props) => {
   app.component(Component.name, Component)
+  app.component('Codemirror', Component)
   injectGlobalConfig(app, defaultConfig)
 }
 

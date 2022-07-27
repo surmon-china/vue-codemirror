@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+### v6.0.2 (2022-07-27)
+
+- fix: Use the correct global component name [#161](https://github.com/surmon-china/vue-codemirror/discussions/161)
+
 ### v6.0.1 (2022-07-22)
 
 - feat: add `autoDestroy` prop for [#156](https://github.com/surmon-china/vue-codemirror/pull/156).
