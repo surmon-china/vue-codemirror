@@ -16,7 +16,8 @@
     "url": "https://github.com/surmon-china/vue-codemirror.git"
   },
   "files": [
-    "dist"
+    "dist",
+    "CHANGELOG.md"
   ],
   "main": "./dist/vue-codemirror.cjs.js",
   "module": "./dist/vue-codemirror.esm.js",
