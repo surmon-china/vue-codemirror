@@ -132,6 +132,7 @@ import { EditorState } from '@codemirror/state'
       return {
         code,
         extensions,
+        handleReady,
         log: console.log
       }
     }
