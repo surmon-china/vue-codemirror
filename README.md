@@ -118,6 +118,7 @@ import { EditorState } from '@codemirror/state'
         view.value = payload.view
       }
       
+      // Status is available at all times via Codemirror EditorView
       const getCodemirrorStates = () => {
         const state = view.value.state
         const ranges = state.selection.ranges
@@ -125,7 +126,7 @@ import { EditorState } from '@codemirror/state'
         const cursor = ranges[0].anchor
         const length = state.doc.length
         const lines = state.doc.lines
-        // more Codemirror state ...
+        // more state info ...
         // return ...
       }
 
