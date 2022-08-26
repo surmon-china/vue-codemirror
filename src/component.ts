@@ -97,6 +97,13 @@ export default defineComponent({
         { immediate: true }
       )
 
+      // watch prop.phrases
+      watch(
+        () => config.value.phrases,
+        (phrases) => editorTools.setPhrases(phrases!),
+        { immediate: true }
+      )
+
       // watch prop.placeholder
       watch(
         () => config.value.placeholder,
