@@ -1,4 +1,4 @@
-import * as CSS from 'csstype'
+import type { CSSProperties } from 'vue'
 import { PropType, ExtractPropTypes } from 'vue'
 import { EditorStateConfig } from '@codemirror/state'
 
@@ -14,7 +14,7 @@ export const configProps = {
   indentWithTab: NonDefaultBooleanType,
   tabSize: Number,
   placeholder: String,
-  style: Object as PropType<CSS.Properties>,
+  style: Object as PropType<CSSProperties>,
   autoDestroy: NonDefaultBooleanType,
   phrases: Object as PropType<Record<string, string>>,
   // codemirror options

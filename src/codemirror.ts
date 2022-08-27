@@ -1,4 +1,4 @@
-import * as CSS from 'csstype'
+import type { CSSProperties } from 'vue'
 import { EditorState, EditorStateConfig, Compartment, Extension, StateEffect } from '@codemirror/state'
 import { EditorView, EditorViewConfig, ViewUpdate, keymap, placeholder } from '@codemirror/view'
 import { indentWithTab } from '@codemirror/commands'
@@ -112,8 +112,8 @@ export const getEditorTools = (view: EditorView) => {
   // set style to editor element
   // https://codemirror.net/examples/styling/
   const { run: reStyle } = createEditorCompartment(view)
-  const setStyle = (style: CSS.Properties = {}) => {
-    reStyle(EditorView.theme({ '&': { ...style } }))
+  const setStyle = (style: CSSProperties = {}) => {
+    reStyle(EditorView.theme({ '&': { ...(style as any) } }))
   }
 
   return {

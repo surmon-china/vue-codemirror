@@ -1,12 +1,16 @@
 ## CHANGELOG
 
+### v6.1.1 (2022-08-28)
+
+- feat: use vue's built-in `CSSProperties` instead of `csstype`
+
 ### v6.1.0 (2022-08-27)
 
 - feat: add `phrases` prop [#166](https://github.com/surmon-china/vue-codemirror/pull/166)
 
 ### v6.0.2 (2022-07-27)
 
-- fix: Use the correct global component name [#161](https://github.com/surmon-china/vue-codemirror/discussions/161)
+- fix: use the correct global component name [#161](https://github.com/surmon-china/vue-codemirror/discussions/161)
 
 ### v6.0.1 (2022-07-22)
 
