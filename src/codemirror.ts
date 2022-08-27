@@ -96,6 +96,13 @@ export const getEditorTools = (view: EditorView) => {
     reTabSize([EditorState.tabSize.of(tabSize), indentUnit.of(' '.repeat(tabSize))])
   }
 
+  // phrases
+  // https://codemirror.net/examples/translate/
+  const { run: rePhrases } = createEditorCompartment(view)
+  const setPhrases = (phrases: Record<string, string>) => {
+    rePhrases([EditorState.phrases.of(phrases)])
+  }
+
   // set editor's placeholder
   const { run: rePlaceholder } = createEditorCompartment(view)
   const setPlaceholder = (value: string) => {
@@ -117,6 +124,7 @@ export const getEditorTools = (view: EditorView) => {
     toggleDisabled,
     toggleIndentWithTab,
     setTabSize,
+    setPhrases,
     setPlaceholder,
     setStyle
   }

@@ -19,7 +19,8 @@ export const configProps = {
   // codemirror options
   root: Object as PropType<ShadowRoot | Document>,
   extensions: Array as PropType<EditorStateConfig['extensions']>,
-  selection: Object as PropType<EditorStateConfig['selection']>
+  selection: Object as PropType<EditorStateConfig['selection']>,
+  phrases: Object
 }
 
 export const modelValueProp = {

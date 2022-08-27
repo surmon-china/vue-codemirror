@@ -1,50 +1,88 @@
 <script setup lang="ts">
-  import { reactive, shallowRef, computed, onMounted } from 'vue'
-  import { javascript } from '@codemirror/lang-javascript'
-  import { html } from '@codemirror/lang-html'
-  import { json } from '@codemirror/lang-json'
-  import { markdown } from '@codemirror/lang-markdown'
-  import { oneDark } from '@codemirror/theme-one-dark'
-  import { Codemirror } from '../src'
+import { reactive, shallowRef, computed, onMounted } from 'vue'
+import { javascript } from '@codemirror/lang-javascript'
+import { html } from '@codemirror/lang-html'
+import { json } from '@codemirror/lang-json'
+import { markdown } from '@codemirror/lang-markdown'
+import { oneDark } from '@codemirror/theme-one-dark'
+import { Codemirror } from '../src'
 
-  const themes: any = { oneDark }
-  const languages: any = {
-    javascript: javascript(),
-    html: html(),
-    json: json(),
-    markdown: markdown()
+const themes: any = { oneDark }
+const languages: any = {
+  javascript: javascript(),
+  html: html(),
+  json: json(),
+  markdown: markdown()
+}
+
+const consoleLog = console.log
+const code = shallowRef(`console.log('Hello World')`)
+const view = shallowRef()
+const state = reactive({
+  disabled: false,
+  indentWithTab: true,
+  tabSize: 4,
+  autofocus: true,
+  placeholder: 'input...',
+  backgroundColor: 'red',
+  language: 'javascript',
+  theme: 'oneDark',
+  phrases: 'en-us'
+})
+
+const handleReady = (payload: any) => {
+  console.log('handleReady payload:', payload)
+}
+
+const extensions = computed(() => {
+  const result = []
+  result.push(languages[state.language])
+  if (themes[state.theme]) {
+    result.push(themes[state.theme])
   }
+  return result
+})
 
-  const consoleLog = console.log
-  const code = shallowRef(`console.log('Hello World')`)
-  const view = shallowRef()
-  const state = reactive({
-    disabled: false,
-    indentWithTab: true,
-    tabSize: 4,
-    autofocus: true,
-    placeholder: 'input...',
-    backgroundColor: 'red',
-    language: 'javascript',
-    theme: 'oneDark'
-  })
+onMounted(() => {
+  console.log('mounted view:', view)
+})
 
-  const handleReady = (payload: any) => {
-    console.log('handleReady payload:', payload)
-  }
-
-  const extensions = computed(() => {
-    const result = []
-    result.push(languages[state.language])
-    if (themes[state.theme]) {
-      result.push(themes[state.theme])
-    }
-    return result
-  })
-
-  onMounted(() => {
-    console.log('mounted view:', view)
-  })
+const germanPhrases = {
+  // @codemirror/view
+  'Control character': 'Steuerzeichen',
+  // @codemirror/commands
+  'Selection deleted': 'Auswahl gelöscht',
+  // @codemirror/language
+  'Folded lines': 'Eingeklappte Zeilen',
+  'Unfolded lines': 'Ausgeklappte Zeilen',
+  to: 'bis',
+  'folded code': 'eingeklappter Code',
+  unfold: 'ausklappen',
+  'Fold line': 'Zeile einklappen',
+  'Unfold line': 'Zeile ausklappen',
+  // @codemirror/search
+  'Go to line': 'Springe zu Zeile',
+  go: 'OK',
+  Find: 'Suchen',
+  Replace: 'Ersetzen',
+  next: 'nächste',
+  previous: 'vorherige',
+  all: 'alle',
+  'match case': 'groß/klein beachten',
+  'by word': 'ganze Wörter',
+  replace: 'ersetzen',
+  'replace all': 'alle ersetzen',
+  close: 'schließen',
+  'current match': 'aktueller Treffer',
+  'replaced $ matches': '$ Treffer ersetzt',
+  'replaced match on line $': 'Treffer on Zeile $ ersetzt',
+  'on line': 'auf Zeile',
+  // @codemirror/autocomplete
+  Completions: 'Vervollständigungen',
+  // @codemirror/lint
+  Diagnostics: 'Diagnosen',
+  'No diagnostics': 'Keine Diagnosen'
+}
 </script>
 
 <template>
@@ -97,6 +135,14 @@
             </option>
           </select>
         </p>
+        <p>
+          <label for="phrases">phrases:</label>
+          <select name="phrases" id="phrases" v-model="state.phrases">
+            <option :value="option" :key="option" v-for="option in ['en-us', 'de-de']">
+              {{ option }}
+            </option>
+          </select>
+        </p>
       </div>
     </div>
     <div class="content">
@@ -111,6 +157,7 @@
         :disabled="state.disabled"
         :style="{ backgroundColor: state.backgroundColor }"
         :extensions="extensions"
+        :phrases="state.phrases === 'en-us' ? {} : germanPhrases"
         v-model="code"
         @ready="handleReady"
         @change="consoleLog('change', $event)"
@@ -122,47 +169,47 @@
 </template>
 
 <style lang="scss">
-  body {
-    margin: 0;
-  }
+body {
+  margin: 0;
+}
 
-  .example {
-    width: 100vw;
-    height: 100vh;
+.example {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .toolbar {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    margin-bottom: 1rem;
 
-    .toolbar {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1rem;
-
-      .state {
-        margin: 2rem 0;
-        margin-right: 2rem;
-        padding: 2em;
-        border: 1px solid #ccc;
-      }
-    }
-
-    .content {
-      display: flex;
-      width: 100%;
-      justify-content: center;
-
-      .code {
-        overflow: scroll;
-      }
-
-      .code,
-      .codemirror .cm-editor {
-        width: 30vw;
-        height: 50vh;
-        margin: 0 1rem;
-        border: 1px solid #ddd;
-      }
+    .state {
+      margin: 2rem 0;
+      margin-right: 2rem;
+      padding: 2em;
+      border: 1px solid #ccc;
     }
   }
+
+  .content {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+    .code {
+      overflow: scroll;
+    }
+
+    .code,
+    .codemirror .cm-editor {
+      width: 30vw;
+      height: 50vh;
+      margin: 0 1rem;
+      border: 1px solid #ddd;
+    }
+  }
+}
 </style>
