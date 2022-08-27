@@ -100,7 +100,7 @@ export default defineComponent({
       // watch prop.phrases
       watch(
         () => config.value.phrases,
-        (phrases) => editorTools.setPhrases(phrases!),
+        (phrases) => editorTools.setPhrases(phrases || {}),
         { immediate: true }
       )
 

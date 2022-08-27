@@ -16,11 +16,11 @@ export const configProps = {
   placeholder: String,
   style: Object as PropType<CSS.Properties>,
   autoDestroy: NonDefaultBooleanType,
+  phrases: Object as PropType<Record<string, string>>,
   // codemirror options
   root: Object as PropType<ShadowRoot | Document>,
   extensions: Array as PropType<EditorStateConfig['extensions']>,
-  selection: Object as PropType<EditorStateConfig['selection']>,
-  phrases: Object
+  selection: Object as PropType<EditorStateConfig['selection']>
 }
 
 export const modelValueProp = {
