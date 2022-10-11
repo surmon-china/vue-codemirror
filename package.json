@@ -19,6 +19,7 @@
     "dist",
     "CHANGELOG.md"
   ],
+  "type": "module",
   "main": "./dist/vue-codemirror.cjs.js",
   "module": "./dist/vue-codemirror.esm.js",
   "types": "./dist/vue-codemirror.esm.d.ts",
