@@ -188,7 +188,7 @@ app.use(VueCodemirror, {
 | update              | When any state of CodeMirror changes.                   | `(viewUpdate: ViewUpdate)`                                                       |
 | focus               | When CodeMirror focused.                                | `(viewUpdate: ViewUpdate)`                                                       |
 | blur                | When CodeMirror blurred.                                | `(viewUpdate: ViewUpdate)`                                                       |
-| ready               | When edirot component mounted.                          | `(payload: { view: EditorView; state: EditorState; container: HTMLDivElement })` |
+| ready               | When editor component mounted.                          | `(payload: { view: EditorView; state: EditorState; container: HTMLDivElement })` |
 
 ### Basic Setup
 
