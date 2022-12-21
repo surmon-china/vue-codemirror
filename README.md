@@ -2,9 +2,9 @@
 
 [![vue](https://img.shields.io/badge/MADE%20WITH-VUE-42a97a?style=for-the-badge&labelColor=35495d)](https://vuejs.org)
 &nbsp;
-[![GitHub stars](https://img.shields.io/github/stars/surmon-china/vue-codemirror.svg?style=for-the-badge)](https://github.com/surmon-china/vue-codemirror/stargazers)
-&nbsp;
 [![npm](https://img.shields.io/npm/v/vue-codemirror?color=c7343a&label=npm&style=for-the-badge)](https://www.npmjs.com/package/vue-codemirror)
+&nbsp;
+[![GitHub stars](https://img.shields.io/github/stars/surmon-china/vue-codemirror.svg?style=for-the-badge)](https://github.com/surmon-china/vue-codemirror/stargazers)
 &nbsp;
 [![Test Codecov](https://img.shields.io/codecov/c/github/surmon-china/vue-codemirror?style=for-the-badge)](https://codecov.io/gh/surmon-china/vue-codemirror)
 &nbsp;
