@@ -99,7 +99,7 @@ import { EditorState } from '@codemirror/state'
 </template>
 
 <script>
-  import { ref, shallowRef, defineComponent } from 'vue'
+  import { defineComponent, ref, shallowRef } from 'vue'
   import { Codemirror } from 'vue-codemirror'
   import { javascript } from '@codemirror/lang-javascript'
   import { oneDark } from '@codemirror/theme-one-dark'
