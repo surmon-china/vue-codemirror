@@ -1,6 +1,7 @@
 {
   "name": "vue-codemirror",
   "description": "CodeMirror code editor component for Vue",
+  "type": "module",
   "version": "6.1.1",
   "author": "Surmon",
   "license": "MIT",
